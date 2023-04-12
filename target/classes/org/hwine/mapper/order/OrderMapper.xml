@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.hwine.mapper.order.OrderMapper">
+
+
+	<!-- 주문 등록을 위한 resultMap 생성 -->
+	<resultMap type="org.hwine.domain.order.PickUpOrderVO" id="orderMap">
+		<result property="po_id" column="po_id" />
+		<result property="po_register_date" column="po_register_date" />
+		<result property="po_booking_date" column="po_booking_date" />
+		<result property="po_visited_date" column="po_visited_date"/>
+		<result property="po_status" column="po_status"/>
+		<result property="po_total_price" column="po_total_price"/>
+		<result property="m_email" column="m_email"/>
+		<result property="s_code" column="s_code"/>
+		<result property="pm_code" column="pm_code"/>
+		<result property="po_mileage" column="po_mileage"/>
+		<result property="po_phone" column="po_phone"/>
+		<result property="po_name" column="po_name"/>
+		<association property="store" resultMap="storeMap"></association>
+		<association property="payment" resultMap="paymentMap"></association>
+		<collection property="items" resultMap="orderitemMap"></collection>
+	</resultMap>
+
+	<!-- 주문에 따른 상품 기본 정보 resultMap 생성 -->
+	<resultMap type="org.hwine.domain.order.PickUpOrderItemVO" id="orderitemMap">
+		<result property="po_id" column="po_id" />
+		<result property="w_id" column="w_id" />
+		<result property="poi_quantity" column="poi_quantity" />
+		<association property="productDetail" resultMap="itemMap"></association>
+	</resultMap>
+	
+	<!-- 주문서 페이지에 불러올 상품 정보 -->
+	<resultMap type="org.hwine.domain.order.OrderPageItemVO" id="orderPageMap">
+		<result property="w_id" column="w_id"/>
+		<result property="quantity" column="quantity"/>
+		<association property="productDetail" resultMap="itemMap"></association>
+	</resultMap>
+	
+	<!-- 주문서 페이지에 불러올 상품 상세정보 -->
+	<resultMap type="org.hwine.domain.product.ProductVO" id="itemMap">
+		<result property="w_id" column="w_id" />
+		<result property="w_name_kor" column="w_name_kor" />
+		<result property="w_img" column="w_img" />
+		<result property="w_price" column="w_price" />
+		<result property="w_type" column="w_type" />
+		<result property="wr_nation_kor" column="wr_nation_kor" />
+		<result property="wv_variety_kor" column="wv_variety_kor" />
+		<collection property="stocks" resultMap="stockMap"></collection>
+	</resultMap>
+	
+	<!-- 주문서 페이지에 불러올 유저 정보 -->
+	<resultMap type="org.hwine.domain.member.MemberVO" id="memberMap">
+		<result property="mEmail" column="m_email"/>
+		<result property="mName" column="m_name"/>
+		<result property="mNickname" column="m_nickname"/>
+		<result property="mPhone" column="m_phone"/>
+		<result property="mMileage" column="m_mileage"/>
+	</resultMap>
+	
+	<resultMap type="org.hwine.domain.order.StoreVO" id="storeMap">
+		<result property="s_code" column="s_code"/>
+		<result property="s_name" column="s_name"/>
+	</resultMap>
+	
+	<resultMap type="org.hwine.domain.order.PaymentMethodVO" id="paymentMap">
+		<result property="pm_code" column="pm_code"/>
+		<result property="pm_company" column="pm_company"/>
+		<result property="pm_method" column="pm_method"/>
+	</resultMap>
+	
+	
+	<resultMap type="org.hwine.domain.cart.StockVO" id="stockMap">
+		<result property="s_code" column="s_code" />
+		<result property="w_id" column="w_id" />
+		<result property="sws_stock" column="sws_stock" />
+		<association property="store" resultMap="storeMap"></association>
+	</resultMap>
+
+	<!-- 
+		Author : 차민수
+		기능 : 주문서 페이지에 주문할 상품 불러옴
+	 -->
+	<select id="orderProducts" resultMap="orderPageMap">
+	 	SELECT wr.WR_NATION_KOR, wv.WV_VARIETY_KOR, w.w_id, w.w_name_kor, w.w_img, w.w_price, w.w_type, sws.sws_stock, s.s_name
+		FROM wine w JOIN wine_makers wm ON w.wm_maker = wm.wm_maker JOIN store_wine_stocks sws ON w.w_id = sws.w_id JOIN stores s ON sws.s_code = s.s_code JOIN wine_regions wr ON wm.wr_nation = wr.wr_nation JOIN wine_variety wv ON w.WV_VARIETY = wv.WV_VARIETY
+		WHERE w.w_id = #{w_id}
+		GROUP BY wr.WR_NATION_KOR, wv.WV_VARIETY_KOR, w.w_id, w.w_name_kor, w.w_img, w.w_price, w.w_type, sws_stock, s.s_name
+	</select>
+	
+	<!-- 
+		Author : 차민수
+		기능 : 주문서 페이지에 로그인 유저 정보 가져오기
+	 -->
+	<select id="orderUser" resultMap="memberMap">
+		SELECT m_email, m_name, m_nickname, m_phone, m_mileage
+		FROM members
+		WHERE m_email = #{m_email}
+	</select>
+	
+	<!-- 
+		Author : 차민수
+		기능 : 주문 후, 주문 완료 페이지에 주문 내역 가져오기
+	 -->
+	 <select id="orderOk" resultMap="orderMap">
+	 	SELECT wr.WR_NATION_KOR, wv.WV_VARIETY_KOR, po.po_id, po_register_date, po_booking_date, po_visited_date, po_status, po_total_price, m_email, po.s_code, po.pm_code, po_mileage, po_phone, po_name, poi.w_id, poi_quantity, w_name_kor, w_img, w_price, w_type, pm_company, s_name
+		FROM pickup_orders po JOIN pickup_order_items poi ON po.po_id = poi.po_id JOIN wine w ON poi.w_id = w.w_id JOIN wine_makers wm ON w.wm_maker = wm.wm_maker JOIN payment_method pm ON po.pm_code = pm.pm_code JOIN stores s ON po.s_code = s.s_code JOIN wine_regions wr ON wm.wr_nation = wr.wr_nation JOIN wine_variety wv ON w.WV_VARIETY = wv.WV_VARIETY
+		WHERE po.po_id = (SELECT MAX(po_id) FROM pickup_orders WHERE m_email = #{m_email})
+		GROUP BY wr.WR_NATION_KOR, wv.WV_VARIETY_KOR, po.po_id, po_register_date, po_booking_date, po_visited_date, po_status, po_total_price, m_email, po.s_code, po.pm_code, po_mileage, po_phone, po_name, poi.w_id, poi_quantity, w_name_kor, w_img, w_price, w_type, pm_company, s_name
+	 </select>
+	
+	<!-- 
+		Author : 차민수
+		기능 : 주문 전체 정보 insert
+	 -->
+	<insert id="insertPickupOrders">
+		INSERT INTO PICKUP_ORDERS (po_id, po_register_date, po_booking_date, po_status, po_total_price, m_email, s_code, pm_code, po_mileage, po_phone, po_name)
+		VALUES (ZBF_GET_BATCHKEY('now'), sysdate, #{po_booking_date}, #{po_status}, #{po_total_price}, #{m_email}, #{s_code}, #{pm_code}, #{po_mileage}, #{po_phone}, #{po_name})
+	</insert>
+	
+	<!-- 
+		Author : 차민수
+		기능 : 주문 상품 정보 insert
+	 -->
+	<insert id="insertItem">
+		INSERT INTO PICKUP_ORDER_ITEMS (po_id, w_id, poi_quantity)
+		VALUES ((SELECT MAX(po_id) FROM pickup_orders WHERE m_email = #{m_email}), #{w_id}, #{poi_quantity})
+	</insert>
+	
+	<!-- 
+		Author : 차민수
+		기능 : 주문 상품 장바구니 delete
+	 -->
+	 <delete id="deleteFromCart">
+	 	DELETE FROM CARTS
+	 	WHERE m_email = #{m_email} AND w_id = #{w_id}
+	 </delete>
+	 
+	 <!-- 
+		Author : 차민수
+		기	능 : 주문 할 때 마일리지 사용 시 마일리지 차감 및 금액의 2% 적립
+	 -->
+	 <update id="deleteMileage">
+	 	UPDATE MEMBERS
+	 	SET m_mileage = (m_mileage - #{po_mileage} + ROUND(#{po_total_price} * 0.01, -2))
+	 	WHERE m_email = #{m_email}
+	 </update>
+	 
+	 <!-- 
+		Author : 차민수
+		기	능 : 마이페이지 주문 내역 조회
+	 -->
+	<select id="orderList" resultMap="orderMap">
+		SELECT wr.WR_NATION_KOR, wv.WV_VARIETY_KOR, po.po_id, po_register_date, po_booking_date, po_visited_date, po_status, po_total_price, m_email, po.s_code, po.pm_code, po_mileage, po_phone, po_name, poi.w_id, poi_quantity, w_name_kor, w_img, w_price, w_type, pm_company, s_name
+		FROM pickup_orders po JOIN pickup_order_items poi ON po.po_id = poi.po_id JOIN wine w ON poi.w_id = w.w_id JOIN wine_makers wm ON w.wm_maker = wm.wm_maker JOIN payment_method pm ON po.pm_code = pm.pm_code JOIN stores s ON po.s_code = s.s_code JOIN wine_regions wr ON wm.wr_nation = wr.wr_nation JOIN wine_variety wv ON w.WV_VARIETY = wv.WV_VARIETY
+		WHERE m_email = #{m_email} AND PO_STATUS = #{po_status}
+		GROUP BY wr.WR_NATION_KOR, wv.WV_VARIETY_KOR, po.po_id, po_register_date, po_booking_date, po_visited_date, po_status, po_total_price, m_email, po.s_code, po.pm_code, po_mileage, po_phone, po_name, poi.w_id, poi_quantity, w_name_kor, w_img, w_price, w_type, pm_company, s_name
+		ORDER BY po_register_date DESC
+	</select>
+	
+	<!-- 
+		Author : 차민수
+		기	능 : 주문 상세 내역 조회
+	 -->
+	 <select id="order" resultMap="orderMap">
+		SELECT wr.WR_NATION_KOR, wv.WV_VARIETY_KOR, po.po_id, po_register_date, po_booking_date, po_visited_date, po_status, po_total_price, m_email, po.s_code, po.pm_code, po_mileage, po_phone, po_name, poi.w_id, poi_quantity, w_name_kor, w_img, w_price, w_type, pm_company, s_name
+		FROM pickup_orders po JOIN pickup_order_items poi ON po.po_id = poi.po_id JOIN wine w ON poi.w_id = w.w_id JOIN wine_makers wm ON w.wm_maker = wm.wm_maker JOIN payment_method pm ON po.pm_code = pm.pm_code JOIN stores s ON po.s_code = s.s_code JOIN wine_regions wr ON wm.wr_nation = wr.wr_nation JOIN wine_variety wv ON w.WV_VARIETY = wv.WV_VARIETY
+		WHERE po.po_id = #{po_id}
+		GROUP BY wr.WR_NATION_KOR, wv.WV_VARIETY_KOR, po.po_id, po_register_date, po_booking_date, po_visited_date, po_status, po_total_price, m_email, po.s_code, po.pm_code, po_mileage, po_phone, po_name, poi.w_id, poi_quantity, w_name_kor, w_img, w_price, w_type, pm_company, s_name
+	 </select>
+	 
+	 <!-- 
+		Author : 차민수
+		기	능 : 주문 취소 => 주문 상태 '2' 로 변경, 1 : 주문 완료, 2: 주문 취소, 3: 픽업 완료
+	 -->
+	 <update id="orderCancel">
+	 	UPDATE PICKUP_ORDERS
+	 	SET po_status = 2
+	 	WHERE m_email = #{m_email} AND po_id = #{po_id}
+	 </update>
+	 
+	 <!-- 
+		Author : 차민수
+		기	능 : 주문 취소에 따른 마일리지 반환
+	 -->
+	 <update id="returnMileage">
+	 	UPDATE MEMBERS
+	 	SET m_mileage = m_mileage + #{po_mileage}
+	 	WHERE m_email = #{m_email}
+	 </update>
+	 
+	 <!-- 
+		Author : 차민수
+		기	능 : 주문에 따른 재고량 업데이트
+	 -->
+	 <update id="amountUpdate">
+	 	UPDATE STORE_WINE_STOCKS
+		SET SWS_STOCK = SWS_STOCK + #{sws_stock}
+		WHERE W_ID = #{w_id} AND S_CODE = #{s_code}
+	 </update>
+</mapper>

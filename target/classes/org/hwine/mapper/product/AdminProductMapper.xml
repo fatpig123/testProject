@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.hwine.mapper.product.AdminProductMapper">
+
+	<!-- SQL File Name : ProductMapper.xml Description : 상품 관련 mapper ==개정이력======================================== 
+		수정일 수정자 Version Query Id ========== ======= ========= =================== 
+		2023.04.03 노희진 1.0 백오피스 상품 전체 조회 2023.04.04 노희진 1.0 백오피스 상품 등록 -->
+
+	<!-- depth1 -->
+	<resultMap type="org.hwine.domain.product.ProductVO"
+		id="productMap">
+		<result property="w_id" column="w_id" />
+		<result property="w_name" column="w_name" />
+		<result property="w_img" column="w_img" />
+		<result property="w_price" column="w_price" />
+		<result property="w_name_kor" column="w_name_kor" />
+		<result property="w_alcohol" column="w_alcohol" />
+		<result property="w_sweetness" column="w_sweetness" />
+		<result property="w_acidity" column="w_acidity" />
+		<result property="w_body" column="w_body" />
+		<result property="w_tannin" column="w_tannin" />
+		<result property="w_ferment" column="w_ferment" />
+		<result property="w_temperature" column="w_temperature" />
+		<result property="w_volume" column="w_volume" />
+		<result property="w_type" column="w_type" />
+		<result property="w_volume" column="w_volume" />
+		<result property="w_register_date" column="w_register_date" />
+		<result property="w_update_date" column="w_update_date" />
+		<result property="wv_variety" column="wv_variety" />
+		<result property="wv_variety_kor" column="wv_variety_kor" />
+		<result property="wr_nation" column="wr_nation" />
+		<result property="wr_nation_kor" column="wr_nation_kor" />
+		<result property="wr_area" column="wr_area" />
+		<result property="wr_area_kor" column="wr_area_kor" />
+		<result property="wm_maker" column="wm_maker" />
+		<result property="wm_maker_kor" column="wm_maker_kor" />
+		<result property="total_wine_sales" column="total_wine_sales" />
+		<collection property="aromaNameList"
+			resultMap="aromaNameMap"></collection>
+	</resultMap>
+
+	<!-- depth2 -->
+	<resultMap type="org.hwine.domain.product.WineAromaNameVO"
+		id="aromaNameMap">
+		<result property="wa_name" column="wa_name" />
+		<result property="was_name" column="was_name" />
+		<result property="wa_img_url" column="wa_img_url" />
+		<collection property="foodNameList" resultMap="foodNameMap"></collection>
+	</resultMap>
+
+	<!-- depth3 -->
+	<resultMap type="org.hwine.domain.product.WineFoodNameVO"
+		id="foodNameMap">
+		<result property="wf_name" column="wf_name" />
+		<result property="wfs_name" column="wfs_name" />
+		<result property="wf_img_url" column="wf_img_url" />
+		<collection property="stockList" resultMap="wineStockMap"></collection>
+	</resultMap>
+
+	<!-- depth4 -->
+	<resultMap type="org.hwine.domain.product.WineStockVO"
+		id="wineStockMap">
+		<result property="s_code" column="s_code" />
+		<result property="sws_stock" column="sws_stock" />
+		<result property="s_name" column="s_name" />
+	</resultMap>
+	
+	<select id="adminList" resultType="org.hwine.domain.product.AdminProductListVO">
+			 select * from 
+				(
+				select distinct w.w_id, w_name_kor, w_register_date, w_update_date, w_price, sws_stock, total_wine_sales
+				from product_view w
+				join (
+				select w_id, sws_stock
+				from store_wine_stocks
+				<where>
+                  <if test='s_code != "all"'>
+                     and s_code LIKE '%'||#{s_code}||'%'
+                  </if>
+               </where>
+				)  st on w.w_id = st.w_id
+				join (
+				select w_id, sum(poi_quantity) as total_wine_sales
+				from pickup_order_items
+				group by w_id
+				) 
+				tws on w.w_id = tws.w_id
+				)
+				<![CDATA[
+				where rownum <= 1000
+				 ]]>
+	</select>
+	
+
+	<!-- 백오피스 상품 상세 -->
+	<select id="adminProductItem" resultMap="productMap">
+		SELECT *
+		FROM
+		admin_product_view
+		WHERE w_id=#{w_id}
+		ORDER BY s_code asc
+	</select>
+
+	<!-- 백오피스 상품 insert START -->
+	<select id="selectSequence" resultType="String">
+		select
+		wine_seq.nextval
+		from dual
+	</select>
+
+	<!-- <insert id="insertWineVariety" parameterType="map"> insert into wine_variety 
+		(wv_variety, wv_variety_kor) values (#{wv_variety}, #{wv_variety_kor}) </insert> -->
+
+	<insert id="insertWineRegions" parameterType="map">
+		INSERT INTO
+		wine_regions (wr_nation, wr_area, wr_nation_kor, wr_area_kor)
+		VALUES
+		(#{wr_nation}, #{wr_area}, #{wr_nation_kor}, #{wr_area_kor})
+	</insert>
+
+	<insert id="insertWineMaker" parameterType="map">
+		INSERT INTO
+		wine_makers (wm_maker, wm_maker_kor, wr_nation, wr_area)
+		VALUES
+		(#{wm_maker}, #{wm_maker_kor}, #{wr_nation}, #{wr_area})
+	</insert>
+
+	<insert id="insertWine" parameterType="map">
+		INSERT INTO wine (w_id,
+		w_name, w_name_kor, w_price, w_img, w_alcohol,
+		w_sweetness, w_acidity,
+		w_body, w_tannin, w_ferment, w_temperature,
+		w_volume, w_type,
+		w_update_date, wv_variety, wm_maker)
+		VALUES (#{w_id}, #{w_name},
+		#{w_name_kor}, #{w_price}, #{w_img},
+		#{w_alcohol}, #{w_sweetness},
+		#{w_acidity}, #{w_body}, #{w_tannin},
+		#{w_ferment}, #{w_temperature},
+		#{w_volume}, #{w_type},
+		Current_timestamp, #{wv_variety}, #{wm_maker})
+	</insert>
+
+	<!-- <insert id="insertWineFood" parameterType="map"> INSERT INTO wine_food 
+		(wf_name, wf_img_url) VALUES (#{wf_name}, #{wf_img_url}) </insert> <insert 
+		id="insertWineFoodSpecies" parameterType="map"> INSERT INTO wine_food_species 
+		(wfs_name, wf_name) VALUES (#{wfs_name}, #{wf_name}) </insert> -->
+
+	<insert id="insertFoodMappers" parameterType="map">
+		INSERT INTO
+		food_mappers (wfs_name, w_id)
+		VALUES (#{wfs_name}, #{w_id})
+	</insert>
+
+	<!-- <insert id="insertWineAroma" parameterType="map"> INSERT INTO wine_aroma 
+		(wa_name, wa_img_url) VALUES (#{wa_name}, #{wa_img_url}) </insert> <insert 
+		id="insertWineAromaSpecies" parameterType="map"> INSERT INTO wine_aroma_species 
+		(was_name, wa_name) VALUES (#{was_name}, #{wa_name}) </insert> -->
+
+	<insert id="insertAromaMappers" parameterType="map">
+		INSERT INTO
+		aroma_mappers (was_name, w_id)
+		VALUES (#{was_name}, #{w_id})
+	</insert>
+
+	<insert id="insertStoreWineStocks" parameterType="map">
+		INSERT INTO
+		store_wine_stocks (sws_stock, s_code, w_id)
+		VALUES (${sws_stock},
+		#{s_code}, #{w_id})
+	</insert>
+	<!-- 백오피스 상품 insert END -->
+
+	<!-- 와인 가격 변경 -->
+	<update id="updateWinePriceById"
+		parameterType="org.hwine.domain.product.ProductInsertVO">
+		UPDATE wine
+		SET w_price = #{w_price}
+		WHERE w_id = #{w_id}
+	</update>
+	
+	<!-- 와인 재고량 변경 -->
+	<update id="updateWineStocks" parameterType="map">
+	  UPDATE store_wine_stocks
+	  SET sws_stock = #{sws_stock}
+	  WHERE w_id = #{w_id}
+   	  AND s_code LIKE '%'||#{s_code}||'%'
+	</update>
+
+	<!-- 상품 delete -->
+	<delete id="deleteWineById" parameterType="String">
+		DELETE FROM
+		store_wine_stocks
+		WHERE w_id = #{w_id}
+	</delete>
+
+	<select id="getOrdReqList"
+		resultType="org.hwine.domain.product.ProductVO" parameterType="String">
+		select *
+		from order_req_wine
+		<![CDATA[
+		where sws_stock < year_order_avg
+		]]>
+		<choose>
+			<when test="auth == 1">
+				and s_code = 'scode1'
+			</when>
+			<when test="auth == 2">
+				and s_code = 'scode2'
+			</when>
+			<otherwise>
+
+			</otherwise>
+		</choose>
+	</select>
+
+	<select id="getSalesChart"
+		resultType="org.hwine.domain.product.chartVO">
+		<choose>
+			<when test="type == 0">
+				SELECT EXTRACT(year FROM po_visited_date) AS x
+			</when>
+			<when test="type == 1">
+				SELECT EXTRACT(MONTH FROM po_visited_date) AS x
+			</when>
+			<otherwise>
+				SELECT EXTRACT(day FROM po_visited_date) AS x
+			</otherwise>
+		</choose>
+		<choose>
+			<when test="sumCount == 0">
+				,sum(po_total_price) y
+			</when>
+			<otherwise>
+				,count(po_total_price) y
+			</otherwise>
+		</choose>
+		from pickup_order_items poi, pickup_orders po
+		where po.po_id =
+		poi.po_id and po_status = 4
+		<choose>
+			<when test="auth == 1">
+				and s_code = 'scode1'
+			</when>
+			<when test="auth == 2">
+				and s_code = 'scode2'
+			</when>
+			<otherwise>
+
+			</otherwise>
+		</choose>
+		<if test="w_id != null">
+			and w_id = #{w_id}
+		</if>
+		<choose>
+			<when test="type == 0">
+				group by EXTRACT(year FROM po_visited_date)
+			</when>
+			<when test="type == 1">
+							and
+				po_booking_date >=
+				TRUNC(SYSDATE, 'YYYY')
+				group by EXTRACT(month FROM po_visited_date)
+
+			</when>
+			<otherwise>
+							and
+				po_booking_date >=
+				TRUNC(SYSDATE, 'MM')
+				group by EXTRACT(day FROM po_visited_date)
+
+			</otherwise>
+		</choose>
+		order by x
+	</select>
+
+	<select id="getCtgrChart"
+		resultType="org.hwine.domain.product.chartVO">
+		SELECT w.w_type x
+		<choose>
+			<when test="sumCount == 0">
+				,nvl(sum(po_total_price),0) y
+			</when>
+			<otherwise>
+				,nvl(count(po_total_price),0) y
+			</otherwise>
+		</choose>
+		from pickup_order_items
+		poi right outer
+		join wine w on w.w_id = poi.w_id
+		left outer join
+		(select * from
+		pickup_orders where po_status = 4
+		<choose>
+			<when test="auth == 1">
+				and s_code = 'scode1'
+			</when>
+			<when test="auth == 2">
+				and s_code = 'scode2'
+			</when>
+			<otherwise>
+
+			</otherwise>
+		</choose>
+		<choose>
+			<when test="type == 0">
+			</when>
+			<when test="type == 1">
+				and po_booking_date >= TRUNC(SYSDATE, 'YYYY')
+			</when>
+			<otherwise>
+				and po_booking_date >= TRUNC(SYSDATE, 'MM')
+			</otherwise>
+		</choose>
+		) po on poi.po_id = po.po_id
+		group by w.w_type
+		order by w.w_type
+	</select>
+
+	<select id="getMemberChart"
+		resultType="org.hwine.domain.product.chartVO">
+		select
+		<choose>
+			<when test="genderAge == 0">
+				(CASE
+				WHEN m_gender = 1 THEN '여자'
+				WHEN m_gender = 0 THEN '남자'
+				ELSE '알 수 없음'
+				END ) x
+			</when>
+			<when test="genderAge == 1">
+				generation x
+			</when>
+			<otherwise>
+				concat (generation, (CASE
+				WHEN m_gender = 1 THEN ' 여자'
+				WHEN m_gender = 0 THEN ' 남자'
+				ELSE '알 수 없음'
+				END )) 	x
+			</otherwise>
+		</choose>
+
+		<choose>
+			<when test="sumCount == 0">
+				,nvl(sum(po_total_price),0) y
+			</when>
+			<otherwise>
+				,nvl(count(po_total_price),0) y
+			</otherwise>
+		</choose>
+		from pickup_orders po, pickup_order_items poi,
+		<![CDATA[
+		(select CASE
+		WHEN EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM m_birth_date) <= 20
+		THEN '20대'
+		WHEN EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM m_birth_date) <= 40
+		THEN '30대'
+		WHEN EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM m_birth_date) <= 60
+		THEN '40대'
+		WHEN EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM m_birth_date) <= 60
+		THEN '50대'
+		]]>
+		ELSE '60대 이상'
+		END AS generation, m_email, m_gender from members) m
+		where
+		po.m_email = m.m_email and po_status = 4 and poi.po_id = po.po_id
+		<choose>
+			<when test="auth == 1">
+				and s_code = 'scode1'
+			</when>
+			<when test="auth == 2">
+				and s_code = 'scode2'
+			</when>
+			<otherwise>
+
+			</otherwise>
+		</choose>
+		<if test="w_id != null">
+			and w_id = #{w_id}
+		</if>
+		<choose>
+			<when test="type == 0">
+			</when>
+			<when test="type == 1">
+				and po_booking_date >= TRUNC(SYSDATE, 'YYYY')
+			</when>
+			<otherwise>
+				and po_booking_date >= TRUNC(SYSDATE, 'MM')
+			</otherwise>
+		</choose>
+		<choose>
+			<when test="genderAge == 0">
+				group by m_gender
+				order by m_gender
+			</when>
+			<when test="genderAge == 1">
+				group by generation
+				order by generation
+			</when>
+			<otherwise>
+				group by generation, m_gender
+				order by generation, m_gender
+			</otherwise>
+		</choose>
+	</select>
+	<select id="getTodaySales" resultType="int">
+        select nvl(sum(po_total_price),0) 
+		from pickup_orders
+		where po_visited_date = to_char(current_timestamp, 'yy/mm/dd')
+		 
+	</select>
+	<select id="getTodayPickup" resultType="int">
+		select count(po_id)
+        from pickup_orders
+        where po_booking_date = to_char(current_timestamp, 'yy/mm/dd')
+        and po_status != 4
+	</select>
+	<select id="getTodaySignup" resultType="int">
+        select count(m_email)
+        from members
+        where m_register_date =  to_char(current_timestamp, 'yy/mm/dd')
+	</select>
+</mapper>

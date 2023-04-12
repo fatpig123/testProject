@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http:/mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.hwine.mapper.decanting.DecantingMapper">
+
+   <insert id="Dwrite">
+      <!-- insert into decanting_books (db_id, w_id, db_content, db_rating, db_sweetness, 
+         db_acidity, db_body, DB_TANNIN, m_email) values (db_id_seq.nextval, #{w_id}, 
+         #{content}, #{rating}, #{sweetness}, #{acidity}, #{body}, #{tannin}, #{m_email}) -->
+      CALL ups(
+      #{w_id}, #{content}, #{rating}, #{sweetness},
+      #{acidity},
+      #{body}, #{tannin}, #{m_email}, #{hide}
+      )
+   </insert>
+
+   <select id="getReview"
+      resultType="org.hwine.domain.product.DecantingBookVO"
+      parameterType="String">
+      select *
+      from decanting_books db, wine w, wine_makers wm,
+      members m
+      where w.w_id =
+      db.w_id and w.wm_maker = wm.wm_maker and
+      db.m_email = m.m_email and
+      db.db_id = #{db_id}
+   </select>
+
+   <select id="getMyReview"
+      resultType="org.hwine.domain.product.DecantingBookVO"
+      parameterType="String">
+         <![CDATA[
+      select * 
+      from decanting_books db, wine w, wine_makers wm, members m
+      where w.w_id = db.w_id and w.wm_maker = wm.wm_maker and db.m_email = m.m_email and db.m_email = #{name} and rownum < 2
+      ]]>
+   </select>
+
+   <select id="checkDB" resultType="String">
+      select db_id
+      from decanting_books
+      where w_id = #{w_id}
+      and m_email = #{name}
+   </select>
+
+   <select id="getFollowList"
+      resultType="org.hwine.domain.member.FollowerVO">
+      <![CDATA[ 
+      select *
+      from(
+	      select tmp.*, rownum row_num
+	      from(
+		      select f_id,
+		      m_nickname, m_profile_img, (select count(*) 
+		      							  from follows f1
+		        						  where f_followee = (select f_followee 
+		        						  					  from follows f2 
+		        						  					  where f.f_id = f2.f_id)) cnt
+		        						,(select db_id
+		        						  from decanting_books
+		        						  where f.f_followee = m_email and
+                                         rownum < 2 ) db_id 
+		      from (select * from members where m_grade = 1), (select * 
+		      				 from follows 
+		      				 order by f_date desc) f
+		      where m_email = f.f_followee
+		      and f.f_follower = #{m_email}
+		      and f_status = 1
+	      ) tmp
+      )
+      where row_num between #{start} and #{end}
+      ]]>
+   </select>
+
+   <update id="follow">
+      update follows set f_status = 1 , f_date =
+      current_timestamp where f_id = #{f_id}
+   </update>
+
+   <update id="unfollow">
+      update follows set f_status = 0 , f_unfollow_date =
+      current_timestamp where f_id = #{f_id}
+   </update>
+
+   <insert id="followInsert">
+      insert into follows (f_id, f_followee, f_follower)
+      values (DBMS_RANDOM.STRING('X', 20), (select m_email from
+      decanting_books where db_id = #{db_id}), #{m_email})
+   </insert>
+
+   <select id="getAble" parameterType="String" resultType="int">
+      select
+      count(*) from members where m_email = (select m_email from
+      decanting_books where db_id = #{r_id}) and m_email = #{m_email}
+   </select>
+
+   <select id="getGrade" resultType="int" parameterType="String">
+      select
+      m_grade from members where m_email = #{m_email}
+   </select>
+
+   <select id="getWine"
+      resultType="org.hwine.domain.product.DecantingBookVO"
+      parameterType="String">
+      select *
+      from decanting_books db, wine w, wine_makers wm
+      where w.wm_maker = wm.wm_maker
+      and w.w_id = (select w_id from
+      decanting_books where db_id = #{r_id})
+      and db.db_id = #{r_id}
+      and
+      db.w_id = w.w_id
+   </select>
+
+   <select id="getWineMin"
+      resultType="org.hwine.domain.product.DecantingBookVO"
+      parameterType="String">
+      select *
+      from wine w, wine_makers wm
+      where w.wm_maker =
+      wm.wm_maker
+      and #{w_id} = w.w_id
+   </select>
+
+   <select id="getReviewList"
+      resultType="org.hwine.domain.product.DecantingBookVO"
+      parameterType="String">
+      select *
+      from(
+		      select rownum row_num, tmp.*
+		      from (
+			      select db_rating, w.*,
+			      m.m_nickname, to_char(db.db_register_date,
+			      'YYYY-MM-DD' )
+			      db_register_date , db_id
+			      from decanting_books db, wine w, members m
+			      where db.w_id = w.w_id
+			      and db.m_email = (select m.m_email
+			      from
+			      decanting_books d, members m
+			      where d.db_id = #{db_id}
+			      and d.m_email =
+			      m.m_email
+			      and m.m_grade = 1)
+			      and db.db_hide = 0
+			      and db.m_email = m.m_email
+      <if test='type != null'>
+         and w.w_type = #{type}
+      </if>
+      <choose>
+         <!-- 최신순 -->
+         <when test="sort == null or sort == 1">
+            order by db.db_register_date desc
+         </when>
+         <!-- 이름순 -->
+         <when test="sort == 1">
+            order by w.w_name_kor asc
+         </when>
+         <!-- 별점순 -->
+         <when test="sort == 2">
+            order by db.db_rating desc
+         </when>
+         <!-- 별점순 -->
+         <when test="sort > 2">
+            and db_rating =
+            <choose>
+               <when test="sort == 3">
+                  5
+               </when>
+               <!-- 별점순 -->
+               <when test="sort == 4">
+                  4
+               </when>
+               <!-- 별점순 -->
+               <when test="sort == 5">
+                  3
+               </when>
+               <!-- 별점순 -->
+               <when test="sort == 6">
+                  2
+               </when>
+               <!-- 별점순 -->
+               <when test="sort == 7">
+                  1
+               </when>
+            </choose>
+
+         </when>
+      </choose>
+
+
+      ) tmp)
+      where row_num between #{start} and #{end}
+
+   </select>
+
+   <select id="getMyReviewList"
+      resultType="org.hwine.domain.product.DecantingBookVO"
+      parameterType="String">
+      select *
+      from(
+      select rownum row_num, tmp.*
+      from (
+      select db_rating, w.*,
+      m.m_nickname, to_char(db.db_register_date,
+      'YYYY-MM-DD' )
+      db_register_date, db_id
+      from decanting_books db, wine w, members m
+      where db.w_id = w.w_id
+      and db.m_email = #{name}
+      and db.db_hide = 0
+      and
+      db.m_email = m.m_email
+      <if test='type != null'>
+         and w.w_type = #{type}
+      </if>
+      <choose>
+         <!-- 최신순 -->
+         <when test="sort == null or sort == 0">
+            order by db.db_update_date desc, db.db_register_date
+            desc
+         </when>
+         <!-- 이름순 -->
+         <when test="sort == 1">
+            order by w.w_name_kor asc
+         </when>
+         <!-- 별점순 -->
+         <when test="sort == 2">
+            order by db.db_rating desc
+         </when>
+         <!-- 별점순 -->
+         <when test="sort > 2">
+            and db_rating =
+            <choose>
+               <when test="sort == 3">
+                  5
+               </when>
+               <!-- 별점순 -->
+               <when test="sort == 4">
+                  4
+               </when>
+               <!-- 별점순 -->
+               <when test="sort == 5">
+                  3
+               </when>
+               <!-- 별점순 -->
+               <when test="sort == 6">
+                  2
+               </when>
+               <!-- 별점순 -->
+               <when test="sort == 7">
+                  1
+               </when>
+            </choose>
+
+         </when>
+      </choose>
+
+
+      ) tmp)
+      where row_num between #{start} and #{end}
+
+   </select>
+
+   <select id="following"
+      resultType="org.hwine.domain.decanting.FollowVO">
+      select
+      <if test="db_id != null and name != null">
+         (select f_id
+         from follows
+         where f_followee =
+         
+         (select m_email from decanting_books where db_id = #{db_id} )
+         and
+         
+         f_follower
+         = #{name}
+         ) f_id,
+         
+         (select f_status
+         from follows
+         where f_followee =
+         
+         (select m_email from decanting_books where db_id = #{db_id} )
+         and
+         
+         f_follower = #{name}
+         ) f_status,
+      </if>
+
+      (select count(*)
+      from follows
+      where f_status = 1
+      and f_followee =
+      <choose>
+         <when test="db_id == null">
+            #{name}
+         </when>
+         <otherwise>
+            (select m_email from decanting_books where db_id =
+            #{db_id} )
+         </otherwise>
+      </choose>
+      ) follower_cnt,
+      
+      (select count(*)
+      from follows
+      where f_status = 1
+      and
+      f_follower =
+      <choose>
+         <when test="db_id == null">
+            #{name}
+         </when>
+         <otherwise>
+            (select m_email from decanting_books where db_id =
+            #{db_id} )
+         </otherwise>
+      </choose>
+      ) follow_cnt
+      from dual
+
+
+   </select>
+
+   <select id="getReviewNum" resultType="int"
+      parameterType="String">
+      select count(*)
+      from (
+      select db_rating, w.*, m.m_nickname,
+      db.db_register_date , db_id
+      from decanting_books db, wine w, members m
+      where db.w_id = w.w_id
+      and db.m_email = (select m.m_email
+      from
+      decanting_books d, members m
+      where d.db_id = #{db_id}
+      and d.m_email =
+      m.m_email
+      and m.m_grade = 1)
+      and db.db_hide = 0
+      and db.m_email =
+      m.m_email
+      <if test='type != null'>
+         and w.w_type = #{type}
+      </if>
+      <choose>
+         <!-- 최신순 -->
+         <when test="sort == null or sort == 0">
+            order by db.db_register_date desc
+         </when>
+         <!-- 이름순 -->
+         <when test="sort == 1">
+            order by w.w_name_kor asc
+         </when>
+         <!-- 별점순 -->
+         <when test="sort == 2">
+            order by db.db_rating desc
+         </when>
+         <!-- 별점순 -->
+         <when test="sort > 2">
+            and db_rating =
+            <choose>
+               <when test="sort == 3">
+                  5
+               </when>
+               <!-- 별점순 -->
+               <when test="sort == 4">
+                  4
+               </when>
+               <!-- 별점순 -->
+               <when test="sort == 5">
+                  3
+               </when>
+               <!-- 별점순 -->
+               <when test="sort == 6">
+                  2
+               </when>
+               <!-- 별점순 -->
+               <when test="sort == 7">
+                  1
+               </when>
+            </choose>
+
+         </when>
+      </choose>
+      )
+   </select>
+
+   <select id="getMyReviewNum" resultType="int"
+      parameterType="String">
+      <!-- select count(*) from decanting_books db where db.m_email = #{name} -->
+      select count(*)
+      from (
+      select db_rating, w.*, m.m_nickname,
+      db.db_register_date , db_id
+      from decanting_books db, wine w, members m
+      where db.w_id = w.w_id
+      and db.m_email = #{name}
+      and db.db_hide = 0
+      and
+      db.m_email = m.m_email
+      <if test='type != null'>
+         and w.w_type = #{type}
+      </if>
+      <choose>
+         <!-- 최신순 -->
+         <when test="sort == null or sort == 0">
+            order by db.db_register_date desc
+         </when>
+         <!-- 이름순 -->
+         <when test="sort == 1">
+            order by w.w_name_kor asc
+         </when>
+         <!-- 별점순 -->
+         <when test="sort == 2">
+            order by db.db_rating desc
+         </when>
+         <!-- 별점순 -->
+         <when test="sort > 2">
+            and db_rating =
+            <choose>
+               <when test="sort == 3">
+                  5
+               </when>
+               <!-- 별점순 -->
+               <when test="sort == 4">
+                  4
+               </when>
+               <!-- 별점순 -->
+               <when test="sort == 5">
+                  3
+               </when>
+               <!-- 별점순 -->
+               <when test="sort == 6">
+                  2
+               </when>
+               <!-- 별점순 -->
+               <when test="sort == 7">
+                  1
+               </when>
+            </choose>
+
+         </when>
+      </choose>
+
+
+      )
+   </select>
+
+   <select id="getHAvg"
+      resultType="org.hwine.domain.decanting.AvgVO">
+      select (select ROUND(AVG( db_rating ), 1)
+      from
+      decanting_books
+      where m_email = (select m_email from decanting_books
+      where db_id =
+      #{db_id})
+      ) rateAvg,
+
+      (select ROUND(AVG( db_sweetness ), 1)
+      from decanting_books
+      where m_email = (select m_email from
+      decanting_books where db_id =
+      #{db_id})
+      and db_sweetness != 0) sweetAvg,
+
+      (select ROUND(AVG( db_acidity ), 1)
+      from decanting_books
+      where m_email =
+      (select m_email from decanting_books where db_id =
+      #{db_id})
+      and
+      db_acidity != 0) acidAvg,
+
+      (select ROUND(AVG( db_body ), 1)
+      from
+      decanting_books
+      where m_email = (select m_email from decanting_books
+      where db_id =
+      #{db_id})
+      and db_body != 0) bodyAvg,
+
+      (select ROUND(AVG(
+      db_tannin ), 1)
+      from decanting_books
+      where m_email = (select m_email
+      from decanting_books where db_id =
+      #{db_id})
+      and db_tannin != 0)
+      tanninAvg
+      from dual
+   </select>
+
+   <select id="getMyAvg"
+      resultType="org.hwine.domain.decanting.AvgVO">
+      select (select ROUND(AVG( db_rating ), 1) from
+      decanting_books where m_email
+      = #{name} ) rateAvg,
+      (select ROUND(AVG(
+      w_sweetness ), 1)
+      from pickup_orders p, pickup_order_items pi, wine w
+      where p.po_id =
+      pi.po_id and pi.w_id = w.w_id
+      and p.m_email = #{name}
+      and po_status =
+      4)sweetAvg,
+      (select ROUND(AVG( w_acidity ), 1)
+      from
+      pickup_orders p, pickup_order_items pi, wine w
+      where p.po_id =
+      pi.po_id
+      and pi.w_id = w.w_id
+      and p.m_email = #{name}
+      and po_status =
+      4)acidAvg ,
+      (select ROUND(AVG( w_tannin ), 1)
+      from pickup_orders p,
+      pickup_order_items pi,
+      wine w
+      where p.po_id = pi.po_id and pi.w_id =
+      w.w_id
+      and p.m_email =
+      #{name}
+      and po_status = 4) tanninAvg,
+      (select
+      ROUND(AVG( w_body ), 1)
+      from pickup_orders p, pickup_order_items pi,
+      wine w
+      where p.po_id = pi.po_id and pi.w_id = w.w_id
+      and p.m_email =
+      #{name}
+      and po_status = 4) bodyAvg
+      from dual
+   </select>
+
+   <select id="getblList"
+      resultType="org.hwine.domain.product.ProductVO">
+      <![CDATA[
+      select *
+      from wine
+      where w_id in (select w_id from
+      decanting_books where db_rating >= 4 and m_email = #{name}) and
+      w_id in
+      (select w_id from decanting_books where db_rating >= 4 and m_email =
+      (select m_email from decanting_books where db_id = #{db_id}))
+      and
+      rownum < 11
+      ]]>
+   </select>
+
+   <select id="getbrList"
+      resultType="org.hwine.domain.product.ProductVO">
+		select * 
+		from(
+		select wine.*, wine_sell.cnt, wr.wr_nation_kor
+		from wine_makers wm, wine_regions wr, wine left outer join wine_sell on wine.w_id = wine_sell.w_id
+		where wm.wr_nation = wr.wr_nation and wm.wr_area = wr.wr_area and wm.wm_maker = wine.wm_maker and  wine.w_id not in (
+		select w_id
+		from pickup_orders po, pickup_order_items poi
+		where poi.po_id = po.po_id
+		and m_email = 
+		<choose>
+			<when test="db_id == null">
+				#{name}
+			</when>
+			<otherwise>
+				(select m_email from decanting_books where db_id = #{db_id})
+			</otherwise>
+		</choose>
+		)
+		
+		order by ABS(ABS(w_tannin - #{tannin}) + ABS(w_sweetness - #{sweet}) + ABS(w_body - #{body}) +
+		ABS(w_acidity - #{acid})), cnt desc
+		)
+		<![CDATA[
+		where rownum < 11
+		]]>
+	</select>
+	
+	<select id="isWineThere" parameterType="String" resultType="org.hwine.domain.product.SimpleWineVO">
+		<![CDATA[
+		select w_id, w_img, w_name_kor name
+		from wine
+		where w_name like '%${name}%'
+		and rownum < 2
+		]]>
+	</select>
+	
+	<select id="getAnvWine" resultType="org.hwine.domain.product.SimpleWineVO">
+		select a.a_name, to_char(a_date,'MM-DD') a_date, w.w_name_kor name, w.w_id, a.a_desc ,w.w_img 
+		from wine w, Anniversaries a 
+		where w.w_id = a.w_id and a_date between current_timestamp and current_timestamp + 31
+	</select>
+
+</mapper>

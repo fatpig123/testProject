@@ -1,0 +1,363 @@
+@charset "utf-8";
+/* common */
+.nodata{min-height:150px !important;line-height:150px !important;font-size:16px !important}
+.content.intro_page{padding:0;max-width:100%;background:url(../../images/shop/main/pc_intro_bg.jpg)center no-repeat;background-size:100% 100%}
+.intro_page .intro_area .txt_area{margin:0 auto;width:608px}
+.intro_page .intro_area .txt_area .inner_box{padding:50px 0}
+.intro_page .intro_area .txt_area .inner_box .txt{margin-top:40px;font-size:32px;line-height:45px}
+.intro_page .intro_area .txt_area .inner_box .btn_area{margin-top:60px}
+.intro_page .intro_area .txt_area .inner_box .btn_area .btn_txt{width:160px}
+.intro_page .intro_area .txt_area .inner_box .sub_area .sub_txt{font-size:16px;line-height:22px}
+/* header */
+.header .top_banner a .banner h3.banner_tit{height:35px;font-size:16px;font-weight:500;line-height:35px}
+.header .top_banner a .banner h3.banner_tit span{padding-right:22px;background-size:7px}
+/* footer - quick */
+.footer .quick_menu{display:block !important;right:60px;bottom:50px}
+.footer .quick_menu .list li{width:91px;padding:15px 0}
+.footer .quick_menu .list li a .icon{width:48px;height:48px}
+.footer .quick_menu .list li a .txt{font-size:14px}
+.footer .quick_menu .list li.prd .icon{width:71px;height:100px}
+.footer .quick_menu .list li.top .icon{width:50px;height:50px;margin-top:30px}
+.footer .quick_menu .list li.top .icon img{position:absolute;top:50%;left:50%;width:26px;height:16px;margin:-8px 0 0 -14px}
+/* login */
+.layer.login_layer .display_table .table_cell .layer_area{height:auto}
+.layer.login_layer .display_table .table_cell .layer_area .layer_con{padding:40px 100px 50px}
+.layer.login_layer .display_table .table_cell .layer_area .layer_con .login_tab{margin-bottom:40px}
+.layer.login_layer .display_table .table_cell .layer_area .layer_con .save_box .checkbox label{font-size:14px}
+.layer.login_layer .display_table .table_cell .layer_area .layer_con .save_box .checkbox{vertical-align:middle}
+.layer.login_layer .display_table .table_cell .layer_area .layer_con .save_box .input_info_txt{display:inline-block;margin-top:0;line-height:1;font-size:14px;vertical-align:middle}
+.layer.login_layer .display_table .table_cell .layer_area .layer_con .btn_area .btn_txt{width:100%}
+.layer.login_layer .display_table .table_cell .layer_area .layer_con .login_sub_btn .btn{font-size:14px;line-height:20px}
+.layer.login_layer .display_table .table_cell .layer_area .layer_con .non_member_order .btn_txt{width:100%}
+.layer.login_layer .display_table .table_cell .layer_area .layer_con .social_login::before{left:50%;width:500px;margin-left:-250px}
+.layer.login_layer .display_table .table_cell .layer_area .layer_con .social_login .social_tit{padding:0 20px;font-size:20px;line-height:29px}
+.layer.login_layer .display_table .table_cell .layer_area .layer_con .social_login ul{margin-top:30px}
+.layer.login_layer .layer_area .layer_tit{height:100px;padding:0 100px;font-size:24px}
+.layer.login_layer .layer_area .layer_tit p:first-child::after{height:33px;margin-top:-16px}
+.layer.login_layer .layer_area .layer_tit p span a{font-size:24px}
+.layer.login_layer .layer_area .layer_tit p.check span{padding-left:23px;background:url(../../images/shop/default/pc_ico_log_arrow.png) 0 50% no-repeat;background-size:13px}
+/* mypage */
+.content.mypage{padding:10px 0 120px;min-height:775px}
+.content.mypage .inner .top_info{width:100%;margin-top:0}
+.content.mypage.order_lists_page .inner .top_info{display:flex;justify-content:space-between;margin-top:0}
+.content.mypage .inner .top_info .page_tit{display:flex;justify-content:space-between}
+.content.mypage .inner .top_info .page_tit .tit{display:block;color:#111;font-size:30px;font-weight:700;line-height:42px;text-align:left;white-space:nowrap}
+.content.mypage .inner .top_info .page_tit .btn_txt{margin:0;width:120px;height:40px;font-size:14px;font-weight:500;line-height:40px}
+.content.mypage .inner .top_info .gift_price{display:table-cell;vertical-align:middle;padding-right:30px;margin-top:0;width:650px}
+.content.mypage .inner .top_info .gift_price ul li{padding-bottom:calc(25% - 15px);margin-right:20px;width:calc(25% - 15px)}
+.content.mypage .inner .top_info .gift_price ul li:last-of-type{margin-right:0}
+.content.mypage .inner .top_info .gift_price ul li p{font-size:14px}
+.content.mypage .inner .top_info .gift_price ul li p strong{margin-top:7px;font-size:20px;line-height:28px}
+.content.mypage .inner .top_info .gift_price.gift_price_type2 ul{text-align:right}
+.content.mypage .inner .top_info .gift_price.gift_price_type2 ul li{text-align:center}
+.content.mypage .inner .top_info .gift_price.gift_price_type2 ul li:not(:last-of-type){margin-right:20px}
+.content.mypage .inner{max-width:100%;margin:0;padding:0 0 0 220px;width:100%}
+/* mapage_lnb */
+.mypage_lnb.lnb{display:block;position:relative;max-width:1200px;margin:0 auto;padding-top:40px}
+.mypage_lnb .my_lnb_info{display:table;table-layout:fixed;padding:0 30px;margin:0 0 0 auto;box-sizing:border-box;max-width:calc(100% - 220px);width:100%;height:140px;background:#F8F8F8}
+.mypage_lnb .my_lnb_info .my{display:table-cell;vertical-align:middle;font-size:0}
+.mypage_lnb .my_lnb_info .my img{display:inline-block;vertical-align:middle;width:50px;height:50px}
+.mypage_lnb .my_lnb_info .my .txt{display:inline-block;vertical-align:middle;margin-left:15px}
+.mypage_lnb .my_lnb_info .my_info{display:table-cell;vertical-align:middle;font-size:0;text-align:right;white-space:nowrap}
+.mypage_lnb .my_lnb_info .my_info a{display:inline-block;vertical-align:middle;position:relative;padding:0 30px}
+.mypage_lnb .my_lnb_info .my_info a::after{content:'';display:block;position:absolute;top:0;right:0;width:1px;height:100%;background:#ddd}
+.mypage_lnb .my_lnb_info .my_info a:last-of-type::after{display:none}
+.mypage_lnb .my_lnb_info .my_info a em{display:block;line-height:1.3;font-size:14px;font-weight:400;color:#555}
+.mypage_lnb .my_lnb_info .my_info a .new{position:absolute;top:0;right:50%;width:16px;height:16px;margin-right:-22px;text-align:center;color:#fff;font-size:11px;font-weight:700;line-height:15px;background:#DC252A;border-radius:50%}
+.mypage_lnb .my_lnb_info .my_info a .new:nth-of-type(n+3){right:30px}
+.mypage_lnb .my_lnb_info .my_info a .info{min-width:30px;padding-top:37px;color:#111;font-size:24px;font-weight:500;line-height:34px;text-align:center}
+.mypage_lnb .my_lnb_info .my_info a .info.order_info{background:url(../../images/shop/mypage/ico_pay.png)center 7px no-repeat;background-size:30px}
+.mypage_lnb .my_lnb_info .my_info a .info.coupon_info{background:url(../../images/shop/mypage/ico_coupon.png)center 6px no-repeat;background-size:30px}
+.mypage_lnb .my_lnb_info .my_info a .info.cash_info{background:url(../../images/shop/mypage/ico_cash.png)center 4px no-repeat;background-size:24px}
+.mypage_lnb .my_lnb_info .my_info a .info.gift_info{background:url(../../images/shop/mypage/ico_gift.png)center 7px no-repeat;background-size:32px}
+.mypage_lnb .mypage_link{position:absolute;top:40px;left:0;width:170px;border-top:1px solid #555}
+.mypage_lnb .mypage_link .depth_01>li>a{display:block;padding:16px 0;color:#111;font-size:16px;font-weight:500;line-height:22px;border-bottom:1px solid #eee}
+.mypage_lnb .mypage_link .depth_01>li .depth_02{padding-bottom:15px;border-bottom:1px solid #eee}
+.mypage_lnb .mypage_link .depth_01>li .depth_02>li>a{display:block;margin-top:15px;color:#999;font-size:14px;line-height:20px}
+.mypage_lnb .mypage_link .depth_01>li .depth_02>li.on>a{color:#111;font-weight:500}
+
+/* mypage - note - giftcard_lists_page , giftcard_give_lists_page */
+/* .giftcard_lists_page .inner .my_gift .js_tabCon .list li .info .tit,
+.giftcard_receive_lists_page .inner .my_gift .js_tabCon .list li .info .tit{display:none} */
+/* .giftcard_lists_page .inner .my_gift .js_tabCon .list li .info .txt,
+.giftcard_receive_lists_page .inner .my_gift .js_tabCon .list li .info .txt{margin-top:0} */
+.giftcard_receive_lists_page .inner .my_gift .js_tabCon .list li .info .txt::after{content:'';display:block;clear:both}
+.giftcard_receive_lists_page .inner .my_gift .js_tabCon .list li .info .txt .to_user::after{display:none}
+/* .giftcard_receive_lists_page .inner .my_gift .js_tabCon .list li .info .txt .year{position:relative;float:left;margin-right:10px !important;padding-right:10px !important}
+.giftcard_receive_lists_page .inner .my_gift .js_tabCon .list li .info .txt .year::after{content:'' !important;display:block !important;position:absolute;top:51%;right:0;transform:translateY(-50%);width:1px;height:10px;background:#ddd} */
+.giftcard_receive_lists_page .inner .my_gift .js_tabCon .list li .info .txt .pay{display:none}
+
+.giftcard_page .inner .my_gift{margin-top:60px}
+.giftcard_page .inner .my_gift .js_tabCon{margin-top:60px}
+.giftcard_page .inner .my_gift .js_tabCon .list li{display:flex;align-items:center;padding:30px}
+.giftcard_page .inner .my_gift .js_tabCon .list li .info{margin:0 0 0 30px}
+.giftcard_page .inner .my_gift .js_tabCon .list li .info .tit{margin-top:0;font-size:16px;line-height:22px}
+.giftcard_page .inner .my_gift .js_tabCon .list li .info .tit .type{font-size:14px}
+.giftcard_page .inner .my_gift .js_tabCon .list li .info .tit .btn_send{position:relative;display:inline-block}
+.giftcard_page .inner .my_gift .js_tabCon .list li .info .tit .btn_send::after{content:'';position:absolute;top:50%;left:-10px;display:block;width:1px;height:15px;margin-top:-7.5px;background-color:#DDD}
+.giftcard_page .inner .my_gift .js_tabCon .list li .info .txt{font-size:16px;line-height:22px}
+.giftcard_page .inner .my_gift .js_tabCon .list li .info .txt span{font-size:14px;line-height:20px}
+.giftcard_page .inner .my_gift .js_tabCon .list li .price_box{top:45px;right:30px}
+.giftcard_page .inner .my_gift .js_tabCon .list li .price_box .price{font-size:16px;line-height:22px}
+.giftcard_page .inner .my_gift .js_tabCon .total{padding:37px 27px}
+.giftcard_page .inner .my_gift .js_tabCon .total .total_txt{font-size:18px;line-height:25px}
+.giftcard_page .inner .my_gift .js_tabCon .total .total_price{font-size:26px;line-height:36px}
+.giftcard_lists_page .inner .top_info{flex-direction:column}
+.giftcard_lists_page .inner .gift_input_box{display:flex;justify-content:center;margin:30px 0 0}
+.giftcard_lists_page .inner .gift_input_box input{width:400px}
+.giftcard_lists_page .inner .gift_input_box .btn_txt{width:110px;height:40px;line-height:40px;margin:0 0 0 5px;font-size:14px;font-weight:500}
+.giftcard_lists_page .inner .my_gift .js_tabCon .list li .info .txt span.year{font-size:14px;line-height:20px}
+/* mypage - note - 선물하기내역 / 받은기프트카드 */
+.giftcard_give_lists_page .inner .my_gift .js_tabCon .list li .category,
+.giftcard_receive_lists_page .inner .my_gift .js_tabCon .list li .category{display:table-cell;vertical-align:middle;position:static;width:90px}
+.giftcard_give_lists_page .inner .my_gift .js_tabCon .list li .category .cate_tit,
+.giftcard_receive_lists_page .inner .my_gift .js_tabCon .list li .category .cate_tit{font-size:16px;line-height:22px}
+.giftcard_give_lists_page .inner .my_gift .js_tabCon .list li .info,
+.giftcard_receive_lists_page .inner .my_gift .js_tabCon .list li .info{padding-top:0}
+/* mypage - note - giftcard_order_page */
+.giftcard_order_page .inner .my_gift{margin-top:40px}
+.giftcard_order_page .inner .order_box{padding:30px 0 0;margin-top:60px}
+.giftcard_order_page .inner .order_box .form_tit{margin:0 auto 10px;width:700px;font-size:16px}
+.giftcard_order_page .inner .order_box.tab_area .js_tabBtn{margin:0 auto;width:700px}
+.giftcard_order_page .inner .order_box.tab_area .js_tabBtn li{width:115px}
+.giftcard_order_page .inner .order_box.tab_area .js_tabBtn li:first-of-type{margin-right:5px}
+.giftcard_order_page .inner .order_box .js_tabCon{margin:20px auto 0;width:700px}
+
+.giftcard_order_page .inner .order_box .js_tabCon .gift_way .sub_txt{font-size:13px}
+
+.giftcard_order_page .inner .order_box .js_tabCon .form_area{padding-bottom:60px}
+.giftcard_order_page .inner .order_box .js_tabCon .form_area li .form_box .radiobox{width:190px}
+.giftcard_order_page .inner .order_box .js_tabCon .btn_area.col2 .btn_txt{width:160px}
+.giftcard_order_page .inner .order_box .js_tabCon .form_area .js_tabBtn.col2 li{width:190px}
+/* mypage - note - mileage_lists_page */
+.mileage_lists_test_page.mileage_lists_page .top_info{display:flex;justify-content:space-between}
+.mileage_lists_test_page.mileage_lists_page .top_info .term_box .btn_txt{margin-top:0}
+.mileage_lists_page .inner .mileage_box{margin-top:60px}
+.mileage_lists_page .inner .o_lists li .top_date .store{display:inline-block;font-size:14px}
+.mileage_lists_page .inner .o_lists>ul>li{padding:30px}
+.mileage_lists_page .inner .o_lists li .o_wrap{display:flex;align-items:center;padding:20px 0 20px 150px}
+.mileage_lists_page .inner .o_lists li .o_wrap .box.ip_img{top:0;width:120px}
+.mileage_lists_page .inner .o_lists li .o_wrap .box.ip_img picture{height:120px}
+.mileage_lists_page .inner .o_lists li .o_wrap .box.ip_img picture img{max-width:100px}
+.mileage_lists_page .inner .o_lists li .o_wrap .box.con{display:flex;align-items:center;float:none;vertical-align:middle;align-self:center;width:400px;min-height:80px;padding-right:100px}
+.mileage_lists_page .inner .o_lists li .o_wrap .box.mileage{float:none;width:400px;display:inline-flex;justify-content:space-around;align-items:center;margin-top:0}
+.mileage_lists_page .inner .o_lists li .o_wrap .box.mileage p.point{margin-left:0}
+/* .mileage_lists_page .inner .mileage_box .list li{padding:30px}
+.mileage_lists_page .inner .mileage_box .list li .info::after{content:'';display:block;clear:both}
+.mileage_lists_page .inner .mileage_box .list li .info .tit{}
+.mileage_lists_page .inner .mileage_box .list li .info .tit{display:inline-block;vertical-align:top;font-size:16px;line-height:22px}
+.mileage_lists_page .inner .mileage_box .list li .info .txt{float:left;margin-top:0;margin-right:30px}
+.mileage_lists_page .inner .mileage_box .list li .info .txt span{font-size:16px;line-height:22px}
+.mileage_lists_page .inner .mileage_box .list li .info .txt .pay{display:none}
+.mileage_lists_page .inner .mileage_box .list li .price_box .price{font-size:16px;line-height:22px} */
+.mileage_lists_page .inner .mileage_box .btn_area{margin-top:60px}
+/* mypage - action - recommand_expert_lists_page */
+.recommand_wine .wine_list{margin-top:60px}
+/* .recommand_wine .wine_list .list li{display:inline-block;vertical-align:middle;margin-right:20px;padding:30px 0;width:calc((100% / 3) - 13.4px)}
+.recommand_wine .wine_list .list li:first-of-type{margin-top:0}
+.recommand_wine .wine_list .list li:nth-of-type(3n){margin-right:0}
+.recommand_wine .wine_list .list li:nth-of-type(-n+3){margin-top:0}
+.recommand_wine .wine_list .list .info .txt span{font-size:12px;line-height:17px}
+.recommand_wine .wine_list .list .info .txt span em{padding-left:3px}
+.recommand_wine .wine_list .list .info .box{margin-top:10px}
+.recommand_wine .wine_list .list .info .box .satisfaction span.on{background:url(../../images/shop/default/ico_star_on.png)center 2px no-repeat;background-size:12px}
+.recommand_wine .wine_list .list .info .box .satisfaction span.off{background:url(../../images/shop/default/ico_star_off.png)center 2px no-repeat;background-size:12px}
+.recommand_wine .wine_list .list .info .box .satisfaction_txt{font-size:12px;line-height:17px}
+.recommand_wine .wine_list .list .btn_area .btn_txt{margin:0 auto;width:160px;font-size:14px}
+.recommand_wine .wine_list .btn_area{margin-top:60px} */
+.recommand_wine .wine_list .list{margin-top:60px;font-size:0}
+.recommand_wine .wine_list .list li{position:relative;padding:30px}
+.recommand_wine .wine_list .list .table_box .user_icon .name{font-size:16px}
+.recommand_wine .wine_list .list .table_box .info{padding-left:30px;font-size:0;text-align:left}
+.recommand_wine .wine_list .list .table_box .info .follower_box{display:inline-block;vertical-align:middle;font-size:0;text-align:left}
+.recommand_wine .wine_list .list .table_box .info .follower_btn .name{font-size:16px}
+.recommand_wine .wine_list .list .table_box .info .satisfaction_box{position:relative;display:inline-block;margin:0;padding-left:10px;vertical-align:middle}
+.recommand_wine .wine_list .list .table_box .info .satisfaction_box::before{content:'';position:absolute;top:50%;left:0;margin-top:-7.5px;width:1px;height:15px;background-color:#ddd}
+.recommand_wine .wine_list .list .table_box .info .box .satisfaction span.on{background:url(../../images/shop/default/ico_star_on.png)center 2px no-repeat;background-size:12px}
+.recommand_wine .wine_list .list .table_box .info .box .satisfaction span.off{background:url(../../images/shop/default/ico_star_off.png)center 2px no-repeat;background-size:12px}
+.recommand_wine .wine_list .list .table_box .info .info_box{display:block}
+.recommand_wine .wine_list .list .table_box .info .info_box span{font-size:14px}
+.recommand_wine .wine_list .list .btn_area{position:absolute;top:50%;right:30px;transform:translateY(-50%);margin-top:0}
+.recommand_wine .wine_list .list .btn_area .btn_txt span{padding-left:23px;background:url(../../images/shop/default/ico_app.png)0 center no-repeat;background-size:15px}
+.recommand_wine .wine_list .btn_area{margin-top:60px}
+.recommand_page .tab_area>ul.tab3>li{width:33.33%}
+.recommand_page .tab_area>ul.tab3>li:last-child{width:33.33%}
+/* member - join - law_agreement_page */
+.law_agreement_page.content{padding:60px 0 120px;width:700px}
+.law_agreement_page .inner>p{font-size:16px}
+.law_agreement_page .inner .check_list .top{margin-top:40px;padding-bottom:20px}
+.law_agreement_page .inner .check_list .top h3{width:calc(100% - 125px);font-size:18px}
+.law_agreement_page .inner .check_list .top .all_check{width:125px}
+.law_agreement_page .inner .check_list .list li{margin-top:20px}
+.law_agreement_page .inner .check_list .list li .chk{width:calc(100% - 75px);line-height:10px}
+.law_agreement_page .inner .check_list .list li .chk .checkbox label{font-size:16px}
+.law_agreement_page .inner .check_list .list li .view{width:75px}
+.law_agreement_page .inner .check_list .list li .view .view_btn{width:75px;font-size:14px;line-height:20px}
+.law_agreement_page .inner .check_list .expiry .expiry_list li:not(:first-of-type){margin-left:30px}
+.law_agreement_page .inner .check_list .expiry>p{margin-top:20px;font-size:16px}
+.law_agreement_page .inner .check_list .expiry .checkbox input[type='radio'] + label{font-size:16px}
+.law_agreement_page .inner .social_login{margin-left:auto;margin-right:auto;width:490px}
+.law_agreement_page .inner .social_login .social_tit{padding:0 20px;font-size:20px;line-height:29px}
+.law_agreement_page .inner .social_login ul{margin-top:30px}
+/* member - join - join_form_page */
+.content.join_form_page{padding:40px 0 120px;width:700px}
+.join_form_page .inner .connect_info{padding:30px;font-size:0;text-align:center}
+.join_form_page .inner .connect_info .tit{display:inline-block;vertical-align:middle;font-size:16px;line-height:22px}
+.join_form_page .inner .connect_info .connect{display:inline-block;vertical-align:middle;position:relative;margin-left:20px;margin-top:0;padding-left:20px}
+.join_form_page .inner .connect_info .connect::after{content:'';display:block;position:absolute;top:2px;left:0;width:1px;height:20px;background:#dcdcdc}
+.join_form_page .inner .connect_info .connect span{margin-left:10px;font-size:16px;line-height:22px}
+.join_form_page .inner .connect_info p{line-height:1.5;margin-top:20px;font-size:14px}
+.join_form_page .form_area{margin-top:40px}
+.join_form_page .btn_area{margin-top:60px}
+.join_form_page .btn_area .btn_txt{width:160px}
+.form_area ul li.gender_li .form_box .gender_box .box{width:115px} 
+.form_area ul li.tel_li .form_box .tel_box::after{content:'';display:block;clear:both}
+.form_area ul li.tel_li .form_box .tel_box input{float:left;width:calc(100% - 165px)}
+.form_area ul li.tel_li .form_box .tel_box .btn_txt{float:right;margin-top:0;width:160px;height:40px;line-height:39px;font-size:14px}
+.form_area ul li.tel_li .form_box .code_box{width:360px}
+.form_area ul li.tel_li .form_box .code_box input{width:250px}
+.form_area ul li.tel_li .form_box .code_box .btn_txt{width:100px;height:40px;line-height:39px;font-size:14px}
+.form_area ul li.tel_li .form_box .code_box_2{width:480px}
+.form_area ul li.tel_li .form_box .code_box_2 input{width:250px}
+.form_area ul li.tel_li .form_box .code_box_2 .btn_txt{width:100px}
+.form_area ul li.tel_li .form_box .code_box_2 .code_time{margin-left:20px;width:auto;font-size:16px;line-height:40px}
+.form_area ul li.tel_li .form_box>div>input{float:left;width:calc(100% - 165px)}
+.form_area ul li.tel_li .form_box .btn_m_view{float:right;width:160px;height:40px;line-height:40px;margin:0}
+.form_area ul li.add_li .form_box .add_box_01{width:360px}
+.form_area ul li.add_li .form_box .add_box_01 input{width:250px}
+.form_area ul li.add_li .form_box .add_box_01 .btn_txt{width:100px;height:40px;line-height:39px;font-size:14px}
+.m_view_layer.layer .layer_area{height:auto}
+.m_view_layer.layer .layer_area .layer_con{padding:40px 50px}
+.m_view_layer .checkbox input[type='checkbox'] + label{padding-left:54px}
+.m_view_layer .checkbox label span{display:inline-block;vertical-align:middle;line-height:1.7;font-size:14px}
+.m_view_layer .checkbox label span.tit{margin-right:20px;font-size:16px}
+/* member - join - join_ok_page */
+.content.join_ok_page{padding:100px 0 120px}
+/* ok_page */
+.ok_page .inner .ok_area .tit{font-size:24px;line-height:33px}
+.ok_page .inner .ok_area .txt{font-size:16px;line-height:22px}
+.ok_page .inner .ok_area .btn_area{margin-top:80px}
+.ok_page .inner .ok_area .btn_area .btn_txt{width:160px}
+/* 개인정보약관동의 / 이용약관 레이어디자인 */
+.layer.privacy_law .layer_area .layer_con{height:50vh}
+.privacy_law .txt{font-size:14px !important;line-height:20px !important}
+.privacy_law .txt .tit{margin-bottom:10px;font-size:16px !important;line-height:22px !important}
+/* mypage - action - recommnend_write_page */
+.recommand_write_page .inner .js_tabCon{margin-top:60px;width:545px;margin:0 auto;font-size:0}
+.recommand_write_page .inner .user_info .form_area{padding-bottom:0;border-bottom:0}
+.recommand_write_page .inner .user_info .form_area ul{border-top:0}
+.recommand_write_page .inner .user_info .form_area li:first-child{margin-top:0}
+.recommand_write_page .inner .user_info .checkbox_area .form_box .checkbox{margin-right:10px;font-size:14px}
+.recommand_write_page .inner .btn_area.col2{margin-top:95px}
+.recommand_write_page .inner .btn_area.col2 .btn_txt{width:160px}
+/* mypage - action - recommand_lists_page */
+.recommand_lists_page .inner .wine_list{margin-top:60px}
+.recommand_lists_page .inner .recommend_list{margin-top:65px}
+.recommand_lists_page .inner .recommend_list .list li{margin:0;padding:0 30px}
+.recommand_lists_page .inner .recommend_list .list li .data_info .cancel_btn{margin-left:14px}
+.recommand_lists_page .inner .recommend_list .list li .data_info .view_btn{padding-right:20px;width:auto;color:#555;font-size:14px;line-height:58px;text-indent:0}
+.recommand_lists_page .inner .recommend_list .list li .info{padding:16px 0 20px}
+.recommand_lists_page .inner .recommend_list .list li .info .recommend_img{width:100px}
+.recommand_lists_page .inner .recommend_list .list li .info .recommend_img img{width:100px;height:100px}
+.recommand_lists_page .inner .recommend_list .list li .info .recommend_img .name{font-size:12px;line-height:16px}
+.recommand_lists_page .inner .recommend_list .list li .info .recommend_info{padding-left:30px;width:calc(100% - 100px)}
+.recommand_lists_page .inner .recommend_list .list li .info .recommend_info .txt{margin-top:16px}
+.recommand_lists_page .inner .recommend_list .list li .info .recommend_info .txt:first-of-type{margin-top:0}
+.recommand_lists_page .inner .recommend_list .list li .info .recommend_info .txt strong{display:inline-block;margin-top:0;margin-bottom:0;margin-right:16px}
+.recommand_lists_page .inner .btn_area{margin-top:60px}
+
+/* mypage - action - recommand_view_page */
+.recommand_view_page.recommand_wine .wine_list .list{display:table-cell;vertical-align:middle;width:630px;font-size:0}
+.recommand_view_page.recommand_wine .wine_list .list .table_box .user_icon{display:table-cell;margin:0}
+.recommand_view_page.recommand_wine .wine_list .list .user_icon img{margin:0}
+.recommand_view_page.recommand_wine .wine_list .list .info{display:table-cell;vertical-align:middle;padding-left:10px;text-align:left}
+.recommand_view_page .wine_list .list .table_box .info>p{margin-bottom:10px;font-size:24px}
+.recommand_view_page .wine_list .list .table_box .info .follower_box{margin:0 6px 0 0;padding-right:10px}
+.recommand_view_page .wine_list .list .table_box .info .follower_box::after{display:block}
+.recommand_view_page .wine_list .list .info .name{margin-bottom:10px;font-size:24px;line-height:34px;text-align:left}
+.recommand_view_page .wine_list .list .info .txt{display:inline-block;vertical-align:middle}
+.recommand_view_page .wine_list .list .info .txt span{font-size:14px;line-height:20px}
+.recommand_view_page .wine_list .list .info .txt span::after{top:3px}
+.recommand_view_page .wine_list .list .info .box{display:inline-block;vertical-align:middle;margin-top:0}
+.recommand_view_page .wine_list .list .info .box .satisfaction_txt{font-size:14px;line-height:20px}
+.recommand_view_page .wine_list .list .info .box .satisfaction span{height:20px}
+.recommand_view_page .inner .counselor_recommend{display:table;margin-top:60px;padding:20px 30px;box-sizing:border-box;width:100%;border:1px solid #AC8B68}
+.recommand_view_page .inner .counselor_recommend .recommend_chk{display:table-cell;vertical-align:middle;margin-top:0;padding-top:0;width:calc(100% - 630px);border-top:0;border-left:1px solid #ddd}
+.recommand_view_page .inner .counselor_recommend .recommend_chk .chk_tit{font-size:18px;line-height:25px}
+.recommand_view_page .inner .counselor_recommend .recommend_chk .chk_list{margin-top:10px}
+.recommand_view_page .inner .counselor_recommend .recommend_chk .chk_list label{width:18px;height:18px;background-size:18px}
+.recommand_view_page .inner .counselor_recommend .recommend_chk .chk_list input:checked ~ label{background-size:18px}
+.recommand_view_page .inner .counselor_recommend .recommend_chk .chk_list label:hover{background-size:18px}
+.recommand_view_page .inner .counselor_recommend .recommend_chk .chk_list label:hover ~ label{background-size:18px}
+/* .recommand_view_page .inner .recommand_area .recommand_list>li{font-size:0}
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01{display:inline-block;vertical-align:top;width:calc(100% - 375px);font-size:0}
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_img{display:inline-block;vertical-align:top;width:230px}
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info{display:inline-block;vertical-align:top;margin-left:20px;margin-top:0}
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .price_area{margin-top:30px}
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .wish_area{margin-top:60px} */
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01{min-height:120px}
+.recommand_view_page .inner .recommand_area .recommender{font-size:20px}
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_02{display:inline-block;vertical-align:top;margin-top:17px;width:240px}
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_02 .inner_box{text-align:left}
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_02 .inner_box .wine_patch{width:80px}
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_02 .inner_box .wine_rating .score_txt{color:#111;font-size:32px;font-weight:700;line-height:45px;text-align:center}
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_02 .inner_box .wine_rating .score_icon{position:relative;width:73px;background-size:73px}
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_02 .inner_box .wine_rating .score_icon .bar{background-size:73px}
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_02 .rating_bar_list{margin-top:30px}
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_03{padding-left:150px}
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_03 .rating_bar{margin-top:0}
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_03 .rating_bar::after{content:'';display:block;clear:both}
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_03 .rating_bar_list{float:left;width:calc(50% - 17px)}
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_03 .rating_bar_list:not(:first-of-type){margin-top:0;margin-left:34px}
+.recommand_view_page .inner .recommand_area .recommand_list>li .wine_comment{margin-top:64px;padding:20px 20px 20px 70px}
+.recommand_view_page .inner .recommand_area .recommand_list>li .wine_comment::before{top:20px;left:20px}
+.recommand_view_page .inner .recommand_area .recommand_list>li .wine_comment .txt{padding:20px;font-size:14px;line-height:20px}
+.recommand_view_page .inner .user_recommand{padding:30px}
+.recommand_view_page .inner .user_recommand .user_list li{margin-top:16px;font-size:0}
+.recommand_view_page .inner .user_recommand .user_list li .patch{display:inline-block;vertical-align:middle;}
+.recommand_view_page .inner .user_recommand .user_list li .txt{display:inline-block;vertical-align:middle;margin-top:0;margin-left:16px}
+
+.recommand_view_page .inner .recommand_request_con{margin-bottom:30px;padding:30px}
+.recommand_view_page .inner .recommand_request_con li{display:table}
+.recommand_view_page .inner .recommand_request_con li:not(:first-of-type){margin-top:16px}
+.recommand_view_page .inner .recommand_request_con li p{display:table-cell;vertical-align:middle}
+.recommand_view_page .inner .recommand_request_con li span{display:table-cell;margin-top:0;padding-left:16px;vertical-align:middle}
+
+.recommand_view_page .inner .o_lists{padding:0 30px 0}
+.recommand_view_page .inner .o_lists .recommand_list li{padding:0;font-size:0}
+.recommand_view_page .inner .o_lists .recommand_list li:not(:first-of-type){margin-top:30px}
+.recommand_view_page .inner .o_lists li .o_wrap{display:inline-block;width:calc(100% - 340px);padding:7px 20px 20px 150px}
+.recommand_view_page .inner .o_lists li .o_wrap .box.ip_img{top:0;width:120px}
+.recommand_view_page .inner .o_lists li .o_wrap .box.ip_img picture{height:120px}
+.recommand_view_page .inner .o_lists li .o_wrap .box.wish_cart{top:130px}
+.recommand_view_page .inner .o_lists li .o_wrap .box.con .more_info .price{position:static;margin-top:20px}
+
+/* mypage - accont - password_cert_page */
+.content.accont{padding:10px 0 120px}
+.accont .inner .page_tit{display:block;padding-bottom:30px;color:#111;font-size:30px;font-weight:700;line-height:42px;border-bottom:1px solid #555}
+.accont .inner .form_area{padding-bottom:0;border-bottom:0;margin:60px auto 0;width:500px}
+.password_cert_page .inner .btn_area{margin-top:60px}
+/* mypage - accont - member_modify_page */
+.member_modify_page .inner .btn_area{margin-top:60px}
+.member_modify_page .inner .btn_area.col2 .btn_txt{width:160px}
+/* mypage - accont - sns_connect_page */
+.sns_connect_page .inner .sns_connect .list li{padding:30px}
+.sns_connect_page .inner .sns_connect .list li .icon{width:290px}
+.sns_connect_page .inner .sns_connect .list li .icon .tit{margin-left:70px;font-size:18px;line-height:25px}
+.sns_connect_page .inner .sns_connect .list li .data p{font-size:16px;line-height:22px}
+.sns_connect_page .inner .sns_connect .list li .connection{width:120px}
+.sns_connect_page .inner .sns_connect .list li .connection .btn{width:120px}
+/* mypage - accont - member_modify_page */
+.change_password_page .inner .btn_area{margin-top:60px}
+/* mypage - accont - withdrawal_page */
+.withdrawal_page .inner .ok_area{margin-top:60px}
+/* mypage - accont - withdrawal_ok_page */
+.content.mypage.withdrawal_ok_page{padding:120px}
+.content.mypage.withdrawal_ok_page .inner{padding:0}
+.withdrawal_ok_page .inner .ok_area{margin-top:0}
+/* company - about_us_page */
+.content.about_us_page{padding:60px 0 120px}
+.about_us_page .inner .typo_txt{margin-top:60px}
+.about_us_page .inner .typo_txt .txt{font-size:16px;line-height:22px}
+.about_us_page .inner .about_middle_banner{margin-top:60px}
+.about_us_page .inner .about_info{margin-top:60px}

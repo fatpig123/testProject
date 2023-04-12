@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.hwine.mapper.cart.CartMapper">
+	<!-- definition of user define function -->
+
+
+	<resultMap type="org.hwine.domain.cart.CartVO" id="cartMap">
+		<result property="m_email" column="m_email" />
+		<result property="w_id" column="w_id" />
+		<result property="cw_register_date" column="cw_register_date" />
+		<association property="productDetail" resultMap="productMap" />
+	</resultMap>
+
+	<resultMap type="org.hwine.domain.product.ProductVO"
+		id="productMap">
+		<result property="w_id" column="w_id" />
+		<result property="w_name_kor" column="w_name_kor" />
+		<result property="w_img" column="w_img" />
+		<result property="w_price" column="w_price" />
+		<result property="w_type" column="w_type" />
+		<result property="wr_nation_kor" column="wr_nation_kor" />
+		<result property="wv_variety_kor" column="wv_variety_kor" />
+		<collection property="stocks" resultMap="stockMap"></collection>
+	</resultMap>
+	
+	<resultMap type="org.hwine.domain.cart.StockVO" id="stockMap">
+		<result property="s_code" column="s_code" />
+		<result property="w_id" column="w_id" />
+		<result property="sws_stock" column="sws_stock" />
+		<association property="store" resultMap="storeMap"></association>
+	</resultMap>
+
+	<resultMap type="org.hwine.domain.order.StoreVO" id="storeMap">
+		<result property="s_code" column="s_code"/>
+		<result property="s_name" column="s_name"/>
+	</resultMap>
+	
+	<!-- Author : 차민수 기능 : 장바구니 상품 목록 가져오기 -->
+	<select id="getCart" resultMap="cartMap">
+		SELECT wr.WR_NATION_KOR, wv.WV_VARIETY_KOR, w.w_id, w.w_name_kor, w.w_img, w.w_price, w.w_type, wm.wr_nation,
+		w.wv_variety, c.m_email, c.cw_register_date, sws_stock, s.s_name, wr.WR_NATION_KOR
+		FROM wine w JOIN wine_makers wm ON w.wm_maker = wm.wm_maker JOIN carts c
+		ON w.w_id = c.w_id JOIN store_wine_stocks sws ON w.w_id = sws.w_id JOIN stores s ON sws.s_code = s.s_code
+		JOIN wine_regions wr ON wm.wr_nation = wr.wr_nation JOIN wine_variety wv ON w.WV_VARIETY = wv.WV_VARIETY
+		WHERE c.m_email = #{m_email}
+		GROUP BY wr.WR_NATION_KOR, wv.WV_VARIETY_KOR, w.w_id, w.w_name_kor, w.w_img, w.w_price, w.w_type, wm.wr_nation, w.wv_variety, c.m_email, c.cw_register_date, sws_stock, s.s_name
+		ORDER BY cw_register_date DESC
+	</select>
+	<!-- Author : 차민수 기능 : 장바구니에 상품 등록 -->
+	<insert id="insertCart">
+		INSERT INTO CARTS(m_email, w_id)
+		VALUES (#{m_email}, #{w_id})
+	</insert>
+	<!-- Author : 차민수 기능 : 장바구니에 존재하는 상품인지 여부 판단 -->
+	<select id="isExist" resultType="_int">
+		SELECT count(*) FROM carts WHERE
+		m_email = #{m_email} and w_id = #{w_id}
+	</select>
+
+	<!-- Author : 차민수 기능 : 장바구니 상품 수량 변경 -->
+	<update id="cw_quantityUpdate">
+		UPDATE carts set cw_quantity = cw_quantity + #{cw_quantity}
+		WHERE m_email = #{m_email} and w_id = #{w_id}
+	</update>
+
+	<!-- Author : 차민수 기능 : 장바구니 상품 선택 삭제 -->
+	<delete id="removeCart">
+		DELETE FROM carts WHERE m_email = #{m_email} and w_id
+		= #{w_id}
+	</delete>
+
+	<!-- Author : 차민수 기능 : 장바구니 상품 전체 삭제 -->
+	<delete id="removeCartAll">
+		DELETE FROM carts WHERE m_email = #{m_email}
+	</delete>
+</mapper>

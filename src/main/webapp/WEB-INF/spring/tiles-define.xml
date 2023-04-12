@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<!-- main layout -->
+	<definition name="layout-tiles"
+		template="/WEB-INF/views/tiles/tiles-layout.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/tiles/header.jsp" />
+		<put-attribute name="filterLayer"
+			value="/WEB-INF/views/tiles/filterLayer.jsp" />
+		<put-attribute name="tablingPopup"
+			value="/WEB-INF/views/tiles/tablingPopup.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="foot"
+			value="/WEB-INF/views/tiles/footer.jsp" />
+	</definition>
+
+	<definition name="layout-tiles-nofooter"
+		template="/WEB-INF/views/tiles/tiles-layout.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/tiles/header.jsp" />
+		<put-attribute name="filterLayer"
+			value="/WEB-INF/views/tiles/filterLayer.jsp" />
+		<put-attribute name="tablingPopup"
+			value="/WEB-INF/views/tiles/tablingPopup.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="foot" value="" />
+	</definition>
+
+	<definition name="home" extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/home.jsp" />
+		<put-attribute name="title" value="I'M H-WINE" />
+	</definition>
+	
+		<definition name="/exception/ex404" extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/exception/ex404.jsp" />
+		<put-attribute name="title" value="I'M H-WINE | 에러" />
+	</definition>
+
+	<definition name="/mypage/cartList" extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage/cartList.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 마이페이지" />
+	</definition>
+
+	<definition name="/mypage/orderList" extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage/orderList.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 주문내역" />
+	</definition>
+
+	<definition name="/member/joinForm" extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/joinForm.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 회원가입" />
+	</definition>
+
+	<definition name="/member/lawAgreement"
+		extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/lawAgreement.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 약관동의" />
+	</definition>
+
+	<definition name="/member/forgotenId" extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/forgotenId.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 아이디 찾기" />
+	</definition>
+
+	<definition name="/member/forgotenIdOk"
+		extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/forgotenIdOk.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 아이디 찾기 성공" />
+	</definition>
+
+	<definition name="/member/forgotenPw" extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/forgotenPw.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 비밀번호 찾기" />
+	</definition>
+
+	<definition name="/member/forgotenPwOk"
+		extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/forgotenPwOk.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 비밀번호 찾기 성공" />
+	</definition>
+
+	<definition name="/mypage/mypage" extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage/mypage.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 마이페이지" />
+	</definition>
+
+	<definition name="/mypage/orderCancel"
+		extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage/orderCancel.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 주문 취소" />
+	</definition>
+
+	<definition name="/mypage/orderList" extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage/orderList.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 주문 내역" />
+	</definition>
+
+	<definition name="/mypage/orderView" extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage/orderView.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 주문 상세 내역" />
+	</definition>
+
+	<definition name="/order/orderWrite" extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/order/orderWrite.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 주문서" />
+	</definition>
+
+	<definition name="/product/productItem"
+		extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/product/productItem.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 상품 상세" />
+	</definition>
+
+	<definition name="/product/productList"
+		extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/product/productList.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 상품 리스트" />
+	</definition>
+
+	<definition name="/mypage/changeUserInfo"
+		extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage/changeUserInfo.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 회원 정보 수정" />
+	</definition>
+
+	<definition name="/mypage/changeUserInfo"
+		extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage/changeUserInfo.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 회원 정보 수정" />
+	</definition>
+
+	<definition name="/mypage/checkPassword"
+		extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage/checkPassword.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 비밀번호 확인" />
+	</definition>
+
+	<definition name="/mypage/userWithdraw"
+		extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage/userWithdraw.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 회원 탈퇴" />
+	</definition>
+
+	<definition name="/decanting/decantingBook"
+		extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/decanting/decantingBook.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 디캔팅 북" />
+	</definition>
+
+	<definition name="/decanting/followList"
+		extends="layout-tiles-nofooter">
+		<put-attribute name="body"
+			value="/WEB-INF/views/decanting/followList.jsp" />
+		<put-attribute name="title" value="H-믈리 리스트" />
+	</definition>
+
+	<definition name="/member/login" extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/login.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 로그인" />
+	</definition>
+
+	<definition name="/member/joinSuccess"
+		extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/joinSuccess.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 회원가입성공" />
+	</definition>
+
+	<definition name="/member/joinFail" extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/joinFail.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 회원가입실패" />
+	</definition>
+
+	<definition name="/order/orderOk" extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/order/orderOk.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 주문 성공" />
+	</definition>
+
+	<!-- 테이블링 예약 -->
+	<definition name="/tabling/store" extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/table/store.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 와인웍스" />
+	</definition>
+
+	<definition name="/decanting/bookList"
+		extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/decanting/bookList.jsp" />
+		<put-attribute name="title" value="리뷰 리스트" />
+	</definition>
+
+	<definition name="/tabling/seats"
+		template="/WEB-INF/views/table/seats.jsp">
+		<put-attribute name="title" value="I'M H-WINE ㅣ 테이블 예약" />
+	</definition>
+
+	<definition name="/tabling/seats"
+		template="/WEB-INF/views/table/seats_daegu.jsp">
+		<put-attribute name="title" value="I'M H-WINE ㅣ 테이블 예약" />
+	</definition>
+
+	<definition name="/table/success" extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/table/success.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 테이블 예약 성공" />
+	</definition>
+
+	<definition name="/mypage/tablingList"
+		extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage/tablingList.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 테이블링 내역" />
+	</definition>
+
+	<!-- 와인 테이스팅 카드 -->
+	<definition name="/mypage/wineTastingCard"
+		extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage/wineTastingCard.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 와인 시음권 내역" />
+	</definition>
+
+	<definition name="/order/wineTastingCardOrderWrite"
+		extends="layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/order/wineTastingCardOrderWrite.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 와인 시음권 구매" />
+	</definition>
+
+
+	<!-- Admin main layout -->
+	<definition name="admin-layout-tiles"
+		template="/WEB-INF/views/tiles/admin-tiles-layout.jsp">
+		<put-attribute name="sidebar"
+			value="/WEB-INF/views/admin/sidebar.jsp" />
+		<put-attribute name="admin_nav"
+			value="/WEB-INF/views/admin/admin_nav.jsp" />
+		<put-attribute name="body" value="" />
+	</definition>
+
+	<definition name="/admin/index" extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/index.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 관리자 메인 페이지" />
+	</definition>
+
+	<definition name="/admin/error" extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/error.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 관리자 에러 페이지" />
+	</definition>
+
+	<definition name="/admin/blank" extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/blank.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 관리자 Blank 페이지" />
+	</definition>
+
+	<definition name="/admin/buttons"
+		extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/buttons.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 관리자 버튼 페이지" />
+	</definition>
+
+	<definition name="/admin/cards" extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/cards.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 관리자 카드 페이지" />
+	</definition>
+
+	<definition name="/admin/charts"
+		extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/charts.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 관리자 차트 페이지" />
+	</definition>
+
+	<definition name="/admin/forgot-password"
+		extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/forgot-password.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 관리자 비밀번호 찾기 페이지" />
+	</definition>
+
+	<definition name="/admin/login" extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/login.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 관리자 로그인 페이지" />
+	</definition>
+
+	<definition name="/admin/register"
+		extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/register.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 관리자 등록 페이지" />
+	</definition>
+
+	<definition name="/admin/tables"
+		extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/tables.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 관리자 테이블 페이지" />
+	</definition>
+
+	<definition name="/admin/utilities-animation"
+		extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/utilities-animation.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 관리자 애니메이션 페이지" />
+	</definition>
+
+	<definition name="/admin/utilities-border"
+		extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/utilities-border.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 관리자 보더 페이지" />
+	</definition>
+
+	<definition name="/admin/utilities-color"
+		extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/utilities-color.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 관리자 컬러 페이지" />
+	</definition>
+
+	<definition name="/admin/utilities-other"
+		extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/utilities-other.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 관리자 other 페이지" />
+	</definition>
+
+	<!-- 관리자 상품 -->
+	<definition name="/admin/productRegisterAdmin" extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/productRegisterAdmin.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 관리자 상품 등록 페이지" />
+	</definition>
+	
+	<definition name="/admin/productListAdmin" extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/productListAdmin.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 관리자 상품 조회 페이지" />
+	</definition>
+	
+	<definition name="/admin/productUpdateAdmin" extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/productUpdateAdmin.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 관리자 상품 수정 페이지" />
+	</definition>
+	
+	<definition name="/admin/order/pickupOrdersAdmin" extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/order/pickupOrdersAdmin.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 관리자 PickupOrders 페이지" />
+	</definition>
+
+	<definition name="/admin/tabling/index"
+		extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/tabling/index.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 관리자 테이블링 관리 페이지" />
+	</definition>
+
+	<definition name="/admin/tabling/reservationList"
+		extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/tabling/reservationList.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 관리자 테이블링 관리 페이지" />
+	</definition>
+
+	<definition name="/admin/tabling/tmp"
+		extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/tabling/tmp.jsp" />
+		<put-attribute name="title"
+			value="I'M H-WINE ㅣ 관리자 테이블링 관리 페이지" />
+	</definition>
+	
+	<definition name="/admin/order/pickupConfirm" extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/order/pickupConfirm.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 관리자 와인 픽업 QR 페이지" />
+	</definition>
+	
+	<definition name="/admin/order/orderMain" extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/order/orderMain.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 관리자 OrderMain 페이지" />
+	</definition>
+	
+	<definition name="/admin/order/TastingCardConfirm" extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/order/TastingCardConfirm.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 관리자 시음권 구매 QR 페이지" />
+	</definition>
+	
+	<definition name="/admin/websocket/qrCodeReadTest" extends="admin-layout-tiles">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/websocket/qrcodeReadTest.jsp" />
+		<put-attribute name="title" value="I'M H-WINE ㅣ 관리자 시음권 구매 QR 페이지" />
+	</definition>
+	
+</tiles-definitions>

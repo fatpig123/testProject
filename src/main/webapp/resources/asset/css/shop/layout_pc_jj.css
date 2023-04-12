@@ -1,0 +1,542 @@
+@charset "utf-8";
+
+/* .lnb_wrap.product_lnb .pc_lnb .page_tit{background:url(/asset/images/shop/product/pc_lnb_product_lists.jpg) 50% no-repeat;background-size:cover} */
+.lnb_wrap.product_lnb .pc_lnb{position:relative;overflow:hidden}
+.lnb_wrap.product_lnb .pc_lnb .img{position:absolute;top:0;left:50%;transform:translateX(-50%);width:1900px}
+.lnb_wrap.product_lnb .pc_lnb .img img{max-width:none}
+.lnb_wrap.product_lnb .pc_lnb .page_tit{background-color:transparent}
+.lnb_wrap.product_lnb .pc_lnb .page_tit h2{color:#fff}
+
+.lnb_wrap.product_lnb .pc_lnb .page_tit.prd_tit{display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.4}
+.lnb_wrap.product_lnb .pc_lnb .page_tit.prd_tit .sub_tit{display:block;margin-top:10px;font-size:24px;color:#fff}
+
+.content.product_lists_page{padding:15px 0 60px}
+
+.product_lists_page .line_map{margin-bottom:60px}
+.product_lists_page .line_map ul{justify-content:flex-end}
+.product_lists_page .line_map ul li{font-size:14px}
+
+.product_lists_page .tab_area .js_tabBtn{width:720px;margin:0 auto}
+.product_lists_page .tab_area .js_tabBtn.tab3{width:720px;margin:0 auto}
+.product_lists_page .tab_area .search_btn{width:120px}
+.product_lists_page .tab_area .search_btn span{padding-left:29px}
+
+.product_lists_page .type_tab{margin:40px 0 0;padding:0;overflow:hidden}
+.product_lists_page .type_tab li{float:left;width:162px;height:50px}
+.product_lists_page .type_tab li:not(:nth-of-type(3n)){margin-right:0px}
+.product_lists_page .type_tab li:not(:nth-of-type(-n+3)){margin-top:0px}
+.product_lists_page .type_tab li:not(:nth-of-type(7n)){margin-right:11px}
+.product_lists_page .type_tab li:not(:nth-of-type(-n+7)){margin-top:11px}
+.product_lists_page .type_tab li:last-child{margin-right:0}
+.product_lists_page .type_tab li button{height:100%;font-size:16px;line-height:22px}
+
+.product_lists_page .type_tab li button.red{background-position:50% 28px;background-size:auto}
+.product_lists_page .type_tab li button.white{background-position:50% 28px;background-size:auto}
+.product_lists_page .type_tab li button.sparkling{background-position:50% 28px;background-size:auto}
+.product_lists_page .type_tab li button.champagne{background-position:50% 28px;background-size:auto}
+.product_lists_page .type_tab li button.dessert{background-position:50% 28px;background-size:auto}
+.product_lists_page .type_tab li button.red.on{background-position:50% 28px;background-size:auto}
+.product_lists_page .type_tab li button.white.on{background-position:50% 28px;background-size:auto}
+.product_lists_page .type_tab li button.sparkling.on{background-position:50% 28px;background-size:auto}
+.product_lists_page .type_tab li button.champagne.on{background-position:50% 28px;background-size:auto}
+.product_lists_page .type_tab li button.dessert.on{background-position:50% 28px;background-size:auto}
+
+.product_lists_page .best_wrap{margin-top:60px}
+.product_lists_page .best_wrap .h2{margin-bottom:40px;font-size:32px}
+
+.prd_list_area .search_result{margin-top:40px;margin-bottom:55px;overflow:hidden}
+.prd_list_area .second_order select{float:left;margin-left:20px}
+.prd_list_area .second_order .btn_switch_module{margin-top:10px}
+.prd_list_area .result{margin-top:0}
+.prd_list_area .result p{line-height:40px}
+
+.prd_list{display:flex;flex-wrap:wrap}
+.prd_list li{width:384px;margin-right:24px;margin-bottom:40px}
+.prd_list li:nth-child(3n){margin-right:0}
+.prd_list li:last-child{margin-bottom:0}
+.prd_list.col4 li{width:282px}
+.prd_list.col4 li:nth-child(3n){margin-right:24px}
+.prd_list.col4 li:nth-child(4n){margin-right:0}
+.prd_list.col4 li .item .main_img .table_box{height:300px}
+
+/* 구성상품 리셋 */
+.prd_list#set_list{display:block;overflow-x:inherit;white-space:normal}
+.prd_list#set_list>li{margin-right:24px;width:384px}
+.prd_list#set_list>li:nth-child(3n){margin-right:24px}
+.prd_list#set_list>.slick-arrow{position:absolute;top:50%;text-indent:-9999px;overflow:hidden;transform:translateY(-50%);margin-top:0;border-color:#ddd;width:50px;height:50px;border:1px solid #ddd;z-index:200}
+.prd_list#set_list>.slick-arrow.slick-prev{margin-left:0;left:-70px;background:#fff url(/asset/images/shop/main/pc_ico_arrow_prev.png) no-repeat 50% 50%;background-size:8px}
+.prd_list#set_list>.slick-arrow.slick-next{margin-right:0;right:-70px;background:#fff url(/asset/images/shop/main/pc_ico_arrow_next.png) no-repeat 50% 50%;background-size:8px}
+
+
+
+/* .prd_list li .item .main_img::before{content:'';display:block;position:absolute;top:50%;left:20px;transform:translateY(-50%);width:50px;height:50px;background:transparent;z-index:100}
+.prd_list li .item .main_img::after{content:'';display:block;position:absolute;top:50%;right:20px;transform:translateY(-50%);width:50px;height:50px;background:transparent;z-index:100} */
+.prd_list li .item .main_img .slider .slick-arrow{position:absolute;top:50%;text-indent:-9999px;overflow:hidden;transform:translateY(-50%);margin-top:0;border-color:#ddd;width:50px;height:50px;border:1px solid #ddd;z-index:200}
+.prd_list li .item .main_img .slick-slider:hover .slick-arrow{display:inline-block !important;}
+.prd_list li .item .main_img .slider .slick-arrow.slick-prev{margin-left:0;left:20px;background:#fff url(/asset/images/shop/main/pc_ico_arrow_prev.png) no-repeat 50% 50%;background-size:8px}
+.prd_list li .item .main_img .slider .slick-arrow.slick-next{margin-right:0;right:20px;background:#fff url(/asset/images/shop/main/pc_ico_arrow_next.png) no-repeat 50% 50%;background-size:8px}
+.prd_list li .item .main_img .main_img_arrow{display:block;position:absolute;top:50%;transform:translateY(-50%);margin-top:0;border-color:#ddd;width:50px;height:50px;border:1px solid #ddd;z-index:200;cursor:pointer}
+.prd_list li .item .main_img .main_img_prev{margin-left:0;left:20px;background:#fff url(/asset/images/shop/main/pc_ico_arrow_prev.png) no-repeat 50% 50%;background-size:8px}
+.prd_list li .item .main_img .main_img_next{margin-right:0;right:20px;background:#fff url(/asset/images/shop/main/pc_ico_arrow_next.png) no-repeat 50% 50%;background-size:8px}
+
+/* .prd_list li .item .main_img .prd_img .table_con{padding:59px} */
+.prd_list li .item .main_img .prd_img .table_con picture{display:block;overflow:hidden;max-height:400px;padding:0 5%}
+.prd_list li .item .main_img .prd_info .table_con{padding:51px 59px}
+.prd_list li .item .main_img .prd_info .table_con picture{display:block;overflow:hidden;max-height:298px}
+
+.prd_list li .item .main_img .table_box{height:400px}
+.prd_list li .item .main_img .recommand .table_con .info strong{font-size:40px;line-height:56px}
+
+.prd_list li .item .main_img .taste dl dt{width:60px}
+.prd_list li .item .main_img .taste dl dt:after{width:5px;height:5px}
+.prd_list li .item .main_img .taste dl dd{width:calc( 100% - 60px )}
+
+.prd_list li .item .main_img .hashtag{width:100%;height:400px}
+.prd_list li .item .main_img .slick-dots{bottom:20px}
+.prd_list li .item .main_img .pop_show{display:block;position:absolute;bottom:10px;right:10px;width:24px;height:24px;overflow:hidden;text-indent:-9999px;background:url(/asset/images/shop/default/icon_search_plus.png) 50% no-repeat;z-index:60}
+
+.prd_list li .item .main_img .vivino{font-size:16px}
+
+.prd_list li .item .info{position:relative;min-height:189px;margin-top:17px;padding-bottom:42px}
+.prd_list li .item .info .label_and_btn .icon{font-size:14px;line-height:20px}
+.prd_list li .item .info .more_info .type span{width:18px;height:18px;margin-top:2px}
+.prd_list li .item .info .more_info .country span{width:25px;height:15px;margin-top:3px}
+.prd_list li .item .info .more_info .prd_name{margin-top:20px;font-size:16px}
+.prd_list li .item .info .more_info .prd_name a{display:block;font-size:20px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prd_list li .item .info .more_info .prd_name .en{font-size:16px;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prd_list li .item .info .more_info .prd_info{max-height:2.8em;height:2.8em;line-height:1.4em;display:-webkit-box;text-overflow:ellipsis;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;margin-top:10px;font-size:14px}
+.prd_list li .item .info .more_info .price{position:absolute;bottom:0;left:0;margin-top:21px;line-height:22px}
+.prd_list li .item .info .more_info .price span{font-size:16px}
+.prd_list li .item .info .more_info .price del{font-size:14px}
+.prd_list li .item .info .more_info .price ins{font-size:16px}
+
+.product_lists_page .filter{position:relative;margin:80px 0 50px;/* border-left:1px solid #ddd;border-right:1px solid #ddd */}
+.product_lists_page .filter .select_tab{}
+.product_lists_page .filter .select_tab ul{float:left}
+.product_lists_page .filter .select_tab ul li{width:130px}
+.product_lists_page .filter .select_tab ul li button{padding:11px 0 12px;font-size:18px}
+.product_lists_page .filter .select_tab ul li:first-child button{border-left:1px solid #ddd}
+.product_lists_page .filter .select_tab ul li:last-child button{border-right:1px solid #ddd}
+.product_lists_page .filter .select_tab .btn_switch_module{float:right;margin-right:0;margin-left:15px}
+
+.product_lists_page .filter .select_tab2{padding:15px 20px;border-left:1px solid #ddd;border-right:1px solid #ddd}
+.product_lists_page .filter .select_tab2 ul{white-space:normal;overflow:hidden;width:100%}
+.product_lists_page .filter .select_tab2 ul li button{height:40px;line-height:40px;font-size:16px}
+.product_lists_page .filter .select_tab2 ul li button span{padding-right:26px;background:url(/asset/images/shop/product/ico_product_filter_arrow.png) 100% center no-repeat;background-size:16px}
+.product_lists_page .filter .select_tab2 ul li.on button span{background:url(/asset/images/shop/product/ico_product_filter_arrow_on.png) 100% center no-repeat;background-size:16px}
+
+/* .product_lists_page .filter .check_type{padding:20px 150px 0 30px;border:1px solid #ddd;border-bottom:0;margin-top:-1px}
+.product_lists_page .filter .check_type.pairing.on{display:flex;flex-wrap:wrap}
+.product_lists_page .filter .check_type .checkbox{width:auto;margin-bottom:20px;margin-right:20px;padding-right:1px}
+.product_lists_page .filter .check_type.pairing .checkbox{width:calc( 25% - 15px )}
+.product_lists_page .filter .check_type.pairing .checkbox:nth-of-type(4n){margin-right: 0} */
+
+
+/* 필터 레이어 */
+.product_lists_page .filter_layer .current_filter{min-height:81px;padding:20px 67px 0 30px;border-left:1px solid #ddd;border-right:1px solid #ddd}
+.product_lists_page .filter_layer .current_filter .check_select{margin:0 5px 10px 0;padding:8px 37px 8px 15px;font-size:16px}
+.product_lists_page .filter_layer .current_filter .check_select button{top:14px;right:14px;width:12px;height:12px;/* background:url(/asset/images/shop/product/pc_icon_check_select_del.png) 50% no-repeat */background:url(/asset/images/shop/product/pc_icon_check_select_del_gray.png) 50% no-repeat}
+.product_lists_page .filter_layer .current_filter .reset{top:31px;right:50px}
+.product_lists_page .filter_layer .btn_area{position:relative;padding:0}
+/* .product_lists_page .filter_layer .btn_area .btn_txt{width:160px;height:50px;line-height:50px;font-size:14px} */
+
+.product_lists_page .filter_layer.layer .layer_area .layer_con{padding-bottom:191px}
+.product_lists_page .filter_layer .filter .check_area>p{font-size:20px}
+.product_lists_page .filter_layer .filter .check_area.price::before{top:66px;height:4px}
+.product_lists_page .filter_layer .filter .check_type.col4 .checkbox{width:25%}
+.product_lists_page .filter_layer .current_filter{border-bottom:0;padding:30px 90px 0 50px}
+.product_lists_page .filter_layer .btn_area{padding:30px 0}
+.product_lists_page .filter_layer .btn_area .btn_txt{width:300px}
+
+.product_lists_page .prd_list_area .h2{margin-bottom:40px;font-size:32px}
+.product_lists_page .prd_list_area .search_result{width:100%;border:0}
+.product_lists_page .prd_list_area .search_result .result_area{width:auto}
+.product_lists_page .prd_list_area .result{margin-top:9px}
+.product_lists_page .prd_list_area .second_order .btn_switch_module{margin-top:9px}
+.product_lists_page .prd_list_area .css_switch.wine_kind .left{left:auto}
+.product_lists_page .prd_list_area .css_switch.wine_kind .right{right:auto}
+.product_lists_page .prd_list_area .css_switch .btn_switch .pc_txt{left:9px;line-height:24px}
+
+.prd_list_area .second_order .btn_switch_module{margin-right:20px}
+
+/* 202209 - UI/UX 개편 prd_list */
+.content.product_lists_page{padding-top:60px}
+.product_lists_page .prd_list_tit .top h2{font-size:32px}
+.product_lists_page .prd_list_tit .top .line_map ul li{font-size:16px}
+.product_lists_page .prd_list_tit .prd_tab_area{display:flex;justify-content:space-between;align-items:flex-start}
+.product_lists_page .prd_list_tit .prd_tab_area>ul{width:390px}
+.product_lists_page .prd_list_tit .prd_tab_area>ul li a{font-size:16px}
+.product_lists_page .prd_list_tit .smart_search{width:162px;margin-top:0}
+.prd_list_area{margin-top:60px}
+.prd_list_area .search_result{margin:0 0 40px 0}
+.prd_list_area .search_result .result{margin-top:0;margin-right:20px;font-size:18px}
+.prd_list_area .search_result .result_num li:not(:last-of-type){margin-right:10px;padding-right:10px}
+.prd_list_area .search_result .result_num li:not(:last-of-type)::after{height:20px;margin-top:-10px}
+.prd_list_area .search_result .result_num li button{font-size:18px}
+.n_prd_list li{width:calc(20% - 16px)}
+.n_prd_list li:not(:nth-of-type(2n)){margin-right:0}
+.n_prd_list li:not(:nth-of-type(5n)){margin-right:20px}
+.n_prd_list li:not(:nth-of-type(-n+2)){margin-top:0}
+.n_prd_list li:not(:nth-of-type(-n+5)){margin-top:40px}
+.n_prd_list li .item .main_img{height:320px}
+.n_prd_list li .item .main_img img{max-height:250px}
+.n_prd_list li .item .main_img .label_wrap{top:10px;right:10px}
+.n_prd_list li .item .main_img .vivino{font-size:14px}
+.n_prd_list li .item .info{margin-top:20px}
+.n_prd_list li .item .info .more_info{height:89px}
+.n_prd_list li .item .info .more_info .prd_name a{max-height:44px;font-size:16px}
+.n_prd_list li .item .info .more_info .prd_info{height:40px;font-size:14px}
+.n_prd_list li .item .info .cate_label{margin-top:20px}
+.n_prd_list li .item .info .cate_label span{margin-bottom:0}
+.n_prd_list li .item .info .price_area{margin-top:20px}
+.n_prd_list li .item .info .price_area .price span{margin-right:10px;font-size:15px}
+.n_prd_list li .item .info .price_area .price ins{font-size:20px}
+.n_prd_list li .item .info .price_area .price .out{font-size:18px}
+.n_prd_list li .item .info .price_area .price .discount{font-size:20px}
+.n_prd_list li .item .info .price_area .price del{font-size:17px}
+.n_prd_list li .item .info .price_area .price.set i{margin-right:4px;font-size:14px}
+.n_prd_list li .item .info .price_area .price.set ins{font-size:16px}
+.n_prd_list li .item .info .price_area .price.set .discount{font-size:16px}
+.n_prd_list li .item .info .price_area .price.regular_price{margin:0 0 5px}
+.product_lists_page .pagination{margin-top:80px}
+
+/* new & best */
+.best_lnb{display:flex;justify-content:center}
+.best_lnb picture{display:block;min-width:1900px}
+
+.best_product_lists_page .tab_area{width:720px;margin:0 auto}
+.best_product_lists_page .prd_list_area>h2{margin-top:40px;font-size:32px}
+.best_product_lists_page .product_lists_wrap .best_prd_tit h3{font-size:32px}
+.best_product_lists_page .product_lists_wrap .best_prd_tit span{font-size:18px}
+.best_product_lists_page .product_lists_wrap .best_prd_img_tit{margin:60px auto}
+.best_product_lists_page .product_lists_wrap .best_prd_img_tit .tit_wrap{font-size:20px}
+.best_product_lists_page .product_lists_wrap .best_prd_img_tit .tit_wrap span{margin-top:3px}
+
+.content.recom_product_lists_page, .content.best_product_lists_page{padding-top:60px}
+.search_product_lists_page .tab_area{margin-bottom:40px}
+.search_product_lists_page .prd_search{margin-bottom:80px}
+.search_product_lists_page .prd_search .search_info{margin-bottom:60px}
+.search_product_lists_page .prd_search .search_info h2{font-size:32px;line-height:45px}
+.search_product_lists_page .prd_search .search_info p{font-size:24px}
+.search_product_lists_page .prd_search .search_box{width:383px;margin:0 auto}
+.search_product_lists_page .prd_search .search_box input{width:337px;font-size:14px}
+
+
+.css_switch{position:relative}
+
+.css_switch .btn_switch{display:inline-block;min-width:50px;height:24px;margin:0 2px}
+.css_switch .btn_switch .bar{width:20px;height:20px}
+.css_switch .txt{position:relative;line-height:24px;color:#999;font-size:14px;vertical-align:top}
+.css_switch .left{left:auto;display:inline-block}
+.css_switch .right{right:auto;display:inline-block}
+.css_switch .btn_switch_check:checked + .btn_switch_area .left{display:inline-block !important}
+.css_switch .btn_switch_check:checked + .btn_switch_area .right{display:inline-block !important}
+.css_switch .btn_switch_check + .btn_switch_area .pc_hidden,
+.css_switch .btn_switch_check:checked + .btn_switch_area .pc_hidden{display:none !important}
+
+.css_switch .btn_switch .pc_txt{font-size:10px;color:#fff;line-height:26px}
+.css_switch .btn_switch .pc_txt.left{position:absolute;left:10px;display:none !important}
+.css_switch .btn_switch .pc_txt.right{position:absolute;right:10px}
+.css_switch .btn_switch_check:checked + .btn_switch_area .pc_txt.left{display:block !important}
+.css_switch .btn_switch_check:checked + .btn_switch_area .pc_txt.right{display:none !important}
+
+.content.product_view_page{padding:60px 0}
+.content.product_view_page::after{content:'';display:block;clear:both}
+
+.product_view_page .line_map{margin-bottom:43px}
+.product_view_page .main_prd_detail{float:left;position:relative;margin-bottom:80px;width:550px}
+.product_view_page .main_prd_detail .main_img_area{/* height:750px;line-height:750px; */margin:0;padding:28px 43px 37px}
+.product_view_page .main_prd_detail .main_img_area .m_prd_slide .slide{display:none}
+.product_view_page .main_prd_detail .main_img_area .m_prd_slide .slide.active{display:block}
+.product_view_page .main_prd_detail .main_img_area .main_img{line-height:1}
+.product_view_page .main_prd_detail .main_img_area .main_img img{width:100%;vertical-align:middle}
+.product_view_page .main_prd_detail .main_img_area .plus_btn{right:0;width:36px;height:36px;background:url(/asset/images/shop/product/icon_search_plus_pc.png) 50% no-repeat}
+.product_view_page .main_prd_detail .main_img_area .easyzoom--overlay .easyzoom-flyout{left:0;margin-left:0}
+.product_view_page .view_layer.layer{display:none !important}
+
+.product_view_page .main_prd_detail .thumbnail{margin-top:30px;text-align:left}
+.product_view_page .main_prd_detail .thumbnail li{width:80px;height:80px;margin:0 0 5px}
+.product_view_page .wn_babel{display:block;margin-top:30px;text-align:center}
+
+.product_view_page .info_area{float:right;width:534px;margin-top:0;padding-bottom:80px}
+.product_view_page .info_area .d_day_info{margin:0;padding:7px 20px 8px}
+.product_view_page .info_area .d_day_info .txt{font-size:16px}
+.product_view_page .info_area .d_day_info .time{font-size:18px}
+
+.product_view_page .info_area .more_info{padding-bottom:30px}
+.product_view_page .info_area .more_info .type span{width:18px;height:18px;margin-top:2px}
+.product_view_page .info_area .more_info .country span{width:25px;height:15px;margin-top:3px}
+.product_view_page .info_area .more_info .prd_name{font-size:32px}
+.product_view_page .info_area .more_info .prd_info{margin-top:10px;font-size:16px}
+.product_view_page .info_area .more_info .cate_label{display:block;margin-top:20px}
+.product_view_page .info_area .more_info .label{font-size:14px}
+.product_view_page .info_area .more_info .price_box{display:flex;justify-content:space-between;margin-top:20px}
+.product_view_page .info_area .more_info .price .t{font-size:16px;font-weight:400;color:#111;margin-right:65px}
+.product_view_page .info_area .more_info .info_box .t{margin-right:65px;width:45px;font-size:16px;line-height:22px}
+.product_view_page .info_area .more_info .info_box .brand_tit{font-size:16px}
+.product_view_page .info_area .more_info .info_box .patch_tit{vertical-align:top}
+.product_view_page .info_area .more_info .info_box .vintage_box{vertical-align:top;width:calc(100% - 113px);white-space:normal;overflow-y:hidden}
+.product_view_page .info_area .more_info .info_box .vintage_box .patch_tit{margin-top:5px}
+.product_view_page .info_area .more_info .info_box .vintage_box .patch_tit:nth-of-type(-n+7){margin-top:0}
+.product_view_page .info_area .more_info .info_box .vintage_box br:nth-of-type(4n){display:none}
+.product_view_page .info_area .more_info .details{margin:30px 0 0;padding:0;border-top:none}
+.product_view_page .info_area .more_info .details dt{width:74px;font-size:18px}
+.product_view_page .info_area .more_info .details dd{width:calc(100% - 74px)}
+.product_view_page .info_area .more_info .details dt:not(:last-of-type){margin-bottom:15px}
+.product_view_page .info_area .more_info .details dd:not(:last-of-type){margin-bottom:15px}
+.product_view_page .info_area .more_info .price span{font-size:26px;line-height:37px;margin-right:8px}
+.product_view_page .info_area .more_info .price ins{font-size:26px;line-height:37px;margin-right:8px}
+.product_view_page .info_area .more_info .price .tel a{margin:4px 0 0 20px;background:url(/asset/images/shop/product/pc_ico_tel.png) 50% no-repeat;background-size:100%}
+.product_view_page .info_area .more_info .price del{font-size:16px;line-height:37px}
+.product_view_page .info_area .more_info .price.sale{margin-top:0}
+
+.product_view_page .info_area .pickup_area{margin:0 0 30px;padding:30px 0 0;border-top:1px solid #ddd}
+.product_view_page .info_area .pickup_area .tit{margin-bottom:5px;font-size:16px}
+.product_view_page .info_area .pickup_area .tit span{padding-right:22px}
+.product_view_page .info_area .pickup_area .store_list{padding-top:0}
+.product_view_page .info_area .pickup_area .store_list .store{margin-top:10px;padding:5px 10px;font-size:14px}
+
+.product_view_page .info_area .btn_insta{margin:20px 0 0}
+.store_layer.layer .display_table{max-width:600px;padding:0}
+.store_layer.layer .layer_area .layer_close{top:33px;right:33px;background:url(/asset/images/shop/product/pc_btn_layer_close.png) 50% no-repeat;background-size:100%}
+.store_layer.layer .layer_area .layer_con{padding:50px 50px 40px}
+.store_layer .layer_con .tit{margin-bottom:40px;font-size:24px}
+.store_layer .tbl_list col.col_w01{width:150px}
+.product_view_page .buy_process{position:relative;margin-top:30px}
+.product_view_page .buy_process .hide_process{display:block;position:relative;z-index:100}
+.product_view_page .buy_process .btn_area{position:relative;padding:0}
+.product_view_page .buy_process .btn_area .cart_btn{width:237px}
+.product_view_page .buy_process .btn_area .buy_btn{width:237px}
+.product_view_page .buy_process .btn_area .buy_process_btn{display:block}
+.product_view_page .buy_process .btn_area .show_btn{display:none}
+
+.product_view_page .buy_process.on::before{display:none}
+.product_view_page .buy_process.on .hide_process{display:block;background:#fff}
+
+.product_view_page .buy_process .hide_process .option_area{padding:0}
+.product_view_page .buy_process .hide_process .option_area>.option .tit{width:110px;font-size:16px;line-height:40px}
+.product_view_page .buy_process .hide_process .option_area>.option .select{width:424px}
+
+.product_view_page .buy_process .hide_process .current_select{margin-top:20px}
+.product_view_page .buy_process .hide_process .current_select .option .tit{margin-bottom:46px}
+
+.product_view_page .buy_process .hide_process .total_price{padding:20px 0 40px;margin-top:30px;font-size:16px;line-height:36px}
+.product_view_page .buy_process .hide_process .total_price strong{font-size:26px}
+
+.product_view_page .wn_info{display:table;width:100%;max-width:1200px;margin:0;padding:43px 54px;clear:both}
+.product_view_page .wn_info .box{display:table-cell;width:33.333%;max-width:363px;vertical-align:top}
+.product_view_page .wn_info .box dl{width:363px}
+.product_view_page .wn_info .box dl dt:after{width:5px;height:5px}
+
+.product_view_page .wn_info .info dl dt{width:100px}
+.product_view_page .wn_info .info dl dd{width:calc( 100% - 100px );padding-right:10px}
+
+.product_view_page .wn_info .taste{margin-top:0}
+.product_view_page .wn_info .taste dl dt{width:60px}
+.product_view_page .wn_info .taste dl dd{width:calc( 100% - 60px )}
+.product_view_page .wn_info .hashtag{margin-top:0;height:135px;padding-left:30px}
+.product_view_page .wn_info .hashtag .jqcloud{height:135px}
+.product_view_page .wn_info .hashtag .jqcloud .jq_nodata span{font-size:14px}
+
+.product_view_page .wn_info .txt_source{bottom:20px;font-size:14px}
+
+.product_view_page .sidedish{padding-top:60px;margin-bottom:120px}
+.product_view_page .sidedish button{width:100%;padding:20px 0;line-height:45px;font-size:32px}
+.product_view_page .count{width:30px;height:30px;font-size:16px;right:-30px;line-height:30px}
+.product_view_page .sidedish .food_list{width:700px;margin:0 auto;padding:30px 0 0}
+.product_view_page .sidedish .food_list span{width:calc(25% - 3px);padding:14px 10px 12px;font-size:16px}
+.product_view_page .sidedish .food_list span:not(:nth-of-type(4n)){margin-right:4px}
+
+.product_view_page .review_lists{clear:both;margin-bottom:60px}
+.product_view_page .review_lists>li{width:calc(20% - 8px)}
+.product_view_page .review_lists>li:not(:first-of-type){margin-left:10px}
+.product_view_page .review_lists>li li .img{width:40px;height:40px}
+.product_view_page .review_lists>li li .txt{width:calc(100% - 48px);font-size:14px}
+
+.product_view_page .tab_con.review_con{padding-top:66px}
+.product_view_page .review_con .ratings_tit{margin-bottom:25px}
+.product_view_page .review_con .ratings_tit p{padding-left:44px;background:url(/asset/images/shop/product/pc_ico_star.png) no-repeat 0 50%;background-size:34px;font-size:32px}
+.product_view_page .review_con .ratings_tit p em{margin-left:10px;font-size:18px}
+.product_view_page .review_con .btn_area{margin-top:60px}
+.product_view_page .tasting_review_lists>li{border:0;border-bottom:1px solid #ddd;padding:20px 10px}
+.product_view_page .tasting_review_lists>li .top .box.grade .name{width:auto;text-align:right}
+
+.product_view_page .tab_area{clear:both}
+.product_view_page .tab_area .tab_btn{margin:0}
+.product_view_page .tab_area .tab_btn>ul{padding:0 0 0 1px;overflow-x:hidden}
+.product_view_page .tab_area .tab_btn>ul.fixed{top:67px}
+.product_view_page .tab_area .tab_btn>ul.tab5>li{width:20%}
+.product_view_page .tab_area .tab_btn>ul>li{width:25%}
+.product_view_page .tab_area .tab_btn>ul>li>button{width:100%;height:65px;line-height:65px;padding:0;font-size:22px}
+.product_view_page .tab_con{padding:30px 0}
+.product_view_page .tab_con.prd_con .second_order{margin-bottom:55px}
+.product_view_page .tab_con.prd_con .btn_area{margin-top:60px}
+
+.product_view_page .tab_con.food_con .js_tabBtn{display:flex;width:100%;}
+.product_view_page .tab_con.food_con .js_tabBtn>li{width:calc(100%/3)}
+.product_view_page .tab_con.food_con .js_tabBtn>li:not(:first-of-type){position:relative;margin-top:0}
+.product_view_page .tab_con.food_con .js_tabBtn>li:not(:first-of-type)::before{content:'';position:absolute;top:50%;left:0;width:1px;height:45px;background-color:#ddd;transform:translateY(-50%);}
+.product_view_page .tab_con.food_con .js_tabBtn>li.sav>button{height:55px}
+.product_view_page .tab_con.food_con .js_tabCon ul{display:flex;flex-wrap:wrap}
+.product_view_page .tab_con.food_con .js_tabCon ul li{width:calc(25% - 18px)}
+.product_view_page .tab_con.food_con .js_tabCon ul li:not(:first-of-type){margin-top:0}
+.product_view_page .tab_con.food_con .js_tabCon ul li:not(:nth-of-type(-n+4)){margin-top:24px}
+.product_view_page .tab_con.food_con .js_tabCon ul li:not(:nth-of-type(4n)){margin-right:24px}
+.product_view_page .tab_con.food_con .js_tabCon ul li .img{max-height:244px}
+.product_view_page .tab_con.food_con .js_tabCon ul li .tit{font-size:16px}
+
+.product_view_page .tab_con.detail_con{text-align:center}
+.product_view_page .tab_con.detail_con img{display:inline-block}
+
+.product_view_page .tasting_tab_con .sort_area{margin-bottom:30px;overflow:hidden}
+.product_view_page .tasting_tab_con .sort_area .js_select{float:left;margin-bottom:0}
+.product_view_page .tasting_tab_con .sort_area .js_select>button{display:none}
+.product_view_page .tasting_tab_con .sort_area .js_select ul{display:block;overflow:hidden;border:0;position:relative;}
+.product_view_page .tasting_tab_con .sort_area .js_select ul li{float:left;position:relative;padding-right:10px;margin-right:8px;border:0}
+.product_view_page .tasting_tab_con .sort_area .js_select ul li:after{content:"";position:absolute;right:0;top:16px;bottom:16px;width:1px;background:#ddd}
+.product_view_page .tasting_tab_con .sort_area .js_select ul li button{line-height:40px;color:#999;font-size:16px}
+.product_view_page .tasting_tab_con .sort_area .js_select ul li button.on{font-weight:500;color:#111}
+.product_view_page .tasting_tab_con .sort_area .js_select ul li:last-child::after{display:none}
+.product_view_page .tasting_tab_con .sort_area .search_box{float:right;width:389px}
+
+.tasting_note li{padding:28px 0 30px;overflow:hidden}
+.tasting_note li .character_info{float:left;width:170px;text-align:center}
+.tasting_note li .character_info .picture{float:none;margin:0 auto 10px;text-align:center}
+.tasting_note li .character_info .picture img{display:inline-block}
+.tasting_note li .character_info .info{float:none;margin-top:0}
+.tasting_note li .character_info .info span{position:relative;display:inline-block;padding-left:9px;margin-left:9px;font-size:14px}
+.tasting_note li .character_info .info span:after{content:"";position:absolute;top:1px;bottom:1px;left:0;width:1px;background:#ddd}
+.tasting_note li .character_info a{float:none;margin-top:11px}
+.tasting_note li .tasting_info{float:right;width:977px;margin-top:0}
+.tasting_note li .tasting_info .tasting_evaluation dl dt{width:auto;margin-right:10px}
+.tasting_note li .tasting_info .tasting_evaluation dl dd{width:auto;margin-right:20px}
+
+.tasting_note li .tasting_info .tasting_con{margin-top:20px}
+.tasting_note li .tasting_info .tasting_suggestion{margin-top:30px}
+.tasting_note li .tasting_info .tasting_suggestion button{padding:6px 20px;margin-right:10px}
+.tasting_note li .tasting_info .tasting_suggestion .follow{width:auto}
+.tasting_note li .tasting_info .tasting_suggestion .good,
+.tasting_note li .tasting_info .tasting_suggestion .bad{width:auto;margin-top:0}
+.tasting_note li .tasting_info .tasting_suggestion .good{margin-right:10px}
+
+.js_select{position:relative}
+.js_select button{width:100%;height:50px;color:#555;line-height:50px}
+.js_select>button{display:inline-block;padding:0 0 0 14px;border:1px solid #dcdcdc;background:url(/asset/images/shop/default/icon_arrow_down.png) no-repeat 95% 50%;text-align:left}
+.js_select ul{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid #ddd;border-top:0;border-bottom:0}
+.js_select ul li{border-bottom:1px solid #ddd}
+.js_select>button.on + ul{display:block}
+
+.layer.buy_process_layer .layer_area .cart_txt{padding:14px 20px;font-size:16px}
+.layer.buy_process_layer .layer_area .cart_txt p a{font-size:16px}
+.layer.buy_process_layer .layer_area .layer_tit{display:flex;align-items:center;min-height:50px;line-height:100px;padding:0;font-size:24px}
+.layer.buy_process_layer .display_table{width:800px}
+.layer.buy_process_layer .layer_area .layer_con{overflow-y:auto;padding:30px 50px 60px;min-height:auto;height:50vh;-ms-overflow-style: none; /* IE and Edge */scrollbar-width: none; /* Firefox */}
+.layer.buy_process_layer .layer_area .layer_con::-webkit-scrollbar{display: none; /* Chrome, Safari, Opera*/}
+.buy_process_layer .info_txt{width:100%;margin:15px 0;font-size:14px}
+.buy_process_layer .patch_design{padding:0 15px;}
+.buy_process_layer .border_style{margin-bottom:0}
+.buy_process_layer .border_style>ul{border-top:0}
+.buy_process_layer .border_style .table_header{display:block}
+.buy_process_layer .border_style ul{padding-bottom:40px;border-top:1px solid #555}
+.buy_process_layer .border_style ul li{overflow:hidden;padding:15px 0}
+.buy_process_layer .border_style ul li.table_header{padding:3px 0}
+.buy_process_layer .border_style ul li.table_header div{padding:0;margin:0;height:auto;line-height:25px;color:#333;font-size:14px;font-weight:500;margin-top:0}
+.buy_process_layer .border_style ul li.table_header .volume_line{padding:0 0 0 10px;margin-left:10px}
+.buy_process_layer .border_style ul li.table_header .volume_line::before{top:6px}
+.buy_process_layer .border_style ul li .select_line{top:50%;left:20px;font-size:0;transform:translateY(-50%)}
+.buy_process_layer .border_style ul li .select_line .checkbox input[type='checkbox'] + label{width:0;padding-left:24px}
+.buy_process_layer .border_style ul li .info_area{display:flex;justify-content:right;align-items:center;padding:0 20px 0 84px}
+.buy_process_layer .border_style ul li .volume_line{flex-grow:1;width:139px;margin-top:0;text-align:left;font-size:14px;color:#555;line-height:30px}
+.buy_process_layer .border_style ul li .year_line{width:206px;margin-top:0;text-align:left;font-size:14px;color:#555;line-height:30px}
+.buy_process_layer .border_style ul li .pronm_line{width:287px;margin:3px 3px 3px 0}
+.buy_process_layer .border_style ul li .volume_line::before{top:9px;height:15px}
+.buy_process_layer .border_style ul li .total_price_line{margin:0 20px 0 0}
+.buy_process_layer .border_style ul li .total_price_line ins,
+.buy_process_layer .border_style ul li .total_price_line del{display:inline-block;vertical-align:middle}
+.buy_process_layer .border_style ul li .count_line{width:100px;/* width:284px; */height:32px}
+.buy_process_layer .border_style ul li .count_line .quantity button{width:30px;height:32px}
+.buy_process_layer .border_style ul li .count_line .quantity input{width:38px;height:32px;line-height:32px}
+.buy_process_layer .border_style ul li .count_line .packing{width:calc(100% - 154px);height:34px;line-height:34px;margin-left:54px}
+.buy_process_layer .border_style ul li .price_line{clear:none;width:173px;padding:0;font-size:0}
+.buy_process_layer .border_style ul li .price_line span{font-size: 16px}
+.buy_process_layer .border_style ul li .price_line del{display:inline-block;vertical-align:middle;font-size:14px;line-height:30px}
+.buy_process_layer .border_style ul li .price_line ins{display:inline-block;vertical-align:middle;margin-top:0;line-height:30px}
+.buy_process_layer .border_style ul li .pickup_area{float:left;display:flex;justify-content:flex-end;width:100%;margin-top:8px;padding:10px 20px}
+.buy_process_layer .border_style ul li .pickup_area p{float:none;width:80px;line-height:20px;font-size:12px}
+.buy_process_layer .border_style ul li .pickup_area .store_list{float:none;width:auto;margin-top:0}
+.buy_process_layer .border_style ul li .pickup_area .store_list .store{vertical-align:top;padding:2px 5px;margin-bottom:0}
+.buy_process_layer .border_style ul li.t_option_box .volume_line{width:225px}
+.buy_process_layer .border_style ul li.t_option_box .year_line{width:55px}
+.buy_process_layer .btn_area{position:absolute;bottom:0;left:0;width:100%;padding:20px 0;background:#fff}
+.buy_process_layer .btn_area.col2 .btn_txt{margin-right:0}
+
+.wine_profile_layer.layer .display_table{width:800px}
+.wine_profile_layer.layer .layer_area .layer_con{max-height:80vh}
+.wine_profile_layer .info_txt{font-size:14px}
+.wine_profile_layer .con_box .box_tit h2{font-size:20px;margin-right:10px}
+.wine_profile_layer .con_box .box_tit span{display:inline-block;margin-top:0;vertical-align:middle;font-size:14px}
+
+.wine_profile_layer .con_box .box_tit .ico_note{width:18px;height:18px;background:url(/asset/images/shop/product/pc_ico_note.png) 0 0 no-repeat}
+/* .wine_profile_layer .con_box .box_tit .ico_note.on::before{top:17px;left:3px}
+.wine_profile_layer .con_box .box_tit .ico_note.on::after{top:27px;width:450px;letter-spacing:0} */
+.wine_profile_layer .con_box .box_tit .ntc_txt{top:24px;left:-5px;width:450px;padding:5px}
+/* .wine_profile_layer .con_box .box_tit .ntc_txt::before{display:block;border-top:3px solid transparent;border-right:4px solid transparent;border-bottom:3px solid #333;border-left:4px solid transparent;z-index:50} */
+
+.wine_profile_layer .con_box .list_box li{width:172px}
+.wine_profile_layer .con_box .list_box li:nth-child(-n+4){margin-top:0}
+.wine_profile_layer .con_box .list_box li p em{margin-top:0;padding:1px 0 3px;line-height:16px;font-size:16px}
+
+.wine_profile_layer .con_box .range_box {width:518px}
+.wine_profile_layer .con_box .range_box p{padding-bottom:0}
+.wine_profile_layer .con_box .range_box p.left{width:59px}
+.wine_profile_layer .con_box .range_box p.right{width:59px}
+.wine_profile_layer .con_box .range_box input{clear:none;width:400px}
+
+.wine_profile_layer .con_box .taste{width:372px}
+.wine_profile_layer .con_box .taste dt{width:60px}
+.wine_profile_layer .con_box .taste dt:after{width:5px;height:5px}
+.wine_profile_layer .con_box .taste dd{width:298px}
+.wine_profile_layer .con_box .taste dd .left{width:64px}
+.wine_profile_layer .con_box .taste dd .right{width:64px}
+.wine_profile_layer .con_box .taste dd .center{width:calc( 100% - 128px )}
+.wine_profile_layer .con_box .taste dd .center li{padding:1px 0 3px;line-height:16px;font-size:16px}
+
+.wine_profile_layer .con_box .price_area li{overflow:hidden}
+.wine_profile_layer .con_box .price_area li em{float:left;padding:1px 0 3px;line-height:16px;font-size:16px}
+.wine_profile_layer .con_box .price_area li .txt{float:left;width:120px}
+.wine_profile_layer .con_box .price_area li .progress_line{float:left;width:200px;margin-left:10px}
+
+.wine_profile_layer .con_box .review_star li em{padding:1px 0 3px;line-height:16px;font-size:16px}
+.wine_profile_layer .con_box .review_star li .txt{font-size:14px}
+.wine_profile_layer.layer .layer_con>.btn_area{position:static;width:auto;padding:0;border-top:0;background:transparent;margin-top:60px}
+.wine_profile_layer.layer .layer_con>.btn_area .btn_txt{width:160px}
+
+.product_view_layer.layer .display_table{width:100%;min-width:800px;max-width:824px}
+.product_view_layer .product_view_page .main_prd_detail{width:280px}
+.product_view_layer .product_view_page .info_area{width:400px;padding-bottom:64px}
+.product_view_layer .product_view_page .info_area .more_info{margin-top:0}
+.product_view_layer .product_view_page .over_wrap{text-align:left}
+.product_view_layer .product_view_page .info_area .more_info .price{text-align:left}
+.product_view_layer .product_view_page .buy_process .btn_area .cart_btn{width:169px}
+.product_view_layer .product_view_page .buy_process .btn_area .buy_btn{width:169px}
+.product_view_layer .product_view_page .wn_info{padding:0;background:none}
+.product_view_layer .product_view_page .wn_info .box.info{width:200px}
+.product_view_layer .product_view_page .wn_info .box.taste{min-width:288px}
+.product_view_layer .product_view_page .wn_info .box.recommand{text-align:left}
+.product_view_layer .product_view_page .wn_info .box.recommand .img{display:inline-block;width:76px}
+.product_view_layer .product_view_page .wn_info .box.recommand .info{display:inline-block;padding-left:8px;margin-top:0;vertical-align:top;text-align:left}
+.product_view_layer .product_view_page .wn_info .box.recommand .info strong{display:block;font-size:26px;line-height:36px;font-weight:700;color:#111}
+.product_view_layer .product_view_page .wn_info .box.recommand .info .star_area{position:relative;width:92px;height:16px;background:url(/asset/images/shop/default/star_area.png) 0 0 no-repeat;margin-left:0}
+.product_view_layer .product_view_page .wn_info .box.recommand .info .star_area .star{position:absolute;top:0;left:0;width:92px;height:16px;background:url(/asset/images/shop/default/star_area.png) 0 0 no-repeat}
+.product_view_layer .product_view_page .wn_info .box.recommand .info p{margin-top:5px;font-size:12px;color:#999}
+
+.wish_lists_page .del_area{margin-bottom:30px}
+.wish_lists_page .del_area button{width:90px;line-height:32px}
+.wish_lists_page .del_area button.btn_all{margin-left:5px}
+.wish_lists_page .n_prd_list li{margin-top:50px}
+.wish_lists_page .n_prd_list li .item .main_img .wish_cart{bottom:8px;left:8px;width:36px;height:36px;background-position:7px 8px}
+.wish_lists_page .n_prd_list li{width:313px;margin-right:20px}
+.wish_lists_page .n_prd_list li .item .main_img .table_box{height:313px}
+.wish_lists_page .n_prd_list li .item .main_img .hashtag{height:313px}
+.wish_lists_page .n_prd_list li:nth-child(3n){margin-right:0}
+.wish_lists_page .n_prd_list li:nth-of-type(-n+3){margin-top:0}

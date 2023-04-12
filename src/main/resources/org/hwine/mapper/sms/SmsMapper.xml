@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+SQL File Name : SmsMapper.xml
+Description   : 문자 관련 mapper
+
+==개정이력========================================
+수정일     수정자   Version    Query Id
+========== ======= =========   ===================
+2023.03.10 김주현  1.0			
+-->
+<mapper namespace="org.hwine.mapper.sms.SmsMapper">
+	
+	<!-- 문자 찾기 -->
+	<select id="findSms" resultType="org.hwine.domain.sms.SmsVO">
+		SELECT *
+		FROM sms
+		WHERE s_id = #{sId}
+	</select>
+	
+	<!-- 문자 DB 에 넣기 -->
+	<insert id="insertSms">
+		INSERT INTO SMS (s_id, s_content, s_type, s_status, s_from, s_date, m_email, s_phone)
+		VALUES(s_id_seq.nextval, #{s_content}, #{s_type}, #{s_status}, 'h-wine', sysdate, #{m_email}, #{s_phone})
+	</insert>
+</mapper>

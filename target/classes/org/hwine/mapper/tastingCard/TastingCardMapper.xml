@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.hwine.mapper.tastingCard.TastingCardMapper">
+	
+	<!-- <resultMap type="org.hwine.domain.tastingCard.TastingCardVO" id="c">
+		<result property="tc_id" column="tc_id" />
+		<result property="tc_date" column="tc_date" />
+		<result property="tc_status" column="tc_status" />
+		<result property="tc_to" column="tc_to"/>
+		<result property="tc_from" column="tc_from"/>
+		<result property="tc_money" column="tc_money"/>
+	</resultMap> -->
+	
+	<select id="getTastingCard" resultType="org.hwine.domain.tastingCard.TastingCardVO">
+		SELECT tc_id, tc_date, tc_status, tc_to, tc_from, tc_money
+		FROM TASTING_CARD
+		WHERE tc_to = #{m_email}
+		ORDER BY tc_date DESC
+	</select>
+	
+	<insert id="purchaseTastingCard">
+		INSERT INTO TASTING_CARD(tc_id, tc_to, tc_from, tc_money)
+		VALUES (ZBF_GET_BATCHKEY('now'), #{to_email}, #{m_email}, #{tc_money})
+	</insert>
+</mapper>

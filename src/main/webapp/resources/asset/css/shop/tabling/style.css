@@ -1,0 +1,90 @@
+/* .calendar-box {
+
+} */
+
+.buttons-container {
+  cursor: pointer;
+}
+
+.week {
+  overflow: hidden;
+  padding: 0.1em;
+}
+
+.week.highlightc {
+  background: #efefef;
+}
+
+.day.highlightc {
+  background: white;
+}
+
+/* weekend #E6E6FA;*/
+.week .day:first-child, .week .day:last-child {
+  /*color: orange;*/
+}
+
+/* sunday */
+.week .day:first-child {
+ /* color: red; */
+}
+
+.day {
+  display: inline-block;
+  /* float: left; */
+  width: 14.28%;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+/*.day.disabled span { */
+.day.no span {
+  color: #AAA;
+}
+
+.day.fullbk span {
+  color: #AAA;
+}
+
+/* vertical highlight */
+.week .day.highlightc span {
+  font-size: smaller;
+}
+
+.day.selected span {
+  /*background: orange;*/
+}
+
+.day.today span {
+  font-weight: bold;
+}
+
+.months-container.hidden, .weeks-container.hidden {
+  display: none;
+}
+
+.months-wrapper {
+  overflow: hidden;
+}
+
+.months-wrapper .month {
+  display: inline-block;
+  float: left;
+  width: 25%;
+  text-align: center;
+  cursor: pointer;
+}
+.months-wrapper .month.one-third {
+  width: 33.33%;
+}
+#root{
+    overflow-y: scroll;
+    overflow-x: hidden;
+      -ms-overflow-style: none; /* 인터넷 익스플로러 */
+  scrollbar-width: none; /* 파이어폭스 */
+}
+
+#root::-webkit-scrollbar {
+  display: none;
+}

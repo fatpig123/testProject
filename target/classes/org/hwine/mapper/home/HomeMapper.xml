@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.hwine.mapper.home.HomeMapper">
+
+	
+
+	<!-- [메인] 음식과 함께 하는 와인 리스트 -->
+	<select id="selectMainFoodWineList"
+		resultType="org.hwine.domain.product.MainWineFoodVO">
+		<![CDATA[
+			select w.w_id as wid, w_name as wname, w_name_kor as wnamekor, w_price as wprice, w_img as wimg, w_type as wtype, wv_variety as wvariety,
+			wfs_name
+			from food_mappers fm join wine w on fm.w_id = w.w_id
+			where wfs_name = #{wfood} and rownum <= 5
+	]]>
+	</select>
+	
+	<resultMap type="org.hwine.domain.product.MainProductVO" id="mainProdcutMap">
+		<result property="w_id" column="w_id"/>
+		<result property="cnt" column="cnt"/>
+		<result property="avg_rating" column="avg_rating"/>
+		<result property="w_name_kor" column="w_name_kor"/>
+		<result property="w_name" column="w_name"/>
+		<result property="w_price" column="w_price"/>
+		<result property="wr_nation_kor" column="wr_nation_kor"/>
+		<result property="w_img" column="w_img"/>
+		<result property="w_register_date" column="w_register_date"/>
+	</resultMap>
+	
+	<select id="mainBestProduct"
+		resultMap="mainProdcutMap">
+		<![CDATA[
+		select *
+		from
+		(
+		select a.w_id, cnt, avg_rating, w_name_kor, w_name, w_price, wr_nation_kor,
+		w_img
+		from (select w_sales.w_id, cnt, avg_rating
+		from
+		(select w_id, count(*) as cnt from pickup_orders po join pickup_order_items
+		poi on po.po_id = poi.po_id
+		group by w_id) w_avg join
+		(select w_id, round(avg(db_rating), 0) as avg_rating
+		from decanting_books
+		group by w_id) w_sales on w_avg.w_id = w_sales.w_id) a join
+		(select w_id, w_name_kor, w_name, w_price, WR_NATION_KOR, w_img
+		from wine w join wine_makers wm on w.wm_maker = wm.wm_maker join
+		wine_regions wr on wm.WR_NATION = wr.WR_NATION and wm.WR_AREA =
+		wr.WR_AREA) b
+		on a.w_id = b.w_id
+		order by cnt desc
+		)
+		WHERE rownum <= 10
+		]]>
+	</select>
+
+	<select id="mainNewProduct" resultMap="mainProdcutMap">
+		<![CDATA[
+		select *
+		from (
+		select *
+		from (
+		select a.w_id, w_register_date, w_name_kor, w_name, w_price, w_img,
+		WR_NATION_KOR, avg_rating
+		from
+		(select w_id, w_register_date, w_name_kor, w_name, w_price, w_img,
+		WR_NATION_KOR
+		from wine w join wine_makers wm on w.wm_maker = wm.wm_maker join
+		wine_regions wr on wm.WR_NATION = wr.WR_NATION and wm.WR_AREA =
+		wr.WR_AREA
+		where to_char(w_register_date, 'yy/MM/dd') <= to_char(current_timestamp,
+		'yy/MM/dd') AND to_char(w_register_date, 'yy/MM/dd') >
+		to_char(current_timestamp - 7, 'yy/MM/dd'))
+		a join
+		(select w_id, round(avg(db_rating), 0) as avg_rating
+		from decanting_books
+		group by w_id) b on a.w_id = b.w_id
+		)
+		order by w_register_date desc)
+		where rownum <= 10
+		]]>
+	</select>
+
+</mapper>

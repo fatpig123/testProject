@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-5.8.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<bean id="loginSuccessHandler"
+		class="org.hwine.security.LoginSuccessHandler" />
+	<bean id="loginFailureHandler"
+		class="org.hwine.security.LoginFailureHandler" />
+	<bean id="customUserDetailsService"
+		class="org.hwine.security.CustomUserDetailsService" />
+	<bean id="customAccessDeniedHandler"
+		class="org.hwine.security.CustomAccessDeniedHandler" />
+	<bean id="customAuthenticationProvider"
+		class="org.hwine.security.CustomAuthenticationProvider" />
+	<bean id="bcryptPasswordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+
+
+
+	<!-- spring security 시작 지정 -->
+	<security:http auto-config="true" use-expressions="true">
+		<!-- 로그인 설정 -->
+		<security:form-login login-processing-url="/login"
+			login-page="/login"
+			authentication-success-handler-ref="loginSuccessHandler"
+			authentication-failure-handler-ref="loginFailureHandler" />
+		<security:access-denied-handler
+			ref="customAccessDeniedHandler" />
+		<security:logout logout-url="/logout"
+			invalidate-session="true" delete-cookies="remember-me, JSESSION_ID"
+			logout-success-url="/" />
+		<security:remember-me
+			data-source-ref="dataSource" token-validity-seconds="604800" />
+
+		<!-- 접근 제한 설정 -->
+		<security:intercept-url pattern="/join/**"
+			access="isAnonymous()" />
+		<security:intercept-url pattern="/login"
+			access="isAnonymous()" />
+		<security:intercept-url pattern="/mypage/**"
+			access="hasRole('ROLE_MEMBER')" />
+		<security:intercept-url pattern="/cart/**"
+			access="hasRole('ROLE_MEMBER')" />
+		<security:intercept-url pattern="/order/**"
+			access="hasRole('ROLE_MEMBER')" />
+		<security:intercept-url pattern="/tabling/**"
+			access="hasRole('ROLE_MEMBER')" />
+		<security:intercept-url
+			pattern="/api/tabling/**" access="hasRole('ROLE_MEMBER')" />
+		<security:intercept-url
+			pattern="/decanting/followList" access="hasRole('ROLE_MEMBER')" />
+		<!-- <security:intercept-url pattern="/decanting/bookList" access="hasRole('ROLE_MEMBER')"/> -->
+		<security:intercept-url pattern="/admin/**"
+			access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/api/admin/**"
+			access="hasRole('ROLE_ADMIN')" />
+
+	</security:http>
+
+	<!-- authentication manager 선언 -->
+	<security:authentication-manager>
+		<security:authentication-provider
+			ref="customAuthenticationProvider" />
+		<security:authentication-provider
+			user-service-ref="customUserDetailsService">
+			<security:password-encoder
+				ref="bcryptPasswordEncoder" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+</beans>

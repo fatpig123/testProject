@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- SQL File Name : MemberMapper.xml Description : 회원 관련 mapper ==개정이력======================================== 
+	수정일 수정자 Version Query Id ========== ======= ========= =================== 
+	2023.03.06 김주현 1.0 로그인 2023.03.08 김주현 1.1 회원가입 2023.04.06 김주현 1.2 마이페이지 추가 -->
+<mapper namespace="org.hwine.mapper.member.MemberMapper">
+
+	<!-- 회원 resultMap -->
+	<resultMap id="memberMap"
+		type="org.hwine.domain.member.MemberVO">
+		<id property="mEmail" column="M_EMAIL" />
+		<result property="mPassword" column="M_PASSWORD" />
+		<result property="mName" column="M_NAME" />
+		<result property="mNickname" column="M_NICKNAME" />
+		<result property="mProfileImg" column="M_PROFILE_IMG" />
+		<result property="mPhone" column="M_PHONE" />
+		<result property="mGender" column="M_GENDER" />
+		<result property="mBirthDate" column="M_BIRTH_DATE" />
+		<result property="mEnabled" column="M_ENABLED" />
+		<result property="mGrade" column="M_GRADE" />
+		<result property="mSocialCode" column="M_SOCIAL_CODE" />
+		<result property="mRegisterDate" column="M_REGISTER_DATE" />
+		<result property="mUpdateDate" column="M_UPDATE_DATE" />
+		<result property="mMileage" column="M_MILEAGE" />
+		<collection property="authList" resultMap="authMap" />
+	</resultMap>
+
+	<resultMap id="authMap" type="org.hwine.domain.member.AuthVO">
+		<result property="mEmail" column="M_EMAIL" />
+		<result property="role" column="A_ROLE" />
+	</resultMap>
+
+	<!-- 회원 찾기 -->
+	<select id="findMember" resultMap="memberMap">
+		SELECT *
+		FROM members m join
+		auths a on m.m_email = a.m_email
+		WHERE m.m_email = #{memail}
+	</select>
+
+	<!-- 권한 찾기 -->
+	<select id="findMemberAuth"
+		resultType="org.hwine.domain.member.AuthVO">
+		SELECT m_email as mEmail, a_role as role
+		FROM auths
+		WHERE
+		m_email = #{memail}
+	</select>
+
+
+	<!-- 회원 가입 -->
+	<insert id="insertMember">
+		INSERT INTO members VALUES
+		(#{mEmail}, #{mPassword},
+		#{mName}, #{mNickname}, #{mProfileImg},
+		#{mPhone}, #{mGender},
+		#{mBirthDate}, #{mEnabled}, #{mGrade}, #{mSocialCode},
+		#{mRegisterDate}, #{mUpdateDate}, 2000
+
+		)
+	</insert>
+	<insert id="insertMemberAuth">
+		INSERT INTO auths VALUES
+		(#{mEmail}, #{role})
+	</insert>
+
+	<!-- 회원가입 유효성 검사 -->
+	<select id="findExistEmail" resultType="String">
+		SELECT m_email
+		FROM
+		members
+		WHERE m_email = #{email}
+	</select>
+
+	<select id="findExistPhone" resultType="String">
+		SELECT m_email
+		FROM
+		members
+		WHERE m_phone = #{phone}
+	</select>
+
+	<!-- 마이페이지 -->
+	<select id="selectMypageTopItems"
+		resultType="org.hwine.domain.member.MypageTopVO">
+		(select m.m_email,
+		m_mileage, m_grade, count(tc_id) as cnt,
+		0 as
+		sep
+		from members m
+		join
+		tasting_card tc on m.m_email = tc.tc_to
+		where
+		tc_to = #{memail} and tc_status = 1
+		group
+		by
+		m.m_email, m_mileage,
+		m_grade)
+
+		union
+
+		(select
+		m.m_email,
+		m_mileage, m_grade, count(po_id), 1 as
+		sep
+		from members m
+		join
+		pickup_orders po on m.m_email = po.m_email
+		where
+		m.m_email =
+		#{memail}
+		and
+		to_date(po_register_date, 'yy/mm/dd') >=
+		to_char(add_months(current_timestamp,-1),'yy-mm-dd')
+		group by
+		m.m_email, m_mileage, m_grade)
+
+		union
+
+		(select m.m_email, m_mileage,
+		m_grade, count(r_id),
+		2 as sep
+		from members m
+		join reservation r on
+		m.m_email =
+		r.m_email
+		where m.m_email = #{memail} and
+		to_date(r_register_date,
+		'yy/mm/dd') >=
+		to_char(add_months(current_timestamp,-1),'yy-mm-dd') and r_status in
+		(1, 2)
+		group by
+		m.m_email, m_mileage, m_grade)
+
+		union
+
+		(select m.m_email,
+		m_mileage,
+		m_grade, count(db_id), 3 as sep
+		from members m join
+		decanting_books
+		db
+		on m.m_email = db.m_email
+		where m.m_email = #{memail}
+		group by
+		m.m_email,
+		m_mileage, m_grade)
+
+		union
+
+		(select m.m_email,
+		m_mileage,
+		m_grade,
+		count(f_id), 4 as sep
+		from members m join follows f
+		on
+		m.m_email =
+		f.f_follower
+		where f_follower = #{memail} and f_status = 1
+		group by
+		m.m_email, m_mileage, m_grade)
+	</select>
+
+	<!-- 마이페이지 메인 누적 금액 -->
+	<select id="selectTotalPriceForAYear" resultType="int">
+		select
+		nvl(sum(po_total_price), 0) as sum
+		from pickup_orders
+		where m_email =
+		#{memail} and po_status = 4 and po_register_date between
+		add_months(current_timestamp, -12) and current_timestamp
+	</select>
+
+
+	<!-- 마이페이지 메인 최근 테이블링 -->
+	<select id="selectMypageReservation"
+		resultType="org.hwine.domain.tabling.MyTablingResvVO">
+	<![CDATA[
+			SELECT r_id, r_date, r_time, r_head_count, r_status, r.st_id, r.r_msg, s.s_code,
+			s.s_name, s_img_urls, 'soon' as sep
+			FROM (
+			SELECT *
+			FROM reservation
+			WHERE m_email = #{memail} and r_status = 1 and to_char(current_timestamp,
+			'yy/mm/dd') = r_date and (LPAD(r_time, 2, '0') = to_char(current_timestamp+1/24, 'HH24') or LPAD(r_time, 2, '0') = to_char(current_timestamp, 'HH24'))
+			) r JOIN store_tables st ON r.st_id = st.st_id JOIN stores s ON
+			s.s_code = st.s_code
+			WHERE ROWNUM <= 1
+	
+			union
+	
+			SELECT r_id, r_date, r_time, r_head_count, r_status, r.st_id, r.r_msg, s.s_code,
+			s.s_name, s_img_urls, 'recent'
+			FROM (
+			SELECT *
+			FROM reservation
+			WHERE m_email = #{memail} and r_status in (1, 2)
+			ORDER BY R_REGISTER_DATE, R_DATE, R_TIME
+			) r JOIN store_tables st ON r.st_id = st.st_id JOIN stores s ON
+			s.s_code = st.s_code
+			WHERE ROWNUM <= 1
+		]]>
+	</select>
+
+	<select id="selectHeaderMemberInfos"
+		resultType="org.hwine.domain.member.HeaderInfosVO">
+	<![CDATA[
+		select count(*) as cnt, 1 as sep from carts where m_email =
+		#{memail}
+		union
+		select count(*), 2 from tasting_card where tc_to = #{memail} and tc_status = 1
+		and tc_date between add_months(current_timestamp, -1) and
+		current_timestamp
+		union
+		select count(*), 4 from reservation where m_email = #{memail} and r_status in
+		(1, 2) and r_register_date between add_months(current_timestamp, -1)
+		and current_timestamp
+		union
+		select count(*), 3 from pickup_orders where m_email = #{memail} and po_status
+		<> 2 and po_register_date between add_months(current_timestamp, -1)
+		and current_timestamp
+		]]>
+	</select>
+
+
+	<!-- 마이페이지 메인 최근 픽업 예약건 조회 -->
+	<select id="selectMypagePickupOrder" resultType="org.hwine.domain.order.MyRecentPickupVO">
+		<![CDATA[
+			select p.po_id, p.po_status, po_register_date, po_booking_date, poi_quantity, po_visited_date, po_total_price, s_code, w.w_price, w_name_kor, w_img , w.w_id, 'soon' as status
+			from    (select *
+        			from (select * from (select * from pickup_orders po
+        			where po_status in (3,4) and m_email = #{m_email}
+       				 order by po_visited_date desc)
+        			)where rownum <=1) p join pickup_order_items poi on p.po_id = poi.po_id join wine w on w.w_id = poi.w_id
+		]]>
+	</select>
+</mapper>

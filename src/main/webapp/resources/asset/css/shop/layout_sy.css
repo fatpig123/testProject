@@ -1,0 +1,1022 @@
+@charset "utf-8";
+/* lnb event_lnb */
+.lnb_wrap{position:relative}
+.lnb_wrap .prev{position:absolute;top:12.4px;left:17px;display:block;width:24.2px;height:24.2px;background:url(/resources/asset/images/shop/default/mb_layer_close.png) no-repeat center;background-size:19.2px;text-indent:-9999px;z-index:10}
+.lnb_wrap .select_brand{position:relative}
+.lnb_wrap .select_brand .my_value{width:100%;height:50px;line-height:50px;border:none;border-bottom:1px solid #DCDCDC;background:none;text-align:center;font-size:16px;font-weight:500;color:#111}
+.lnb_wrap .select_brand .my_value.on + .mb_lnb_lists{display:block}
+.lnb_wrap .select_brand .my_value span{padding-right:20px;background:url(/resources/asset/images/shop/event/icon_lnb_arrow_down.png) no-repeat right/contain;background-size:12px}
+.lnb_wrap .select_brand .my_value span.no_arrow{padding:0;background:none}
+.lnb_wrap .select_brand ul{position:absolute;top:50px;left:0;display:none;width:100%;z-index:100}
+.lnb_wrap .select_brand ul li{width:100%;text-align:center;white-space:nowrap}
+.lnb_wrap .select_brand ul li a{width:100%;height:50px;line-height:50px;background-color:#F8F8F8;font-size:16px;font-weight:500}
+
+/* lnb_wrap menu */
+.lnb_wrap .menu{margin-top:30px}
+.lnb_wrap .menu::after{content:'';display:block;clear:both}
+.lnb_wrap .menu li{float:left;width:50%;height:50px;border-bottom:1px solid #DDDDDD;text-align:center;white-space:nowrap}
+.lnb_wrap .menu li.on{border-bottom:2px solid #AC8B68}
+.lnb_wrap .menu li a{display:inline-block;width:100%;height:100%;line-height:50px}
+.lnb_wrap .menu li a span{font-size:15px;font-weight:700;color:#999999}
+.lnb_wrap .menu li.on a span{padding-left:17px;background:url(/resources/asset/images/shop/mypage/mb_tab_select_point.png) no-repeat left;background-size:12px;color:#AC8B68}
+
+/* mypage nodata */
+.mypage #nodata{justify-content:center;padding:120px 0;border:0;text-align:center}
+
+/* mapage_lnb */
+.mypage_lnb .common_lnb .my{display:flex;align-items:center;padding:20px}
+.mypage_lnb .common_lnb .my .txt{display:flex;align-items:center;flex-basis:50%}
+.mypage_lnb .common_lnb .my .txt .img{width:50px;height:50px;line-height:50px;background:url(/resources/asset/images/shop/mypage/mb_ico_grade_status_silver.png) no-repeat center;background-size:contain;text-align:center}
+.mypage_lnb .common_lnb .my .txt .img.g200{background-image:url(/resources/asset/images/shop/mypage/mb_ico_grade_status_gold.png)}
+.mypage_lnb .common_lnb .my .txt .img.g300{background-image:url(/resources/asset/images/shop/mypage/mb_ico_grade_status_diamond.png)}
+.mypage_lnb .common_lnb .my .txt .img.g400{background-image:url(/resources/asset/images/shop/mypage/mb_ico_grade_status_trinity.png)}
+.mypage_lnb .common_lnb .my .txt .img.g999{background-image:url(/resources/asset/images/shop/mypage/mb_ico_grade_status_999.png)}
+.mypage_lnb .common_lnb .my .txt .img span{font-size:15px;font-family:'Marcellus', 'NotoSansCJKkr', sans-serif;color:#fff}
+.mypage_lnb .common_lnb .my .txt p{width:calc(100% - 50px);margin-left:10px}
+.mypage_lnb .common_lnb .my .txt p .name{font-size:24px;font-weight:500;color:#111}
+.mypage_lnb .common_lnb .my .btn_area{display:flex;flex-direction:column;align-items:center;flex-basis:50%;padding-left:20px}
+.mypage_lnb .common_lnb .my .btn_area button{width:110px;height:auto;line-height:17px;padding:3.5px 0;border-color:#AC8B68;font-size:12px;font-weight:500;color:#AC8B68}
+.mypage_lnb .common_lnb .my .btn_area span{display:inline-block;margin-top:10px;text-align:left;font-size:12px;color:#555}
+.mypage_lnb .common_lnb .my_class_info ul{border-top:10px solid #DDD;border-bottom:10px solid #DDD}
+.mypage_lnb .common_lnb .my_class_info ul::after{content:'';display:block;clear:both}
+.mypage_lnb .common_lnb .my_class_info ul li{display:flex;flex-direction:column;justify-content:center;align-items:center;float:left;width:50%;height:70px;text-align:center}
+.mypage_lnb .common_lnb .my_class_info ul li:not(:nth-of-type(2n)){border-right:1px solid #DDD}
+.mypage_lnb .common_lnb .my_class_info ul:not(.col3) li:nth-of-type(-n+2){border-bottom:1px solid #DDD}
+.mypage_lnb .common_lnb .my_class_info ul li .tit, .mypage_lnb .common_lnb .my_class_info ul li .tit a{font-size:12px;color:#555}
+.mypage_lnb .common_lnb .my_class_info ul li .num_box{margin-top:10px}
+.mypage_lnb .common_lnb .my_class_info ul li .num_box span{position:relative;display:inline-block;font-size:16px;font-weight:500;vertical-align:middle}
+.mypage_lnb .common_lnb .my_class_info ul li .num_box em{position:relative;display:inline-block;margin-left:11px;padding-left:5px;font-size:12px;font-weight:500;color:#999;vertical-align:middle}
+.mypage_lnb .common_lnb .my_class_info ul li .num_box em::before{content:'';position:absolute;top:50%;left:0;margin-top:-5px;width:1px;height:10px;background-color:#DDDDDD}
+.mypage_lnb .common_lnb .my_class_info ul li.on .num_box span::after{content:'';position:absolute;top:4px;right:-6px;display:inline-block;width:6px;height:6px;border-radius:50%;background-color:#B5302F}
+.mypage_lnb .common_lnb .my_class_info ul li .info_switch{display:flex;align-items:center}
+.mypage_lnb .common_lnb .my_class_info ul li .info_switch .css_switch .btn_switch{min-width:54px;height:21px}
+.mypage_lnb .common_lnb .my_class_info ul li .info_switch .css_switch .btn_switch .bar{width:18px;height:18px;}
+.mypage_lnb .common_lnb .my_class_info ul li .info_switch .css_switch span.txt{line-height:21px}
+.mypage_lnb .common_lnb .my_class_info ul li .info_switch .css_switch .left{color:#000}
+.mypage_lnb .common_lnb .my_class_info ul li .info_switch .css_switch .txt.left{color:#bbb}
+.mypage_lnb .common_lnb .my_class_info ul li .info_switch .css_switch .btn_switch_check:checked + .btn_switch_area .txt.left{color:#fff}
+.mypage_lnb .common_lnb .my_class_info ul li .info_switch .css_switch{margin-right:5px}
+.mypage_lnb .common_lnb .my_class_info ul.col3 li{width:calc(100%/3)}
+.mypage_lnb .common_lnb .my_class_info ul.col3 li:nth-of-type(2){border-right:1px solid #DDD}
+
+.mypage_lnb .common_lnb .my_class_info.my_info ul li{height:94px}
+.mypage_lnb .common_lnb .my_info li .tit{padding-top:24px;background:url(/resources/asset/images/shop/mypage/mb_ico_pay.png) no-repeat top;background-size:20px}
+.mypage_lnb .common_lnb .my_info li:nth-of-type(2) .tit{background-image:url(/resources/asset/images/shop/mypage/mb_ico_coupon.png)}
+.mypage_lnb .common_lnb .my_info li:nth-of-type(3) .tit{background-image:url(/resources/asset/images/shop/mypage/mb_ico_cash.png)}
+.mypage_lnb .common_lnb .my_info li:nth-of-type(4) .tit{background-image:url(/resources/asset/images/shop/mypage/mb_ico_gift.png)}
+
+/* content event event_lists */
+.content.event_lists_page{padding:40px 20px 120px}
+.event_lists_wrap ul li:not(:first-of-type){margin-top:30px}
+.event_lists_wrap ul li a{display:block}
+.event_lists_wrap ul li .img{overflow:hidden}
+.event_lists_wrap ul li .img img{width:100%}
+.event_lists_wrap ul li .text .tit{display:block;margin:20px 0 10px;line-height:22px;font-size:16px;font-weight:500;font-family:'NotoSansCJKkr',sans-serif}
+.event_lists_wrap ul li .text .con{display:block;line-height:20px;font-family:'NotoSansCJKkr',sans-serif}
+.event_lists_wrap ul li .text .date{display:block;margin-top:20px;font-style:normal;font-family:'NotoSansCJKkr',sans-serif;color:#999999}
+.event_lists_wrap .btn_txt{display:block;margin-top:30px}
+
+/* content event event_end */
+.event_lists_wrap ul li.end_event .img{position:relative}
+
+/* content event event_view */
+.content.event_view_page{padding:30px 20px 120px}
+.event_view_page .view_page_wrap .event_prd_tit{margin:60px 0 30px;text-align:left}
+.event_view_page .view_page_wrap .event_prd_tit h3{font-size:20px;font-weight:500;color:#111}
+.event_view_page .view_page_wrap .event_prd_tit span{display:inline-block;margin-top:10px}
+.event_view_page .view_page_wrap .event_prd_image_tit{position:relative;margin:60px 0}
+.event_view_page .view_page_wrap .event_prd_image_tit picture>img{width:100%}
+.event_view_page .view_page_wrap .event_prd_image_tit .tit_wrap{position:absolute;top:50%;left:50%;text-align:center;font-weight:500;color:#fff;transform:translate(-50%,-50%)}
+
+/* view_page */
+.view_page_wrap .view_tit_wrap{margin-bottom:30px;padding:0 10px 30px;border-bottom:1px solid #DDDDDD}
+.view_page_wrap .view_tit_wrap .tit{margin-bottom:5px;line-height:22px;font-size:16px;font-weight:500;font-family:'NotoSansCJKkr',sans-serif}
+.view_page_wrap .view_tit_wrap .date{line-height:17px;font-style:normal;font-size: 12px;font-family:'NotoSansCJKkr',sans-serif;color:#999}
+.view_page_wrap .prd_list{margin-top:30px}
+.view_page_wrap .n_prd_list{margin-top:30px}
+.view_page_wrap .btn_txt{margin-top:30px}
+
+/* cs notice_lists */
+.notice_lists_page .search_box{overflow:hidden;border:1px solid #dcdcdc}
+.notice_lists_page .search_box input{float:left;width:calc(100% - 64px);height:50px;line-height:50px;border:0;text-align:left}
+.notice_lists_page .search_box button{float:left;width:64px;height:50px;line-height:50px;border:0;background:url(/resources/asset/images/shop/default/mb_icon_search.png) no-repeat 50%;text-indent:-9999px}
+.notice_lists_page .tbl_list{margin-top:42px;border-top:1px solid #555;border-bottom:1px solid #ddd}
+.notice_lists_page .tbl_list col.num{width:50px}
+.notice_lists_page .tbl_list col.date{width:64px}
+.notice_lists_page .tbl_list .num{display:none}
+.notice_lists_page .tbl_list .tbl_list_tit{height:50px;font-weight:500}
+.notice_lists_page .tbl_list .notice_lists tr{height:50px;line-height:50px;text-align:center}
+.notice_lists_page .tbl_list .notice_lists tr td{border-top:1px solid #ddd;font-family:'NotoSansCJKkr',sans-serif}
+.notice_lists_page .tbl_list .notice_lists tr td.num, .notice_lists_page .tbl_list .notice_lists tr td.date{font-size:12px;color:#999999}
+.notice_lists_page .tbl_list .notice_lists tr td.tit{padding:0 15px;text-align-last:left}
+.notice_lists_page .tbl_list .notice_lists tr td.tit .ico_ntc{display:inline-block;margin-right:5px;vertical-align:middle}
+.notice_lists_page .tbl_list .notice_lists tr td.tit a{display:inline-block;max-width:calc(100% - 25px);vertical-align:middle}
+.notice_lists_page .tbl_list .notice_lists tr td.tit a p{color:#555555;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:middle}
+.notice_lists_page .tbl_list .notice_lists tr td.tit .down_f{display:inline-block;width:18px;height:18px;margin-left:6px;background:url(/resources/asset/images/shop/cs/mb_icon_download.png) no-repeat center/contain;vertical-align:middle;text-indent:-9999px}
+.notice_lists_page .tbl_list .notice_lists tr td .ico_ntc{padding:0 12px;line-height:20px;background-color:#111;border-radius:50px;font-weight:500;color:#fff}
+.notice_lists_page .btn_txt{margin-top:30px}
+
+/* content cs notice_view */
+.content.notice_view_page{padding:30px 20px 120px}
+.notice_view_page .view_page_wrap .view_tit_wrap{margin-bottom:0}
+.notice_view_page .view_page_wrap .con{padding:30px 10px;font-size:14px;font-weight:400;color:#555}
+.notice_view_page .view_page_wrap .con table td{padding:10px;text-align:center}
+.notice_view_page .view_page_wrap .con span{font-size:14px !important;font-family:'NotoSansCJKkr',sans-serif !important}
+.notice_view_page .view_page_wrap .down_f_wrap{padding:20px 10px;border-top:1px solid #DDDDDD;border-bottom:1px solid #DDDDDD;background-color:#F8F8F8}
+.notice_view_page .view_page_wrap .down_f_wrap button{display:block;padding-left:26px;line-height:20px;background:url(/resources/asset/images/shop/cs/mb_icon_download.png) no-repeat left/18px}
+.notice_view_page .view_page_wrap .down_f_wrap button:not(:first-of-type){margin-top:10px}
+
+/* content cs faq_lists */
+.faq_lists_page .search_box{margin-top:5px;overflow:hidden;border:1px solid #dcdcdc}
+.faq_lists_page .search_box input{float:left;width:calc(100% - 64px);height:50px;line-height:50px;border:0;text-align:left}
+.faq_lists_page .search_box button{float:left;width:64px;height:50px;line-height:50px;border:0;background:url(/resources/asset/images/shop/default/mb_icon_search.png) no-repeat 50%;text-indent:-9999px}
+.faq_lists_page .faq_lists{margin-top:40px;border-top:1px solid #555555}
+.faq_lists_page .faq_lists li{border-bottom:1px solid #DDDDDD}
+.faq_lists_page .faq_lists .q{position:relative;width:100%;padding:15px 10px;text-align:left}
+.faq_lists_page .faq_lists .q::after{content:'';position:absolute;top:22px;right:10px;display:block;width:12px;height:7px;background:url(/resources/asset/images/shop/default/btn_hidden_info_close.png) no-repeat center/12px}
+.faq_lists_page .faq_lists li.on .q::after{background-image:url(/resources/asset/images/shop/default/footer_open_btn.png)}
+.faq_lists_page .faq_lists .q span{position:relative;display:inline-block;padding-left:34px;padding-right:15px;font-family:'NotoSansCJKkr',sans-serif}
+.faq_lists_page .faq_lists .q span::before{content:'Q';position:absolute;top:50%;left:0;width:24px;height:24px;margin-top:-12px;line-height:22px;border-radius:50%;background-color:#111;text-align:center;font-size:14px;color:#fff;text-indent:-1px}
+.faq_lists_page .faq_lists .a{display:none;padding:15px 38px 15px 10px;border-top:1px solid #DDDDDD;background-color:#F8F8F8}
+.faq_lists_page .faq_lists .a .con{position:relative;padding-left:34px;color:#555555}
+.faq_lists_page .faq_lists .a .con font{font-size:14px !important;font-weight:400 !important;font-family:'NotoSansCJKkr',sans-serif !important;color:#555}
+.faq_lists_page .faq_lists .a .con b{font-weight:400 !important;color:#555}
+.faq_lists_page .faq_lists .a .con::before{content:'A';position:absolute;top:0;left:0;width:24px;height:24px;line-height:24px;border-radius:50%;background-color:#BBBBBB;text-align:center;font-size:14px;color:#fff}
+.faq_lists_page .btn_txt{margin:30px 0 80px}
+.faq_lists_page .add_q{margin:80px -20px 0;padding:30px 20px;background-color:#F8F8F8}
+.faq_lists_page .add_q .btn_txt.btn_black{margin:30px 0 0;font-family:'NotoSansCJKkr',sans-serif;text-align:center}
+
+/* content cs qna_lists */
+.qna_lists_page .top{margin-bottom:40px;text-align:center}
+.qna_lists_page .top span{color:#555}
+.qna_lists_page .form_area{border-bottom:0}
+.qna_lists_page .form_area textarea{border:1px solid #DDDDDD;outline:none}
+.qna_lists_page .btn_txt.btn_black{margin-top:30px}
+
+/* content cs special */
+.special_page .form_area textarea{height:250px}
+.special_page .nomem_box .tit{font-size:16px;font-weight:500;color:#111}
+.special_page .nomem_box ul{margin:15px 0;padding:20px;border:1px solid #ddd;background-color:#F8F8F8}
+.special_page .nomem_box ul li{line-height:20px;color:#555}
+.special_page .nomem_box .box.bottom{display:flex;align-items:center;justify-content:space-between}
+.special_page .nomem_box .box.bottom .checkbox label{color:#555}
+.special_page .nomem_box .box.bottom .btn_more{padding-right:10px;line-height:24px;background:url(/resources/asset/images/shop/default/ico_gray_arrow.png) no-repeat right;color:#999}
+
+/* content cs special_ok */
+.content.special_ok_page{padding:60px 20px}
+.special_ok_page .inner{text-align:center}
+.special_ok_page .inner .tit{font-size:20px;font-weight:500}
+.special_ok_page .inner .txt{display:block;margin:20px 0 60px}
+
+/* content cs class */
+.content.class_page{padding:40px 0 120px}
+.class_page .class_table{margin-top:50px;padding:0 20px}
+.class_page .class_table strong{line-height:28px;font-size:20px;font-weight:700;color:#333}
+.class_page .class_table table{margin:15px 0;border-top:1px solid #555;text-align:center}
+.class_page .class_table table .col_01,.class_page table .col_03{width:90px}
+.class_page .class_table table th,.class_page table td{height:50px;border-bottom:1px solid #DDDDDD}
+.class_page .class_table table th.b_right,.class_page table td.b_right{border-right:1px solid #DDDDDD}
+.class_page .class_table table th.b_left,.class_page table td.b_left{border-left:1px solid #DDDDDD}
+.class_page .class_table table th{font-weight:500}
+.class_page .class_table table td{color:#555}
+.class_page .class_table>span{font-size:13px;color:#999}
+
+/* content cs store */
+.content.store_page{padding:30px 20px 120px;overflow:hidden}
+.store_page .con_top{text-align:center}
+.store_page .con_top h3{margin:15px 0;line-height:28px;font-size:20px;font-weight:500}
+.store_page .con_top span{color:#555}
+.store_page .store_tab{position:relative;margin-top:30px}
+.store_page .store_tab .store_tabBtn{border-bottom:1px solid #ddd;overflow:auto;white-space:nowrap}
+.store_page .store_tab .store_tabBtn li{position:relative;display:inline-block;height:50px;padding:0 20px;line-height:50px;text-align:center}
+.store_page .store_tab .store_tabBtn li.on::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background-color:#AC8B68}
+.store_page .store_tab .store_tabBtn li button{padding:5px 10px;color:#111}
+.store_page .store_tab .store_tabBtn li.con_b button{border:1px solid #111;border-radius:5px}
+.store_page .store_tab .store_tabBtn li.on button{color:#AC8B68}
+.store_page .store_tab .store_tabBtn li.con_b.on button{border-color:#AC8B68;background-color:#AC8B68;color:#fff}
+.store_page .store_tab .store_tabCon{display:none}
+.store_page .store_tab .store_tabCon.on{display:block}
+.store_page .store_tab .store_tabCon .root_daum_roughmap{width:100% !important}
+.store_page .store_tab .store_tabCon .tit_wrap{padding:30px 0;line-height:23px;border-bottom:1px solid #ddd;text-align:center;font-size:16px}
+.store_page .store_tab .store_tabCon .tit_wrap i{font-style:normal}
+.store_page .store_tab .store_tabCon .tit_wrap strong{display:block;margin:5px 0;font-weight:700;color:#111}
+.store_page .store_tab .store_tabCon .tit_wrap span{display:block;margin-top:20px;line-height:20px;color:#555}
+.store_page .store_tab .store_tabCon .store_info{padding:30px 0}
+.store_page .store_tab .store_tabCon .store_info .store_img_slide{position:relative}
+.store_page .store_tab .store_tabCon .store_info .store_img_slide .slick-dots{position:absolute;left:50%;bottom:40px;display:flex;height:8px;transform:translateX(-50%)}
+.store_page .store_tab .store_tabCon .store_info .store_img_slide .slick-dots li:not(:first-of-type){margin-left:8px}
+.store_page .store_tab .store_tabCon .store_info .store_img_slide .slick-dots button{width:8px;height:8px;border-radius:100px;background-color:rgba(255,255,255,.3);text-indent:-9999px}
+.store_page .store_tab .store_tabCon .store_info .store_img_slide .slick-dots .slick-active button{width:24px;background-color:#FFFFFF}
+.store_page .store_tab .store_tabCon .store_info .info{margin-top:20px}
+.store_page .store_tab .store_tabCon .store_info .info li:not(:first-of-type){margin-top:20px}
+.store_page .store_tab .store_tabCon .store_info .info li p{margin-bottom:10px;padding-left:25px;line-height:20px;background:url(/resources/asset/images/shop/cs/mb_ico_map.png) no-repeat left;background-size:20px;font-weight:500;color:#111}
+.store_page .store_tab .store_tabCon .store_info .info li p.clock{background-image:url(/resources/asset/images/shop/cs/mb_ico_clock.png)}
+.store_page .store_tab .store_tabCon .store_info .info li p.master{background-image:url(/resources/asset/images/shop/cs/mb_ico_master.png)}
+.store_page .store_tab .store_tabCon .store_info .info li span{display:block;color:#555}
+.store_page .store_tab .store_tabCon .map_area{padding:30px 0;border-top:1px solid #ddd}
+/* .store_page .store_tab .store_tabCon .map_area .store_map{width:100%} */
+.store_page .store_tab .store_tabCon .map_area strong{display:block;margin-bottom:30px;line-height:23px;text-align:center;font-size:16px;font-weight:700;color:#111}
+.store_page .store_tab .store_tabCon .map_area .chk{margin:20px 0}
+.store_page .store_tab .store_tabCon .map_area .chk span{display:block;line-height:20px;font-weight:500;color:#555}
+.store_page .store_tab .store_tabCon .map_area .info li p.vehicle{background-image:url(/resources/asset/images/shop/cs/mb_ico_vehicle.png)}
+.store_page .store_tab .store_tabCon .map_area .info li p.parking{background-image:url(/resources/asset/images/shop/cs/mb_ico_parking.png)}
+
+.store_page .mb_page_tit{position:relative;display:flex;flex-wrap:wrap;margin:-30px -20px 0}
+.store_page .mb_page_tit h2{position:absolute;top:0;right:0;bottom:0;left:0;display:inline-flex;align-items:center;justify-content:center;font-size:18px;font-weight:500;color:#fff}
+.store_page .store_map{margin-top:42px}
+.store_page .store_map .map{margin:0 -20px}
+.store_page .store_map .map #map{width:100%;height:260px}
+.store_page .store_map .search_store{display:flex;flex-wrap:wrap;justify-content:space-between;background:#e8e8e8;margin:0 -20px;padding:15px 20px}
+.store_page .store_map .search_store select{width:63px;height:23px;line-height:23px;border:1px solid #000;background:url(/resources/asset/images/shop/company/mb_ico_arrow_down.png) no-repeat calc(100% - 11px) 50%;background-size:7px;font-family:'Spoqa Han Sans Neo';font-size:10px}
+.store_page .store_map .search_store input{width:calc(100% - 74px);height:23px;line-height:23px;font-family:'Spoqa Han Sans Neo';font-size:10px}
+.store_page .store_map .search_store button{width:63px;height:23px;line-height:23px;background:#090a0b;color:#fff;font-family:'Spoqa Han Sans Neo';font-size:10px}
+.store_page .store_list{padding:45px 32px 0}
+.store_page .store_list li{display:flex;flex-wrap:wrap;align-items:center;margin-top:38px}
+.store_page .store_list li:first-child{margin-top:0}
+.store_page .store_list li .img{width:82px;height:74px;overflow:hidden}
+.store_page .store_list li .con{width:calc(100% - 82px);padding-left:15px;color:#000}
+.store_page .store_list li .con .tit a{font-family:'Spoqa Han Sans Neo';font-size:14px;color:#ac8b68}
+.store_page .store_list li .con .tel{line-height:1;margin:13px 0 3px}
+.store_page .store_list li .con .tel a{font-family:'Spoqa Han Sans Neo';font-size:10px;font-weight:300}
+.store_page .store_list li .con .addr{font-family:'Spoqa Han Sans Neo';font-size:11px;font-weight:300}
+.store_page .fnb_list{padding:34px 45px 0}
+.store_page .fnb_list li{display:flex;flex-wrap:wrap;align-items:center;margin-top:28px}
+.store_page .fnb_list li:first-child{margin-top:0}
+.store_page .fnb_list li .img{width:80px;height:109px;overflow:hidden}
+.store_page .fnb_list li .con{width:calc(100% - 80px);padding-left:23px;color:#000}
+.store_page .fnb_list li .con .tit a{font-family:'Spoqa Han Sans Neo';font-size:13px;font-weight:700;color:#ac8b68}
+.store_page .fnb_list li .con .tel{line-height:1}
+.store_page .fnb_list li .con .tel a{font-family:'Spoqa Han Sans Neo';font-size:11px;font-weight:300}
+.store_page .fnb_list li .con .txt{margin:13px 0 9px;font-family:'Spoqa Han Sans Neo';font-size:10px;font-weight:300;color:#ac8b68}
+.store_page .fnb_list li .con .addr{font-family:'Spoqa Han Sans Neo';font-size:10px}
+
+/* content cs class */
+.content.member_benefit_page{padding:30px 20px 120px;text-align:center}
+.member_benefit_page .benefit_top{display:flex;align-items:center;justify-content:space-between;width:300px;margin:0 auto}
+.member_benefit_page .benefit_top p{width:60px;height:60px;line-height:60px;border-radius:50%;background:url(/resources/asset/images/shop/cs/mb_ico_benefit_green.png) no-repeat center;background-size:50px;font-size:12px;font-family:'Marcellus';color:#fff}
+.member_benefit_page .benefit_top li.silver p{background-image:url(/resources/asset/images/shop/cs/mb_ico_benefit_silver.png)}
+.member_benefit_page .benefit_top li.silver_plus p{background-image:url(/resources/asset/images/shop/cs/mb_ico_benefit_silver_plus.png)}
+.member_benefit_page .benefit_top li.gold p{background-image:url(/resources/asset/images/shop/cs/mb_ico_benefit_gold.png)}
+.member_benefit_page .benefit_top li.diamond p{background-image:url(/resources/asset/images/shop/cs/mb_ico_benefit_diamond.png)}
+.member_benefit_page .benefit_top li.trinity p{background-image:url(/resources/asset/images/shop/cs/mb_ico_benefit_trinity.png)}
+.member_benefit_page .benefit_top span{display:inline-block;margin-top:10px;font-size:13px;color:#999}
+.member_benefit_page .benefit_table{margin-top:30px;border-top:1px solid #DDD}
+.member_benefit_page .benefit_table .table_sub_wrap{display:flex;justify-content:space-between}
+.member_benefit_page .benefit_table .table_sub_wrap li{height:50px;line-height:50px;border-bottom:1px solid #DDD;font-size:13px;white-space:nowrap}
+.member_benefit_page .benefit_table .table_sub_wrap li:first-of-type{width:80px}
+.member_benefit_page .benefit_table .table_sub_wrap li:not(:first-of-type){flex-basis:50%;border-left:1px solid #DDD}
+.member_benefit_page .benefit_table .table_sub_wrap li.t_tit{background-color:#F8F8F8;color:#111111}
+.member_benefit_page table.benefit_table{font-size:12px}
+.member_benefit_page .benefit_table .col01{width:60px}
+.member_benefit_page .benefit_table thead th,.member_benefit_page .benefit_table thead td{height:46px;background-color:#F8F8F8;border-bottom:1px solid #DDD}
+.member_benefit_page .benefit_table thead th{padding-left:7px;text-align:left}
+.member_benefit_page .benefit_table thead td{border-left:1px solid #DDD}
+.member_benefit_page .benefit_table tbody th, .member_benefit_page .benefit_table tbody td{height:65px;border-bottom:1px solid #DDD}
+.member_benefit_page .benefit_table tbody th{padding-left:7px;background-color:#F8F8F8;text-align:left}
+.member_benefit_page .benefit_table tbody td{border-left:1px solid #DDD;color:#555}
+.member_benefit_page .benefit_ntc{margin-top:20px;text-align:left;font-size:12px}
+.member_benefit_page .benefit_ntc span{position:relative;display:block;padding-left:7px;color:#999999}
+.member_benefit_page .benefit_ntc span::before{content:'-';position:absolute;top:0;left:0}
+
+/* content mypage action tasting_lists_page */
+.content.action.tasting .top_info .gift_price li:first-of-type p{position:static;margin-bottom:4px;transform:none}
+.content.action.tasting .top_info .gift_price li a{display:block}
+.content.action.tasting .top_info .gift_price li .btn_switch_module{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+.content.action.tasting .top_info .gift_price li .btn_switch_module .btn_switch_area{min-width:80px;text-align:center}
+.content.action.tasting .top_info .gift_price li .btn_switch_module .btn_switch{display:inline-block;min-width:54px;height:22px;vertical-align:middle}
+.content.action.tasting .top_info .gift_price li .btn_switch_module .btn_switch span{font-family:'NotoSansCJKkr',sans-serif;line-height:22px}
+.content.action.tasting .top_info .gift_price li .btn_switch_module .btn_switch .bar{width:18px;height:18px}
+.content.action.tasting .lnb_wrap .menu{margin:0;overflow-x:auto;white-space:nowrap}
+.content.action.tasting .lnb_wrap .menu li{position:relative;float:none;display:inline-block;width:auto;padding:0 15px}
+.content.action.tasting .lnb_wrap .menu li span{position:relative}
+.content.action.tasting .lnb_wrap .menu li em{position:absolute;top:-10px;right:-20px;display:block;width:20px;height:20px;border-radius:100%;background:#AC8B68;font-size:12px;line-height:20px;text-align:center;color:#fff;text-indent:-1px}
+.content.action.tasting .lnb_wrap .menu li.on a span{padding-left:16px}
+.content.action.tasting .lnb_wrap .menu li .note_info{position:absolute;top:50%;right:0;width:14px;height:14px;margin-top:-5px;background:url(/resources/asset/images/shop/mypage/ico_cir_info.png) no-repeat right;background-size:14px;text-indent:-9999px}
+.content.action.tasting .lnb_wrap .note_info_con{position:absolute;top:40px;right:0;display:none;width:125px;padding:4px 4px 4px 5px;background-color:#333333;line-height:14px;white-space:normal;font-size:12px;color:#fff}
+.content.action.tasting .lnb_wrap .note_info_con::after{content:'';position:absolute;top:-3px;right:10px;display:block;width:9px;height:3px;background:url(/resources/asset/images/shop/mypage/arrow_note_info.png) no-repeat center;}
+.action .lnb_wrap .menu{width:100%}
+.action .lnb_wrap .menu li{width:33.333%}
+.tasting_lists_page .btn.switch{margin:40px 0 20px;text-align:left}
+.tasting_lists_page .btn.switch .btn_switch_area .switch_tit{display:inline-block;margin-left:5px;color:#555}
+.tasting_lists_page .btn.switch .btn_switch_area .btn_switch{display:inline-block;vertical-align:middle}
+.tasting_lists_page .btn.switch .btn_switch_area .btn_switch span{font-family:'NotoSansCJKkr',sans-serif}
+.tasting_lists_page .term_box{margin-top:40px}
+.tasting_lists_page .term_box>.btn_txt{margin-top:10px}
+.tasting_lists_page .tasting_wrap>.o_lists{margin-top:20px}
+.tasting_lists{border-top:1px solid #555}
+.tasting_lists>li{padding:20px 0;border-bottom:1px solid #DDDDDD}
+.tasting_lists .top_date{margin-bottom:10px;font-size:15px;font-weight:500;color:#333}
+.tasting_lists .top_date em{margin-left:5px;font-size:14px;font-weight:400;color:#555;text-decoration:underline}
+.tasting_lists .top_date .txt{margin-left:20px;font-size:13px;font-weight:400;color:#111}
+.tasting_lists .con::after{content:'';display:block;clear:both}
+.tasting_lists .con .img{float:left;display:flex;width:60px;height:60px;background-color:#F8F8F8;justify-content:center;align-items:center}
+.tasting_lists .con .info{float:right;width:calc(100% - 75px);margin-left:15px}
+.tasting_lists .con .info .tit .label{margin-top:-5px}
+.tasting_lists .con .info .tit .label span{margin:5px 8px 0 0;line-height:18px;font-family:'NotoSansCJKkr',sans-serif;font-size:12px;color:#111}
+.tasting_lists .con .info .tit .label .cir{position:relative;padding-left:18px;line-height:17px;font-size:12px;color:#555}
+.tasting_lists .con .info .tit .label .cir::before{content:'';position:absolute;top:50%;left:0;display:block;width:14px;height:14px;margin-top:-7px;border-radius:50%;background-position:center;background-repeat:no-repeat}
+.tasting_lists .con .info .tit .label .cir.red::before{background-color:#A90E2C}
+.tasting_lists .con .info .tit .label .cir.usa::before{background-image:url(/resources/asset/images/shop/mypage/mb_icon_cir_flag_usa.png)}
+.tasting_lists .con .info .tit .label .txt.box{padding:0 10px;border:1px solid #ddd}
+.tasting_lists .con .info .tit strong{display:block;margin:10px 0;line-height:22px;font-size:16px;font-family:'NotoSansCJKkr',sans-serif;color:#333}
+.tasting_lists .con .info .review_area i{line-height:18px;font-style:normal}
+/* 공통으로 분리 jayj */
+.star_area{position:relative;display:inline-block;width:68px;height:12px;margin-left:5px}
+.star_area span{position:absolute;top:50%;left:0;display:block;width:100%;height:100%;margin-top:-6px}
+.star_area .full{background:url(/resources/asset/images/shop/mypage/icon_star_group_full.png) no-repeat left;z-index:10}
+.star_area .full_gold{background:url(/resources/asset/images/shop/mypage/icon_star_group_full_gold.png);z-index:10}
+.star_area .empty{background:url(/resources/asset/images/shop/mypage/icon_star_group_empty.png) no-repeat left}
+.tasting_lists .con .info .review_area .q{position:relative;margin-left:10px}
+.tasting_lists .con .info .review_area .q::after{content:'';position:absolute;top:50%;right:-22px;margin-top:-7px;display:block;width:14px;height:14px;background:url(/resources/asset/images/shop/mypage/ico_question.png) no-repeat center}
+.tasting_lists .con .del_con{float:left;width:100%;margin:25px 0}
+.tasting_lists .con .del_con .date{display:flex;justify-content:space-between;font-family:'NotoSansCJKkr',sans-serif}
+.tasting_lists .con .del_con .date span{width:35px}
+.tasting_lists .con .del_con .date span:last-of-type{color:#999}
+.tasting_lists .con .del_con .state{display:flex;justify-content:space-between}
+.tasting_lists .con .del_con .state span:last-of-type{color:#999}
+.tasting_lists .con .del_con .line{width:calc(100% - 26px);height:10px;margin:5px 13px;border-radius:50px;background-color:#DDDDDD;overflow:hidden}
+.tasting_lists .con .del_con .line .line_red{width:0;height:100%;border-radius:50px;background:linear-gradient(to right, #DC252A, #EA5715)}
+.tasting_lists .btn_area::after{content:'';display:block;clear:both}
+.tasting_lists .btn_area .btn_txt{float:left;width:calc(50% - 2.5px)}
+.tasting_lists .btn_area .btn_txt.wish_btn{width:50px;margin:0;overflow:hidden;text-indent:-9999px;background:url(/resources/asset/images/shop/default/wish.png) 50% no-repeat}
+.tasting_lists .btn_area .btn_txt.wish_btn.on{background-image:url(/resources/asset/images/shop/default/icon_wish_default_gd_on.png)}
+.tasting_lists .btn_area .btn_txt.btn_black{margin-left:5px}
+.tasting_lists .btn_area .btn_txt.btn_cart{width:100%;margin-top:5px}
+.tasting_lists .btn_area.col3{display:flex;justify-content:space-between}
+.tasting_lists .btn_area.col3 .btn_txt.btn_cart,.tasting_lists .btn_area.col3 .btn_txt.btn_black{width:calc(50% - 30px);margin:0 0 0 5px}
+
+.tasting_lists_page .tasting_lists{border:0}
+
+/* content mypage action tasting_view */
+.tasting_view_page .list_top{margin:30px 0 20px}
+.tasting_view_page .list_top p{font-size:13px;font-weight:500;color:#555;word-break:keep-all}
+.tasting_view_page .list_top p span{display:block;font-size:12px;font-weight:400}
+.tasting_view_page .list_top p em{display:block;margin-top:9px;font-size:12px;font-weight:400;color:#999}
+.tasting_review_lists{margin-top:20px}
+.tasting_review_lists>li{border:1px solid #ddd;padding:20px 15px}
+.tasting_review_lists>li:not(:first-child){margin-top:20px}
+.tasting_review_lists>li .top .box.tit p{font-weight:500;color:#111}
+.tasting_review_lists>li .top .box.grade{margin-top:10px;text-align:right}
+.tasting_review_lists>li .top .box.grade .star_area{vertical-align:middle;width:96px;height:16px}
+.tasting_review_lists>li .top .box.grade .star_area span{margin-top:-8px}
+.tasting_review_lists>li .top .box.grade .star_area .full_gold{background:url(/resources/asset/images/shop/mypage/icon_star_group_point_mid.png)}
+.tasting_review_lists>li .top .box.grade .star_area .empty{background:url(/resources/asset/images/shop/mypage/icon_star_group_empty_mid.png)}
+.tasting_review_lists>li .top .box.grade .date{display:inline-block;vertical-align:middle;margin-left:7px;font-size:12px;color:#999}
+.tasting_review_lists>li .con{margin-top:20px}
+.tasting_review_lists>li .con .box{color:#555}
+.tasting_review_lists>li .con .box em{font-weight:500;color:#333}
+.tasting_review_lists>li .con .box.img{margin-top:20px}
+.tasting_review_lists>li .con .box.img ul{display:flex;flex-wrap:wrap}
+.tasting_review_lists>li .con .box.img ul li{width:calc(20% - 4px);height:0;margin-left:5px;padding-bottom:calc(20% - 4px);overflow:hidden}
+.tasting_review_lists>li .con .box.img ul li:first-child{margin-left:0}
+.tasting_review_lists>li .con .box.img ul.more li:nth-child(5){position:relative}
+.tasting_review_lists>li .con .box.img ul.more li:nth-child(5)::before{content:"";display:block;position:absolute;top:0;right:0;bottom:0;left:0;background:linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));z-index:9}
+.tasting_review_lists>li .con .box.img ul.more li:nth-child(5)::after{content:"더보기";display:block;position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);font-size:12px;font-weight:500;color:#fff;text-align:center;z-index:10}
+.review_img_layer .display_table{display:flex;flex-wrap:wrap;background:#fff}
+.review_img_layer.layer .layer_area .layer_con{padding:0}
+.review_img_layer .rv_slide{position:relative}
+.review_img_layer .rv_slide .slide{position:relative}
+.review_img_layer .rv_slide .slide img,
+.review_img_layer .rv_slide .slide video{width:100%}
+.review_img_layer .rv_slide .slide .btn_play{position:absolute;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,0.5);z-index:10}
+.review_img_layer .rv_slide .slide .btn_play span{display:block;position:absolute;top:50%;left:50%;width:80px;height:80px;background:url(/resources/asset/images/shop/default/ico_video_bg.png) no-repeat 50%;margin:-40px 0 0 -40px;text-indent:-9999px;overflow:hidden;z-index:20}
+.review_img_layer .rv_slide .slick-arrow{display:none !important}
+.review_img_layer .rv_slide .slick-dots{position:absolute;bottom:20px;width:100%;display:flex;flex-wrap:wrap;justify-content:center;z-index:100}
+.review_img_layer .rv_slide .slick-dots li{height:8px;margin:0 4px}
+.review_img_layer .rv_slide .slick-dots li button{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.3);text-indent:-9999px;overflow:hidden}
+.review_img_layer .rv_slide .slick-dots li.slick-active button{width:23px;border-radius:100px;background:#fff}
+.review_img_layer .rv_con{padding:20px;text-align:left}
+.review_img_layer .rv_con .tit{font-weight:500;color:#111}
+.review_img_layer .rv_con .grade{margin:10px 0 20px}
+.review_img_layer .rv_con .grade .star_area{width:96px;height:16px;margin-left:0}
+.review_img_layer .rv_con .grade .star_area .full_gold{background:url(/resources/asset/images/shop/mypage/icon_star_group_point_mid.png)}
+.review_img_layer .rv_con .grade .star_area .empty{background:url(/resources/asset/images/shop/mypage/icon_star_group_empty_mid.png) no-repeat left}
+.review_img_layer .rv_con .grade .date{display:inline-block;margin-left:10px;font-size:12px;color:#999}
+.review_img_layer .rv_con .txt{color:#555}
+.review_img_layer .rv_con .txt em{font-weight:500;color:#333}
+
+/* 공통으로 분리 jayj */
+span.star_num{line-height:20px;font-style:normal;font-family:'NotoSansCJKkr',sans-serif;font-weight:500;color:#AC8B68}
+
+/* content mypage action tasting_write_page */
+.tasting_write_page .o_lists{position:relative;padding-top:20px}
+.tasting_write_page .o_lists .css_switch{position:absolute;top:12px;right:0;display:inline-flex;align-items:center}
+.tasting_write_page .o_lists .css_switch p{margin-right:10px;font-size:14px;color:#555}
+.tasting_write_page .o_lists .css_switch .btn_switch{min-width:40px;height:20px}
+.tasting_write_page .o_lists .css_switch .btn_switch .bar{width:16px;height:16px}
+.tasting_write_page .o_lists .css_switch .txt{line-height:20px}
+.tasting_write_page .o_lists .css_switch .left{left:5px}
+.tasting_write_page .o_lists .css_switch .right{right:4px}
+.tasting_write_page .o_lists ul,
+.tasting_write_page .o_lists li{border:0}
+.tasting_write_page .o_lists>ul{margin-top:20px}
+.tasting_write_page .o_lists li .o_wrap .box.wish_cart{position:static;margin-top:20px}
+.tasting_write_page .o_lists li .o_wrap .box.wish_cart .wish{margin-left:0}
+.tasting_write_page.tasting_write_page .tasting_lists{margin-top:20px}
+.tasting_write_page .tasting_lists .form_area{border:0}
+.tasting_write_page .tasting_lists .form_area ul{border:0}
+.tasting_write_page .tasting_lists .form_area li:first-of-type{margin-top:0}
+.tasting_write_page .tasting_lists .form_area .star_select{position:relative;display:inline-block;width:100px;height:18px;margin-top:10px;background:url(/resources/asset/images/shop/mypage/icon_star_group_empty_big.png) no-repeat left}
+.tasting_write_page .tasting_lists .form_area .star_select .star_c{position:absolute;top:0;left:0;visibility:hidden}
+.tasting_write_page .tasting_lists .form_area .star_select .star_wrap::after{content:'';display:block;clear:both}
+.tasting_write_page .tasting_lists .form_area .star_select .star_wrap label{position:relative;float:left;width:20px;height:18px;text-indent:-9999px;z-index:100}
+.tasting_write_page .tasting_lists .form_area .star_select .star_wrap:not(:first-of-type){margin-left:2px}
+.tasting_write_page .tasting_lists .form_area .star_select .star_wrap span{position:absolute;top:0;display:block;width:0;height:100%;background:url(/resources/asset/images/shop/mypage/icon_star_group_point_big.png) no-repeat left;overflow:hidden;z-index:10}
+.tasting_write_page .tasting_lists .form_area textarea{padding:14px;border-color:#DDDDDD;outline:none}
+.tasting_write_page .tasting_lists .form_area .l_tit{display:flex;justify-content:space-between;align-items:center}
+.tasting_write_page .tasting_lists .form_area .l_tit .sub_txt{font-size:12px;font-weight:400;color:#999}
+.tasting_write_page .tasting_lists .form_area .review_star{display:flex;flex-wrap:wrap;align-items:center}
+.tasting_write_page .tasting_lists .form_area .review_star .l_tit{justify-content:left;width:100%;margin-bottom:0}
+.tasting_write_page .tasting_lists .form_area .review_star .l_tit span{margin-left:5px}
+.tasting_write_page .tasting_lists .form_area .review_star .l_tit .sub_txt::after{content:"";display:inline-block;vertical-align:middle;width:14px;height:14px;background:url(/resources/asset/images/shop/mypage/ico_question.png) no-repeat 50% 50%;background-size:100%;margin-left:5px}
+.tasting_write_page .upload_img_lists{display:flex;flex-wrap:wrap;padding-bottom:10px}
+.tasting_write_page .upload_img_lists li{width:calc(50% - 7.5px);margin-top:0;overflow:hidden}
+.tasting_write_page .upload_img_lists li:not(:nth-of-type(2n)){margin-right:15px}
+.tasting_write_page .upload_img_lists li:not(:nth-of-type(-n+2)){margin-top:15px}
+.tasting_write_page .upload_img_area .upload_imgbox{position:relative;width:100%;height:160px;line-height:160px;background:#eee url(/resources/asset/images/shop/mypage/ico_img_upload.png) no-repeat center}
+.tasting_write_page .upload_img_area .upload_imgbox label{position:absolute;top:0;left:0;width:100%;height:100%;text-indent:-9999px}
+.tasting_write_page .upload_img_area .upload_imgbox input[type="file"]{position:absolute;top:0;right:0;bottom:0;left:0;width:0;height:0}
+.tasting_write_page .tasting_lists{border:0}
+.tasting_write_page .tasting_lists>.btn_area{margin-top:20px}
+.tasting_write_page .tasting_lists>.btn_area::after{content:'';display:block;clear:both}
+.tasting_write_page .tasting_lists .checkbox{margin:20px 0 15px}
+.tasting_write_page .tasting_lists .total_mile{padding-top:10px;font-size:14px;font-weight:700;color:#AC8B68}
+
+/* content mypage action tasting_gallery_view_page */
+.content.mypage.tasting_gallery_view_page{padding-top:20px}
+.tasting_gallery_view_page .gallery_lists{margin-top:40px}
+.tasting_gallery_view_page .gallery_lists li{max-height:335px;overflow:hidden}
+.tasting_gallery_view_page .gallery_lists li:not(:first-of-type){margin-top:20px}
+
+/* content mypage action my_note_lists */
+.content.mypage.my_note_lists_page .inner .page_tit .btn_txt span{padding-left:25px;background:url(/resources/asset/images/shop/mypage/ico_more.png) no-repeat left}
+.my_note_lists_page .tasting_lists .top{display:flex;justify-content:space-between;align-items:flex-start}
+.my_note_lists_page .tasting_lists .top .date{font-weight:500;font-family:'NotoSansCJKkr',sans-serif}
+.my_note_lists_page .tasting_lists .top .date i{display:block;margin-top:10px;font-weight:400;font-style:normal}
+.my_note_lists_page .tasting_lists .top .btn_area button{width:58px;height:28px;line-height:26px;margin-left:5px}
+.my_note_lists_page .tasting_lists .top .btn_area button.btn_black{color:#fff}
+.my_note_lists_page .tasting_lists .top .btn_area button.btn_cart{width:90px;margin:0}
+.my_note_lists_page .tasting_lists .con{margin-top:20px}
+.my_note_lists_page .tasting_lists .con .info .tit .label span.year{display:inline-block;width:58px;height:21px;line-height:19px;border:1px solid #ddd;text-align:center;font-size:12px;color:#555}
+.my_note_lists_page .tasting_lists .con .info .extra_text{display:block;font-size:12px;color:#999}
+.my_note_lists_page .btn.switch{margin-top:20px}
+.my_note_lists_page .btn.switch .btn_switch_area .switch_tit{display:inline-block;margin-right:5px;color:#333}
+.my_note_lists_page .btn.switch .btn_switch_area .btn_switch{display:inline-block;vertical-align:middle}
+.my_note_lists_page .btn.switch .btn_switch_area .btn_switch span{font-family:'NotoSansCJKkr',sans-serif}
+
+/* content mypage action my_note_write */
+.note_write_form .upload_img_area .upload_imgbox{position:relative;width:130px;height:130px;line-height:130px;margin:40px auto 20px;background:#eee url(/resources/asset/images/shop/mypage/ico_img_upload.png) no-repeat center}
+.note_write_form .upload_img_area .upload_imgbox label{position:absolute;top:0;left:0;width:100%;height:100%;text-indent:-9999px}
+.note_write_form .upload_img_area .upload_imgbox input[type="file"]{position:absolute;top:0;right:0;bottom:0;left:0;width:0;height:0}
+.note_write_form .form_area{border:0}
+.note_write_form .form_area ul{border:0}
+.note_write_form .form_area .upload_file_area .form_box{position:relative;width:100%;height:50px}
+.note_write_form .form_area .upload_file_area .form_box::after{content:'';display:block;clear:both}
+.note_write_form .form_area .upload_file_area .form_box input#file_txt{float:left;width:calc(100% - 125px);height:100%;border:1px solid #ddd}
+.note_write_form .form_area .upload_file_area .form_box input[type="file"]{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;margin-top:0;opacity:0}
+.note_write_form .form_area .upload_file_area .form_box label,.note_write_form .form_area .upload_file_area .form_box button{float:right;width:120px;height:100%;line-height:50px;margin-left:5px;background-color:#555555;text-align:center;color:#fff}
+.note_write_form .form_area .review_star button.js_title_btn{position:relative;height:50px;border-color:#DDDDDD}
+.note_write_form .form_area .review_star button.js_title_btn::after{content:'';position:absolute;top:50%;right:23px;width:12px;height:7px;margin-top:-3.5px;background:url(/resources/asset/images/shop/default/pc_gray_arrow.png) no-repeat right}
+.note_write_form .form_area .review_star button span{display:inline-block;width:100%;background-position:left;background-repeat:no-repeat}
+.note_write_form .form_area .review_star button span i{display:block;overflow:hidden}
+.note_write_form .form_area .review_star button .full{background-image:url(/resources/asset/images/shop/mypage/icon_star_group_full.png);z-index:10}
+.note_write_form .form_area .review_star button .empty{background-image:url(/resources/asset/images/shop/mypage/icon_star_group_empty.png)}
+.note_write_form .form_area .review_star button img{display:block;max-width:inherit}
+.note_write_form .form_area .review_star ul{width:100%;top:50px;left:0;bottom:auto;padding:10px 0;border:1px solid #ddd;border-top:0;background-color:#fff}
+.note_write_form .form_area .review_star ul li{margin-top:0}
+.note_write_form .form_area textarea{padding:15px 20px;border-color:#ddd;outline:none}
+.my_note_write_page .tasting_wrap>.btn_area button{display:inline-block;width:calc(50% - 2.5px)}
+
+/* content mypage action following_page */
+.following_page .follow_wrap{margin-top:30px}
+.follow_wrap .follow_lists{border-top:1px solid #555}
+.follow_wrap .follow_lists>li{position:relative;padding:20px 0;border-bottom:1px solid #ddd}
+.follow_wrap .follow_lists li .user_info{text-align:center}
+.follow_wrap .follow_lists li .user_info .img{display:flex;width:80px;height:80px;margin:0 auto;line-height:80px;text-align:center;border-radius:50%;background-color:#ddd;justify-content:center;align-items:center;overflow:hidden}
+.follow_wrap .follow_lists li .user_info .txt{display:inline-block;margin-top:10px;line-height:28px;font-size:20px;font-weight:500;color:#111}
+.follow_wrap .follow_lists li .icon_wrap{margin-top:20px}
+.follow_wrap .follow_lists li .icon_wrap>ul{display:flex;justify-content:space-between;text-align:center}
+.follow_wrap .follow_lists li .icon_wrap>ul li{width:25%}
+.follow_wrap .follow_lists li .icon_wrap>ul li span{display:block;margin-bottom:10px;padding-top:29px;background:no-repeat top;font-size:13px;line-height:18px;color:#999}
+.follow_wrap .follow_lists li .icon_wrap>ul li.follower span{background-image:url(/resources/asset/images/shop/mypage/mb_ico_follow_user.png);background-size:27px}
+.follow_wrap .follow_lists li .icon_wrap>ul li.following span{background-image:url(/resources/asset/images/shop/mypage/mb_ico_following_user.png);background-size:23px}
+.follow_wrap .follow_lists li .icon_wrap>ul li.helpful span{background-image:url(/resources/asset/images/shop/mypage/mb_ico_follow_helpful.png);background-size:24px}
+.follow_wrap .follow_lists li .icon_wrap>ul li.unhelpful span{background-image:url(/resources/asset/images/shop/mypage/mb_ico_follow_unhelpful.png);background-size:24px}
+.follow_wrap .follow_lists li .icon_wrap>ul li i{line-height:22px;font-size:16px;font-weight:500;font-style:normal;font-family:'NotoSansCJKkr',sans-serif;color:#111}
+.follow_wrap .follow_lists li .del{position:absolute;top:20px;right:0;width:18px;height:18px;background:url(/resources/asset/images/shop/mypage/ico_del_lightgray.png) no-repeat center/18px}
+.following_page .inner>.btn_area,.follower_page .inner>.btn_area{margin-top:30px}
+
+
+/* content mypage action follwer_note */
+.follwer_note_page .follow_wrap{margin-top:30px}
+.follwer_note_page .top_info .tit span{color:#AC8B68}
+.follwer_note_page .tasting_lists{border-top:1px solid #555}
+.follwer_note_page .tasting_lists .con{margin-top:20px}
+.follwer_note_page .tasting_lists .con .btn_icon_area{height:30px;line-height:30px;margin-top:20px}
+.follwer_note_page .tasting_lists .con .btn_icon_area button{width:24px;height:24px;text-indent:-9999px;background:url(/resources/asset/images/shop/mypage/ico_wish.png) no-repeat center/24px}
+.follwer_note_page .tasting_lists .con .btn_icon_area button.wish.on{background-image:url(/resources/asset/images/shop/mypage/ico_wish_on.png)}
+.follwer_note_page .tasting_lists .con .btn_icon_area button.cart{margin-left:30px;background-image:url(/resources/asset/images/shop/mypage/ico_cart.png)}
+.follwer_note_page .tasting_lists .con .info .extra_text{display:block;font-size:12px;color:#999}
+.follwer_note_page .tasting_lists .con .info .tit .label span.year{display:inline-block;width:58px;height:21px;line-height:19px;border:1px solid #ddd;text-align:center}
+
+/* content mypage action qna_lists_page */
+.mypage.qna_lists_page .top_info p{color:#999}
+.mypage.qna_lists_page .top_info p span{color:#111;font-weight:700;font-family:'NotoSansCJKkr',sans-serif}
+.mypage.qna_lists_page .faq_lists{margin-top:30px}
+.mypage.qna_lists_page .faq_lists li{border-bottom:1px solid #DDDDDD}
+.mypage.qna_lists_page .faq_lists li:first-of-type{border-top:1px solid #555}
+.mypage.qna_lists_page .faq_lists .q{position:relative;display:flex;flex-wrap:wrap;width:100%;padding:20px 32px 20px 54px;text-align:left}
+.mypage.qna_lists_page .faq_lists .q::after{content:'';position:absolute;top:26px;right:10px;display:block;width:12px;height:7px;background:url(/resources/asset/images/shop/default/btn_hidden_info_close.png) no-repeat center/12px}
+.mypage.qna_lists_page .faq_lists li.on .q::after{background-image:url(/resources/asset/images/shop/default/footer_open_btn.png)}
+.mypage.qna_lists_page .faq_lists .q span{position:relative;display:block;line-height:18px;font-size:13px;font-family:'NotoSansCJKkr',sans-serif}
+.mypage.qna_lists_page .faq_lists .q span.category{font-weight:500;color:#555555}
+.mypage.qna_lists_page .faq_lists .q span.txt{width:60%;margin-left:5px;color:#555;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:break-word}
+.mypage.qna_lists_page .faq_lists .q span.date{width:50%;margin-top:10px;color:#999}
+.mypage.qna_lists_page .faq_lists .q span.state{width:50%;margin-top:10px;text-align:right;font-weight:700;color:#999}
+.mypage.qna_lists_page .faq_lists .q span.state.q_clear{color:#49A543}
+.mypage.qna_lists_page .faq_lists .q span.category::before{content:'Q';position:absolute;top:0;left:-44px;width:24px;height:24px;line-height:22px;border-radius:50%;background-color:#111;text-align:center;font-size:14px;color:#fff;text-indent:-1px}
+.mypage.qna_lists_page .faq_lists .con{display:none;padding:0 10px 10px;border-top:1px solid #DDDDDD;background-color:#F8F8F8;font-size:13px;color:#555555}
+.mypage.qna_lists_page .faq_lists .con::after{content:'';display:block;clear:both}
+.mypage.qna_lists_page .faq_lists .con .q_txt{padding:20px 0}
+.mypage.qna_lists_page .faq_lists .con .a_txt{position:relative;padding:20px 0 20px 44px;border-top:1px solid #DDDDDD}
+.mypage.qna_lists_page .faq_lists .con .a_txt::before{content:'A';position:absolute;top:20px;left:0;width:24px;height:24px;line-height:24px;border-radius:50%;background-color:#BBBBBB;text-align:center;font-size:14px;color:#fff}
+.mypage.qna_lists_page .faq_lists .con .del_btn{float:right;display:block;width:84px;height:28px;line-height:28px;margin:0}
+.mypage.qna_lists_page .btn_txt{margin:30px 0 80px}
+.mypage.qna_lists_page .add_q .btn_txt.btn_black{margin:30px 0 0;font-family:'NotoSansCJKkr',sans-serif;text-align:center}
+
+/* content mypage note balance_lists_page */
+.balance_lists_page .inner .my_gift .js_tabCon .list li .info{padding-top:10px}
+
+/* content community brandstoty_lists */
+.brandstoty_lists_page .brandstoty_lists li{border-radius:5px;overflow:hidden}
+.brandstoty_lists_page .brandstoty_lists li:not(:first-of-type){margin-top:30px}
+.brandstoty_lists_page .brandstoty_lists li a{position:relative;display:block;width:100%}
+.brandstoty_lists_page .brandstoty_lists li a .img img{width:100%}
+.brandstoty_lists_page .brandstoty_lists li a .text{position:absolute;left:0;bottom:0;display:flex;width:100%;height:100%;background-color:rgba(0, 0, 0, 0.4);text-align:center;flex-direction:column;justify-content:center;align-items:center}
+.brandstoty_lists_page .brandstoty_lists li a .text .sub_tit{display:block;margin-bottom:20px;padding-bottom:2px;line-height:17px;border-bottom:1px solid #AC8B68;font-size:12px;font-weight:700;color:#fff;letter-spacing:0}
+.brandstoty_lists_page .brandstoty_lists li a .text strong{display:block;font-size:20px;font-weight:700;color:#fff;letter-spacing:0}
+.brandstoty_lists_page .inner>.btn_txt{margin-top:30px}
+
+/* content community brandstoty_view */
+.brandstoty_view_page .view_page_wrap .view_tit_wrap{margin:0 0 20px}
+.brandstoty_view_page .img{padding-bottom:30px;border-bottom:1px solid #ddd;text-align:center}
+.brandstoty_view_page .__se_tbl td{max-width:150px;padding:20px}
+
+/* content community magazine_lists */
+.magazine_lists_page .magazine_lists .img{border-radius:5px;overflow:hidden}
+.magazine_lists_page .magazine_lists .img img{width:100%}
+.magazine_lists_page .magazine_lists .con{position:relative;display:flex;padding:20px 0 30px}
+.magazine_lists_page .magazine_lists .con .p_img{width:80px;margin-right:10px}
+.magazine_lists_page .magazine_lists .con .txt{flex-basis:calc(100% - 124px)}
+.magazine_lists_page .magazine_lists .con .txt .name{display:block;margin-bottom:5px;line-height:25px;font-size:18px;font-weight:700;color:#000}
+.magazine_lists_page .magazine_lists .con .txt span{display:block}
+.magazine_lists_page .magazine_lists .con a{position:absolute;top:20px;right:0;width:34px;height:34px;border:1px solid #000;;background:#fff url(/resources/asset/images/shop/community/ico_more.png) no-repeat center/30px}
+
+.magazine_con_lists_page .view_top{width:100%;padding:30px 0;background:linear-gradient(335.97deg,rgba(102,102,102,0.1) 9.54%,rgba(192,192,192,0.041102) 72.81%,rgba(255,255,255,0) 99.17%)}
+.magazine_con_lists_page .view_top .img{max-width:260px;max-height:320px;margin:0 auto}
+.magazine_con_lists_page .view_top .txt{width:260px;margin:20px auto 0;text-align:center}
+.magazine_con_lists_page .view_top .txt span{display:block}
+.magazine_con_lists_page .view_top .txt .name{display:block;margin-top:10px;line-height:28px;font-size:20px;font-weight:700;color:#000}
+.magazine_con_lists_page .btn_txt{margin-top:30px}
+.magazine_con_lists_page .magazine_view_lists li:not(:first-of-type){margin-top:30px}
+.magazine_con_lists_page .magazine_view_lists li a{display:block}
+.magazine_con_lists_page .magazine_view_lists li .img{position:relative;overflow:hidden;padding-bottom:56.25%}
+.magazine_con_lists_page .magazine_view_lists li .img img{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-width:none;width:100%;height:100%;object-fit:cover}
+/* .magazine_con_lists_page .magazine_view_lists li .con strong{display:block;margin-top:20px;font-size:18px;font-weight:500}
+.magazine_con_lists_page .magazine_view_lists li .con span{display:block;margin-top:10px;color:#555} */
+
+.magazine_con_lists_page .magazine_view_lists li>a{position:relative;display:block;width:100%;border-radius:5px;overflow:hidden}
+.magazine_con_lists_page .magazine_view_lists li>a .text{position:absolute;left:0;bottom:0;display:flex;width:100%;height:100%;padding:0 20px;background-color:rgba(0, 0, 0, 0.4);text-align:center;flex-direction:column;justify-content:center;align-items:center}
+.magazine_con_lists_page .magazine_view_lists li>a .text .sub_tit{display:block;margin-bottom:20px;padding-bottom:2px;line-height:17px;border-bottom:1px solid #AC8B68;font-size:12px;font-weight:700;color:#fff;letter-spacing:0}
+.magazine_con_lists_page .magazine_view_lists li>a .text strong{display:block;font-size:20px;font-weight:700;color:#fff;letter-spacing:0;word-break:keep-all}
+
+/* content community magazine_con_view */
+.content.community .view_page_wrap .btn_box, .event_view_page .view_page_wrap .btn_box{position:relative;margin-bottom:20px;text-align:right}
+.content.community .view_page_wrap .btn_box .share_btn, .event_view_page .view_page_wrap .btn_box .share_btn{width:30px;height:30px;border:1px solid #ddd;border-radius:50%;background:url(/resources/asset/images/shop/community/ico_btn_share.png) no-repeat center;text-indent:100%;white-space:nowrap;overflow:hidden}
+.content.community .view_page_wrap .btn_box .share_box, .event_view_page .view_page_wrap .btn_box .share_box{position:absolute;top:40px;right:0;display:none;line-height:30px;padding:10px 48px 10px 10px;border:1px solid #ddd;background-color:#fff}
+.content.community .view_page_wrap .btn_box .share_box a, .event_view_page .view_page_wrap .btn_box .share_box a{float:left;width:30px;height:30px;line-height:30px;border-radius:50%;background-color:#000;text-align:center;font-size:12px;color:#fff;font-family:'NotoSansCJKkr',sans-serif}
+.content.community .view_page_wrap .btn_box .share_box a.facebook, .event_view_page .view_page_wrap .btn_box .share_box a.facebook{font-size:0;background:#1877F2 url(/resources/asset/images/shop/community/ico_facebook.png) no-repeat center;text-indent:-9999px}
+.content.community .view_page_wrap .btn_box .share_box a.twitter, .event_view_page .view_page_wrap .btn_box .share_box a.twitter{font-size:0;background:#2AA9E0 url(/resources/asset/images/shop/community/ico_twitter.png) no-repeat center;text-indent:-9999px}
+.content.community .view_page_wrap .btn_box .share_box a:not(:first-of-type), .event_view_page .view_page_wrap .btn_box .share_box a:not(:first-of-type){margin-left:10px}
+.content.community .view_page_wrap .btn_box .share_box button.hide_btn, .event_view_page .view_page_wrap .btn_box .share_box button.hide_btn{position:absolute;top:50%;right:10px;width:18px;height:18px;margin-left:20px;background:url(/resources/asset/images/shop/community/ico_btn_close.png) no-repeat center;vertical-align:middle;transform:translateY(-9px)}
+.magazine_con_view_page .view_tit_wrap{padding:0 12px 20px;margin-bottom:20px;border-bottom:1px solid #DDDDDD}
+.magazine_con_view_page .view_tit_wrap .tit{line-height:22px;font-size:16px;font-weight:500;color:#333}
+.magazine_con_view_page .view_tit_wrap .date{display:inline-block;margin-top:20px;font-style:normal;font-size:12px;color:#999;font-family:'NotoSansCJKkr',sans-serif}
+.magazine_con_view_page .view_content .con{margin-bottom:30px;padding-bottom:30px;border-bottom:1px solid #ddd}
+.magazine_con_view_page .related_prd, .video_con_view_page .related_prd{margin-top:50px}
+.magazine_con_view_page .related_prd strong, .video_con_view_page .related_prd strong{line-height:28px;font-size:20px;font-weight:500}
+.magazine_con_view_page .related_prd .prd_list, .video_con_view_page .related_prd .prd_list{margin-top:30px}
+.magazine_con_view_page .related_prd .n_prd_list, .video_con_view_page .related_prd .n_prd_list{margin-top:30px}
+.magazine_con_view_page .inner>.btn_area{margin-top:30px}
+
+/* content community press_lists */
+.press_lists_page .press_left .search_box{height:50px;border:1px solid #eee}
+.press_lists_page .press_left .search_box input{text-align:left}
+.press_lists_page .press_left .lists_top{display:flex;justify-content:space-between;align-items:center;margin-top:40px}
+.press_lists_page .press_left .lists_top span{color:#999999}
+.press_lists_page .press_left .lists_top span i{font-style:normal;color:#111}
+.press_lists_page .press_left .lists_top select{width:108px;height:40px;line-height:40px}
+.press_lists_page .press_left .press_lists{margin-top:20px;border-top:1px solid #555}
+.press_lists_page .press_left .press_lists li{display:flex;width:100%;padding:30px 0;border-bottom:1px solid #ddd}
+.press_lists_page .press_left .press_lists li .img{width:80px}
+.press_lists_page .press_left .press_lists li .con{width:100%;padding-left:20px}
+.press_lists_page .press_left .press_lists li .con a{display:block}
+.press_lists_page .press_left .press_lists li .con .tit{font-size:16px;font-weight:500;color:#333;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.press_lists_page .press_left .press_lists li .con>span{display:-webkit-box;margin:5px 0 10px;overflow:hidden;text-overflow:ellipsis;-webkit-line-clamp:3;-webkit-box-orient:vertical;color:#555}
+.press_lists_page .press_left .press_lists li .con .date{display:block;font-style:normal;color:#999}
+.press_lists_page .press_left .btn_txt{margin-top:30px}
+.press_lists_page .press_right>div{margin-top:63px}
+.press_lists_page .press_right .tit_wrap{display:flex;padding-bottom:20px;justify-content:space-between;align-items:center;border-bottom:1px solid #ddd}
+.press_lists_page .press_right .tit_wrap .tit{font-size:20px;font-weight:500;color:#111}
+.press_lists_page .press_right .tit_wrap .btn_more{width:34px;height:34px;border:1px solid #111;background:#fff url(/resources/asset/images/shop/community/ico_more.png) no-repeat center/30px;box-sizing:border-box;text-indent:-9999px}
+.press_lists_page .press_right .magazine_wrap .magazine_lists{margin-top:20px}
+.press_lists_page .press_right .magazine_wrap .magazine_lists li{position:relative;padding-left:15px}
+.press_lists_page .press_right .magazine_wrap .magazine_lists li::after{content:'';position:absolute;top:50%;left:0;width:5px;height:5px;margin-top:-2.5px;background-color:#555}
+.press_lists_page .press_right .magazine_wrap .magazine_lists li:not(:first-of-type){margin-top:10px}
+.press_lists_page .press_right .magazine_wrap .magazine_lists li a{display:block}
+.press_lists_page .press_right .magazine_wrap .magazine_lists li a span{display:block;line-height:20px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#555}
+.press_lists_page .press_right .recommend .wine_lists{margin-top:20px}
+.press_lists_page .press_right .recommend .wine_lists li:not(:first-of-type){margin-top:15px}
+.press_lists_page .press_right .recommend .wine_lists li::after{content:'';display:block;clear:both}
+.press_lists_page .press_right .recommend .wine_lists .img{float:left;display:flex;width:75px;height:75px;padding:6.25px;background-color:#F8F8F8;justify-content:center;align-items:center}
+.press_lists_page .press_right .recommend .wine_lists .img img{display:inline-block;width:100%}
+.press_lists_page .press_right .recommend .wine_lists .info{float:right;width:calc(100% - 90px);margin-left:15px}
+.press_lists_page .press_right .recommend .wine_lists .info .tit .label span{line-height:18px;font-family:'NotoSansCJKkr',sans-serif;font-size:12px}
+.press_lists_page .press_right .recommend .wine_lists .info .tit .label span:not(:first-of-type){margin-left:8px}
+.press_lists_page .press_right .recommend .wine_lists .info .tit .label .cir{position:relative;padding-left:18px;line-height:17px}
+.press_lists_page .press_right .recommend .wine_lists .info .tit .label .cir::before{content:'';position:absolute;top:50%;left:0;display:block;width:14px;height:14px;margin-top:-7px;border-radius:50%;background-position:center;background-repeat:no-repeat}
+.press_lists_page .press_right .recommend .wine_lists .info .tit .label .cir.red::before{background-color:#A90E2C}
+.press_lists_page .press_right .recommend .wine_lists .info .tit .label .cir.white::before{background-color:#fff;border:1px solid #000}
+.press_lists_page .press_right .recommend .wine_lists .info .tit .label .cir.usa::before{background-image:url(/resources/asset/images/shop/main/ico_flag_usa.png);background-size:14px}
+.press_lists_page .press_right .recommend .wine_lists .info .tit .label .cir.argentina::before{background-image:url(/resources/asset/images/shop/main/ico_flag_argentina.png);background-size:14px}
+.press_lists_page .press_right .recommend .wine_lists .info .tit .label .cir.austria::before{background-image:url(/resources/asset/images/shop/main/.png);background-size:14px}
+.press_lists_page .press_right .recommend .wine_lists .info .tit .label .cir.portugal::before{background-image:url(/resources/asset/images/shop/main/mb_icon_cir_flag_usa.png);background-size:14px}
+.press_lists_page .press_right .recommend .wine_lists .info .tit .label .cir.australia::before{background-image:url(/resources/asset/images/shop/main/ico_flag_newzeal.png);background-size:14px}
+.press_lists_page .press_right .recommend .wine_lists .info .tit .label .cir.chile::before{background-image:url(/resources/asset/images/shop/main/ico_flag_chile.png);background-size:14px}
+.press_lists_page .press_right .recommend .wine_lists .info .tit .label .cir.france::before{background-image:url(/resources/asset/images/shop/main/ico_flag_france.png);background-size:14px}
+.press_lists_page .press_right .recommend .wine_lists .info .tit .label .cir.germany::before{background-image:url(/resources/asset/images/shop/main/ico_flag_germ.png);background-size:14px}
+.press_lists_page .press_right .recommend .wine_lists .info .tit .label .cir.italy::before{background-image:url(/resources/asset/images/shop/main/ico_flag_italia.png);background-size:14px}
+.press_lists_page .press_right .recommend .wine_lists .info .tit .label .cir.spain::before{background-image:url(/resources/asset/images/shop/main/ico_flag_spain.png);background-size:14px}
+.press_lists_page .press_right .recommend .wine_lists .info .tit strong{display:block;margin-top:10px;line-height:20px;font-family:'NotoSansCJKkr',sans-serif;color:#333}
+
+/* content community press_view */
+.press_view_page .view_content .con{padding-bottom:30px;border-bottom:1px solid #ddd}
+.press_view_page .view_content .con .img{margin-bottom:30px;text-align:center}
+.press_view_page .view_content .con span{display:block;text-align:left;color:#555}
+.press_view_page .view_content>.btn_txt{margin-top:30px}
+.press_view_page .btn_box{position:relative;text-align:right}
+.press_view_page .btn_box .share_btn{width:30px;height:30px;border:1px solid #ddd;border-radius:50%;background:url(/resources/asset/images/shop/community/ico_btn_share.png) no-repeat center;text-indent:100%;white-space:nowrap;overflow:hidden}
+.press_view_page .btn_box .share_box{position:absolute;top:40px;right:0;display:none;line-height:30px;padding:10px;border:1px solid #ddd;background-color:#fff}
+.press_view_page .btn_box .share_box a{float:left;width:30px;height:30px;line-height:30px;border-radius:50%;background-color:#000;text-align:center;font-size:12px;color:#fff;font-family:'NotoSansCJKkr',sans-serif}
+.press_view_page .btn_box .share_box a.facebook{font-size:0;background:#1877F2 url(/resources/asset/images/shop/community/ico_facebook.png) no-repeat center;text-indent:-9999px}
+.press_view_page .btn_box .share_box a.twitter{font-size:0;background:#2AA9E0 url(/resources/asset/images/shop/community/ico_twitter.png) no-repeat center;text-indent:-9999px}
+.press_view_page .btn_box .share_box a:not(:first-of-type){margin-left:10px}
+.press_view_page .btn_box .share_box button.hide_btn{width:18px;height:18px;margin-left:20px;background:url(/resources/asset/images/shop/community/ico_btn_close.png) no-repeat center;vertical-align:middle}
+.press_view_page .n_prd_list{margin-top:30px}
+
+/* content mypage action keeping_write */
+.keeping_write_page .note_write_form{padding-bottom:20px;border-bottom:1px solid #DDD}
+.keeping_write_page .note_write_form::after{content:'';display:block;clear:both}
+.keeping_write_page .note_write_form .form_area ul li{float:none;width:100%}
+.keeping_write_page .tab_area .note_write_form ul li button::after{display:none}
+.keeping_write_page .js_tabCon{padding-top:40px}
+.keeping_write_page .js_tabCon>.btn_area button{display:inline-block;width:calc(50% - 2.5px)}
+.keeping_write_page .o_lists>ul>li{border-bottom:0}
+.keeping_write_page .o_lists li .top_date .store{margin-left:10px;padding-left:23px;background:url(/resources/asset/images/shop/default/ico_store.png) 0 50% no-repeat;color:#AC8B68}
+.keeping_write_page .o_lists li .o_wrap .box dl{align-items:center}
+.keeping_write_page .o_lists li .o_wrap .box.price{margin-top:20px}
+.keeping_write_page .o_lists li .o_wrap .box.price ins{text-decoration:none;font-size:16px;font-weight:700;color:#111}
+.keeping_write_page .o_lists li .o_wrap .box.status{margin-top:10px;font-size:14px}
+.keeping_write_page .o_lists li .o_wrap .box.status em{font-weight:700;color:#111}
+.keeping_write_page .upload_img_area .upload_imgbox{margin-top:0}
+.keeping_write_page .form_area{margin-top:20px;padding-bottom:0;border-bottom:0}
+.keeping_write_page .form_area ul{border-top:0}
+.keeping_write_page .progressbar .fill::before{top:-50px}
+.keeping_write_page .js_tabCon>.btn_area{margin-top:30px}
+
+/* content mypage action keeping_lists */
+.keeping_lists_page .tab_area{margin-top:30px}
+.keeping_lists_page .tasting_lists{margin:0;border:0}
+.keeping_lists_page .tasting_lists .box.status::after{content:'';display:block;clear:both}
+.keeping_lists_page .tasting_lists .box.status .state{float:right;margin-left:10px;line-height:20px;font-weight:700;color:#666}
+.keeping_lists_page .tasting_lists .box.status .txt{float:right;margin-left:10px;line-height:20px;font-weight:700;color:#49A543}
+.keeping_lists_page .tasting_lists .box.status.pickup .txt{color:#999999}
+.keeping_lists_page .tasting_lists .box.status .date{line-height:20px;text-align:right;color:#999999}
+.keeping_lists_page .tasting_lists .btn_wrap{margin-top:20px;font-weight:500}
+.keeping_lists_page .tasting_lists .btn_wrap .btn_txt.btn_white{color:#AC8B68}
+.keeping_lists_page .o_lists{margin-top:40px}
+.keeping_lists_page .o_lists>ul>li{padding:20px 0;border-top:0;border-bottom:1px solid #DDD;white-space:normal}
+.keeping_lists_page .o_lists>ul>li:first-of-type{border-top:1px solid #AC8B68}
+.keeping_lists_page .o_lists .more_info .option_info{margin-top:10px}
+.keeping_lists_page .o_lists .more_info .option_info span{position:relative;padding-right:10px;margin-right:10px;color:#999}
+.keeping_lists_page .o_lists .more_info .option_info span:not(:last-of-type)::after{content:'';position:absolute;top:50%;right:0;width:1px;height:20px;margin-top:-10px;background-color:#DDDDDD}
+.keeping_lists_page .o_lists li .o_wrap{padding:0 0 20px;border:0}
+.keeping_lists_page .o_lists li .o_wrap .box.con .more_info{min-height:0}
+.keeping_lists_page .o_lists li .o_wrap .box.con .more_info .prd_name a{font-size:16px}
+.keeping_lists_page .o_lists li .o_wrap .box.wish_cart{top:110px}
+
+/* content mypage action keeping_end_lists */
+.keeping_end_lists_page .o_lists{margin-top:40px}
+.keeping_end_lists_page .o_lists>ul{margin:0;border-top:1px solid #AC8B68}
+.keeping_end_lists_page .o_lists>ul>li{padding:20px 0}
+.keeping_end_lists_page .o_lists>ul>li:not(:first-of-type){border-top:1px solid #DDD}
+.keeping_end_lists_page .o_lists>ul>li:last-of-type{border-bottom:1px solid #DDD}
+.keeping_end_lists_page .o_lists li .o_wrap{padding:0 0 20px;border-top:0}
+.keeping_end_lists_page .o_lists li .o_wrap .box.con .more_info{min-height:0}
+.keeping_end_lists_page .o_lists .more_info .option_info{margin-top:10px}
+.keeping_end_lists_page .o_lists .more_info .option_info span{position:relative;padding-right:10px;margin-right:10px;line-height:20px;color:#999}
+.keeping_end_lists_page .o_lists .more_info .option_info span:not(:last-of-type)::after{content:'';position:absolute;top:2px;right:0;display:block;width:1px;height:15px;background-color:#ddd}
+.keeping_end_lists_page .o_lists .status::after{content:'';display:block;clear:both}
+.keeping_end_lists_page .o_lists .status .state{float:right;margin-left:10px;line-height:20px;font-weight:700;color:#666}
+.keeping_end_lists_page .o_lists .status .txt{float:right;margin-left:10px;line-height:20px;font-weight:700;color:#999}
+.keeping_end_lists_page .o_lists .status .date{line-height:20px;text-align:right;color:#999999}
+.keeping_end_lists_page .tab_area ul li{white-space:normal}
+
+.keeping_pro_write_page .o_lists li .top_date .store{margin-left:5px;padding-left:23px;background:url(/resources/asset/images/shop/default/ico_store.png) 0 50% no-repeat;font-size:14px;color:#AC8B68}
+
+/* content member forgoten_id */
+.forgoten_id_page .top_txt p,.forgoten_pw_page .top_txt p{text-align:center;color:#555}
+.forgoten_id_page .form_area,.forgoten_pw_page .form_area{margin-top:40px;padding-bottom:0;border-bottom:0}
+.forgoten_id_page .btn_area,.forgoten_pw_page .btn_area{margin-top:30px}
+.forgoten_id_page input[type=text]::-ms-clear,.forgoten_pw_page input[type=text]::-ms-clear{display:none}
+
+/* content member forgoten_id_ok */
+.forgoten_id_ok_page .top_txt p,.forgoten_pw_ok_page .top_txt p{line-height:28px;text-align:center;font-size:20px;font-weight:500;color:#333}
+.forgoten_id_ok_page .btn_area,.forgoten_pw_ok_page .btn_area{margin-top:60px}
+
+/* content member change_pw */
+.change_pw_page .form_area{padding-bottom:0;border-bottom:0}
+.change_pw_page .btn_area{margin-top:30px}
+
+/* content member change_pw_ok */
+.change_pw_lnb.lnb_wrap .select_brand .my_value span{padding:0;background:none}
+.change_pw_ok_page .top_txt p{line-height:28px;text-align:center;font-size:20px;font-weight:500;color:#333}
+.change_pw_ok_page .btn_area{margin-top:60px}
+
+/* content member policy privacy_con */
+.member.policy .policy_lists{border-top:1px solid #555555}
+.member.policy .policy_lists li{border-bottom:1px solid #DDDDDD}
+.member.policy .policy_lists li .tit{position:relative;width:100%;height:60px;line-height:60px;padding:0 10px;text-align:left;color:#555555}
+.member.policy .policy_lists li .tit::after{content:'';position:absolute;top:26px;right:10px;display:block;width:12px;height:7px;background:url(/resources/asset/images/shop/default/btn_hidden_info_close.png) no-repeat}
+.member.policy .policy_lists li.on .tit::after{background-image:url(/resources/asset/images/shop/default/footer_open_btn.png)}
+.member.policy .policy_lists li .con_wrap{display:none;padding:20px 38px 20px 10px;border-top:1px solid #DDDDDD;background-color:#F8F8F8;color:#555555}
+.member.policy .policy_lists li:first-of-type .con_wrap{display:block}
+
+.content.mypage.gift_confirm_page{max-width:450px;margin:0 auto;padding:0}
+.content.mypage.gift_confirm_page .inner{padding:0 20px 100px}
+.gift_confirm_page .confirm_top{padding:11px 0 10px;border-bottom:1px solid #DDD;text-align:center}
+.gift_confirm_page .confirm_top h2{display:inline-block;width:70px}
+.gift_confirm_page .inner .tit{display:block;margin:30px 0 20px;padding-bottom:20px;border-bottom:1px solid #555;text-align:center;font-size:20px}
+.gift_confirm_page .inner .tit b{font-weight:500}
+.gift_confirm_page .inner .img{text-align:center}
+.gift_confirm_page .inner table{margin:20px 0 30px;text-align:left}
+.gift_confirm_page .inner table .col01{width:94px}
+.gift_confirm_page .inner table tr:not(:first-of-type) th{padding-top:10px;color:#555;vertical-align:top}
+.gift_confirm_page .inner table tr:not(:first-of-type) td{padding-top:10px;color:#555;vertical-align:top}
+.gift_confirm_page .inner .gift_receipt_info{margin:0 -20px;padding:20px;background-color:#F8F8F8}
+.gift_confirm_page .inner .gift_receipt_info p{line-height:22px;margin-bottom:10px;font-size:16px;font-weight:500;color:#999}
+.gift_confirm_page .inner .gift_receipt_info li{display:block;line-height:18px;font-size:13px;color:#999}
+.gift_confirm_page .inner .btn_area{margin-top:40px}
+.gift_confirm_page .inner .btn_area::after{content:'';display:block;clear:both}
+.gift_confirm_page .inner .btn_area button{float:left;width:calc(50% - 2.5px)}
+.gift_confirm_page .inner .btn_area button:not(:first-of-type){margin-left:5px}
+
+/* company brand */
+.content.brand_page{padding:30px 20px 40px}
+.brand_page .country_tab .js_tabBtn{border-bottom:1px solid #DDDDDD;overflow:auto;white-space:nowrap}
+.brand_page .country_tab .js_tabBtn li{display:inline-block;width:112px;height:50px;line-height:50px;text-align:center}
+.brand_page .country_tab .js_tabBtn li button{padding-left:40px;background:url(/resources/asset/images/shop/default/icon_rec_flag_france.png) no-repeat left;font-size:15px;font-weight:700;color:#999}
+.brand_page .country_tab .js_tabBtn li.italia button{background-image:url(/resources/asset/images/shop/default/icon_rec_flag_italia.png)}
+.brand_page .country_tab .js_tabBtn li.spain button{background-image:url(/resources/asset/images/shop/default/icon_rec_flag_spain.png)}
+.brand_page .country_tab .js_tabBtn li.germ button{background-image:url(/resources/asset/images/shop/default/icon_rec_flag_germ.png)}
+.brand_page .country_tab .js_tabBtn li.aut button{background-image:url(/resources/asset/images/shop/default/icon_rec_flag_argentina-1.png)}
+.brand_page .country_tab .js_tabBtn li.usa button{background-image:url(/resources/asset/images/shop/default/icon_rec_flag_usa.png)}
+.brand_page .country_tab .js_tabBtn li.chile button{background-image:url(/resources/asset/images/shop/default/icon_rec_flag_chile.png)}
+.brand_page .country_tab .js_tabBtn li.aus button{background-image:url(/resources/asset/images/shop/default/icon_rec_flag_aus.png)}
+.brand_page .country_tab .js_tabBtn li.newzeal button{background-image:url(/resources/asset/images/shop/default/icon_rec_flag_newzeal.png)}
+.brand_page .country_tab .js_tabBtn li.argentina button{background-image:url(/resources/asset/images/shop/default/icon_rec_flag_argentina.png)}
+.brand_page .country_tab .js_tabBtn li.on{border-bottom:3px solid #111}
+.brand_page .country_tab .js_tabBtn li.on button{color:#111111}
+.brand_page .country_tab .js_tabCon{padding-top:30px;text-align:center}
+.brand_page .country_tab h3{margin-bottom:30px;line-height:28px;font-size:20px;font-weight:500;color:#333}
+.brand_page .country_tab .country_info img{width:170px}
+.brand_page .country_tab .country_info strong{display:block;margin-top:10px;font-size:16px;font-weight:500;color:#333}
+.brand_page .country_tab .country_con_lists{margin-top:30px}
+.brand_page .country_tab .country_con_lists>.tit{line-height:22px;font-size:16px;font-weight:500}
+.brand_page .country_tab .country_con_lists>.tit:not(:first-child){margin-top:30px}
+.brand_page .country_tab .country_con_lists ul{margin-top:20px}
+.brand_page .country_tab .country_con_lists li{display:flex;justify-content:center}
+.brand_page .country_tab .country_con_lists li:not(:first-of-type){margin-top:30px}
+.brand_page .country_tab .country_con_lists li .img{flex-basis:50%}
+.brand_page .country_tab .country_con_lists li .txt{flex-basis:50%}
+.brand_page .country_tab .country_con_lists li .txt .tit_wrap{position:relative}
+.brand_page .country_tab .country_con_lists li .txt .tit_wrap::after{content:'';position:absolute;top:50%;left:-32px;display:block;width:10px;height:10px;margin-top:-5px;border-radius:50%;background-color:#AC8B68}
+.brand_page .country_tab .country_con_lists li .txt .tit_wrap .sub_tit{display:block;line-height:22px;font-size:16px;font-weight:500}
+.brand_page .country_tab .country_con_lists li .txt .tit_wrap em{line-height:17px;font-size:12px}
+.brand_page .country_tab .country_con_lists li .txt .explain{display:block;margin-top:10px;word-break:keep-all}
+.brand_page .country_tab .country_con_lists li .txt .explain span{display:inline-block;max-width:165px}
+.brand_page .country_tab .country_con_lists li.text_r .img{padding:20px 24px 20px 0;border-right:2px solid #AC8B68;text-align:right}
+.brand_page .country_tab .country_con_lists li.text_r .txt{padding:85px 0 0 26px;text-align:left}
+.brand_page .country_tab .country_con_lists li.text_l .img{padding:20px 0 20px 26px;text-align:left}
+.brand_page .country_tab .country_con_lists li.text_l .txt{padding:85px 24px 0 0;border-right:2px solid #AC8B68;text-align:right}
+.brand_page .country_tab .country_con_lists li.text_l .txt .tit_wrap::after{left:auto;right:-30px}
+
+/* company whatisnew */
+.whatisnew_page.content{padding:0}
+.whatisnew_page .inner{position:relative}
+.whatisnew_page .line_box:not(:first-of-type){border-top:10px solid #EEEEEE}
+.whatisnew_page .new_con{padding:60px 20px}
+.whatisnew_page .new_con .box.img{text-align:center}
+.whatisnew_page .new_con .box.img .img_f_con{position:relative;width:221px;margin:0 auto;padding-bottom:110px;text-align:left}
+.whatisnew_page .new_con .box.img .img_f_con .img_01{width:77px}
+.whatisnew_page .new_con .box.img .img_f_con .img_02{position:absolute;top:40px;right:0;width:162px;box-shadow:0px 0px 40px 30px rgb(0 0 0 / 5%);border-radius:30px;z-index:1}
+.whatisnew_page .new_con.float_con .box.txt{margin-top:30px;text-align:center}
+.whatisnew_page .new_con .box.txt .tit_wrap{padding:0 20px;text-align:center}
+.whatisnew_page .new_con .box.txt .tit_wrap strong{line-height:1.4;font-size:20px;font-weight:700;color:#000;word-break:keep-all}
+.whatisnew_page .new_con .box.txt .tit_wrap p{margin-top:10px;line-height:1.4;font-size:13px;color:#555555}
+.whatisnew_page .new_con .box.txt .btn_more{margin-top:30px}
+.whatisnew_page .new_con .box.txt .btn_more span{padding-right:16px;background:url(/resources/asset/images/shop/default/pc_ico_cate_arrow.png) no-repeat right}
+.whatisnew_page .new_con .box.txt .logo{display:block;width:230px;margin:30px auto 0}
+.whatisnew_page .new_con .box.txt .step{position:relative;display:inline-block;margin:30px auto 0}
+.whatisnew_page .new_con .box.txt .step::after{content:'';position:absolute;top:41.75px;left:0;display:block;width:100%;height:11px;background:url(/resources/asset/images/shop/company/new_right_arrow.png) no-repeat left/contain;clear:both;transform:translateY(-50%);z-index:-1}
+.whatisnew_page .new_con .box.txt .step.col_03::after{left:83px;background-image:url(/resources/asset/images/shop/company/new_right_arrow_col03.png)}
+.whatisnew_page .new_con .box.txt .step li{float:left}
+.whatisnew_page .new_con .box.txt .step li:not(:last-of-type){padding-right:42px}
+.whatisnew_page .new_con.card .box.txt .step li:last-of-type .step_img::after{content:'';position:absolute;right:-5px;bottom:-7px;display:block;width:30px;height:30px;border:2px solid #D5C5B4;border-radius:50%;background:#fff url(/resources/asset/images/shop/company/ico_plus.png) no-repeat center;background-size:9px;box-sizing:border-box}
+.whatisnew_page .new_con .box.txt .step li .step_img{position:relative;display:flex;align-items:center;justify-content:center;width:83px;height:83px;border-radius:50%;border:2px solid #D5C5B4;background-color:#FFF}
+.whatisnew_page .new_con .box.txt .step li .step_img.cart{padding-right:5px}
+.whatisnew_page .new_con .box.txt .step li .step_img.mouth{padding:25px 0 0 5px}
+.whatisnew_page .new_con .box.txt .step li span{display:block;margin-top:5px;text-align:center;font-weight:500;color:#AC8B68}
+.whatisnew_page .new_con .box.txt .food_lists{position:relative;height:144px;margin-top:30px}
+.whatisnew_page .new_con .box.txt .food_lists li{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:center;width:80px;height:80px;border-radius:50%;border:2px solid #D5C5B4;background-color:#fff;box-shadow:3px 3px 10px 3px rgba(0, 0, 0, 0.1)}
+.whatisnew_page .new_con .box.txt .food_lists li span{display:block;margin-top:2px;font-size:13px;color:#AC8B68}
+.whatisnew_page .new_con .box.txt .food_lists li.lemon{top:40px;left:0}
+.whatisnew_page .new_con .box.txt .food_lists li.bacon{bottom:0px;left:40%}
+.whatisnew_page .new_con .box.txt .food_lists li.cheese{top:0;right:0}
+.whatisnew_page .more{background:linear-gradient(180deg, #ECECEB 0%, #E7E8E8 100%)}
+.whatisnew_page .more .new_con{padding:60px 20px 0}
+.whatisnew_page .more .new_con .btn_txt{margin-top:30px}
+.whatisnew_page .more .new_con .box.img img{margin-top:40px}
+.whatisnew_page .more .new_con.filter .box.img{margin:0 -20px}
+.whatisnew_page .more .new_con.filter .box.img img{margin-top:20px}
+.whatisnew_page .more .new_con.gift_card{border-radius:20px;background-color:#AA8966}
+.whatisnew_page .more .new_con.gift_card .box.txt strong{color:#fff}
+.whatisnew_page .more .new_con.gift_card .box.txt p{color:#fff}
+.whatisnew_page .more .new_con.gift_card .btn_txt{background-color:#fff}
+.whatisnew_page .more .new_con.gift_card .box.img{width:250px;margin:0 auto}
+.whatisnew_page .more .new_con.pro .box.img img{width:270px;margin-left:30px}
+
+/* header mb_lnb */
+.header .mb_lnb{position:fixed;bottom:0;left:0;width:100%;background-color:#EEEEEE;z-index:500;max-width: 465px; margin: 0 auto; right: 0;}
+.header .mb_lnb ul{display:flex;justify-content:space-between;align-items:center}
+.header .mb_lnb ul li{flex:1;text-align:center}
+.header .mb_lnb ul li>button{width:100%;padding:9px 0 14px;font-size:11px;font-weight:700;color:#000}
+.header .mb_lnb ul li>button>span{display:block;padding-top:32px;background:url(/resources/asset/images/shop/default/mb_ico_arrow_left.png) no-repeat center/24px}
+.header .mb_lnb ul li.btn_order button span{background:url(/resources/asset/images/shop/default/calendar.png) center 3px no-repeat;background-size:25px}
+.header .mb_lnb ul li.btn_search button span{background:url(/resources/asset/images/shop/default/wineList.png) center 3px no-repeat;background-size:34px}
+.header .mb_lnb ul li.btn_home button span{background:url(/resources/asset/images/shop/default/mb_ico_bar_home.png) center 0 no-repeat;background-size:45px;text-indent:-9999px}
+.header .mb_lnb ul li.btn_wish button span{background:url(/resources/asset/images/shop/default/decanter.png) center 3px no-repeat;background-size:27px}
+.header .mb_lnb ul li.btn_mypage button span{background:url(/resources/asset/images/shop/default/mb_ico_bar_mypage.png) center 0 no-repeat;background-size:27px}
+.header .mb_lnb ul li.btn_barcode button span{background:url(/resources/asset/images/shop/default/mb_ico_barcode_beta.png) center 0 no-repeat;background-size:30px;text-indent:-9999px}
+
+/* header push_layer */
+.layer.push_layer .layer_area{height:100vh;background-color:#F8F8F8}
+.layer.push_layer .layer_area .layer_tit{background-color:#fff}
+.layer.push_layer .layer_area .layer_con{padding:20px}
+.layer.push_layer .layer_area .layer_con li:not(:first-of-type){margin-top:20px}
+.layer.push_layer .layer_area .layer_con li .btn.switch{display:flex;justify-content:space-between;align-items:center;margin:0 -20px;padding:15px 20px;background-color:#fff}
+.layer.push_layer .layer_area .layer_con li .btn.switch .tit{font-size:16px;font-weight:500}
+.layer.push_layer .layer_area .layer_con li .css_switch .btn_switch{min-width:60px}
+.layer.push_layer .layer_area .layer_con li .css_switch .btn_switch_check:checked + .btn_switch_area .btn_switch{background-color:#AC8B68}
+.layer.push_layer .layer_area .layer_con li .info{margin-top:10px;font-size:13px;text-align:left;color:#555}
+
+/* header push_lists_layer */
+.layer.push_lists_layer .layer_area{height:100vh}
+.layer.push_lists_layer .layer_area .layer_con{padding:20px;text-align:left}
+.layer.push_lists_layer .layer_area .layer_con li{padding-bottom:20px}
+.layer.push_lists_layer .layer_area .layer_con li:not(:first-of-type){padding-top:20px;border-top:1px solid #DDDDDD}
+.layer.push_lists_layer .layer_area .layer_con li .tit{font-size:16px;font-weight:500}
+.layer.push_lists_layer .layer_area .layer_con li .info{margin-top:5px;font-size:13px;color:#555}
+.layer.push_lists_layer .layer_area .layer_con li .img{margin-top:15px}
+.layer.push_lists_layer .layer_area .layer_con li .img img{width:100%}
+.layer.push_lists_layer .layer_area .layer_con li .btn_box{display:flex;justify-content:space-between;align-items:center;margin-top:15px}
+.layer.push_lists_layer .layer_area .layer_con li .btn_box .date{font-size:13px;color:#999}
+.layer.push_lists_layer .layer_area .layer_con li .btn_box .btn_more{display:inline-block;width:97px;height:28px;line-height:28px;border:1px solid #ddd;color:#555}
+
+/* content mypage shopping mypage */
+.mypage_index_header.header .top .wrap{height:77px;padding:8px 0 15px}
+.mypage_index_header.header .top .wrap h1.logo{display:block}
+.mypage_index_header.header .bottom{display:block}
+
+.mypage_index_header.header.fixed .top .wrap{height:50px}
+.mypage_index_header.header.fixed .top .wrap h1.logo{display:none}
+.mypage_index_header.header.fixed .bottom{display:none}
+
+.mypage_page .grade_area{display:flex;flex-wrap:wrap;padding-bottom:20px;    align-items: center;}
+.mypage_page .grade_area .grade_info{width:105px}
+.mypage_page .grade_area .grade_info strong{display:inline-block;width:66px;height:66px;line-height:66px;border-radius:50%;background:url(/resources/asset/images/shop/mypage/mb_ico_grade_status_silver.png) no-repeat center;background-size:66px;text-align:center;font-family:'Marcellus';font-size:20px;color:#fff}
+.mypage_page .grade_area .grade_info.g200 strong,
+.mypage_page .grade_area .grade_info.gold strong{background-image:url(/resources/asset/images/shop/mypage/mb_ico_grade_status_gold.png)}
+.mypage_page .grade_area .grade_info.g300 strong,
+.mypage_page .grade_area .grade_info.diamond strong{background-image:url(/resources/asset/images/shop/mypage/mb_ico_grade_status_diamond.png);font-size:13px}
+.mypage_page .grade_area .grade_info.g400 strong,
+.mypage_page .grade_area .grade_info.trinity strong{background-image:url(/resources/asset/images/shop/mypage/mb_ico_grade_status_trinity.png);font-size:14px}
+.mypage_page .grade_area .grade_info.g999 strong{background-image:url(/resources/asset/images/shop/mypage/mb_ico_grade_status_999.png);font-size:14px}
+.mypage_page .grade_area .grade_info p{margin:18px 0 5px;line-height:17px;font-size:12px;color:#BB473A}
+.mypage_page .grade_area .grade_info span{word-break:keep-all;font-size:12px;color:#555}
+.mypage_page .grade_area .user_info{width:calc(100% - 125px);margin-left:20px;font-size:12px}
+.mypage_page .grade_area .user_info .name strong b{font-size:24px;font-weight:500}
+.mypage_page .grade_area .user_info .name span{display:block;color:#999}
+.mypage_page .grade_area .user_info .grade{margin:20px 0 10px}
+.mypage_page .grade_area .user_info .grade::after{content:'';display:block;clear:both}
+.mypage_page .grade_area .user_info .grade p{margin-bottom:10px;font-size:14px;font-weight:500}
+.mypage_page .grade_area .user_info .grade span{float:left;height:24px;line-height:24px;margin-right:5px;padding:0 16px;background-color:#497D3A;font-family:'Marcellus';color:#fff}
+.mypage_page .grade_area .user_info .grade span.silver{background-color:#B3B3B3}
+.mypage_page .grade_area .user_info .grade span.gold{background-color:#AC8B68}
+.mypage_page .grade_area .user_info .grade span.diamond{background-color:#8CD0DC}
+.mypage_page .grade_area .user_info .grade span.trinity{background-color:#B52F2F}
+.mypage_page .grade_area .user_info .grade button{float:left;width:auto;height:24px;line-height:22px;padding:0 16px;border-radius:0;font-size:12px;font-weight:500}
+.mypage_page .grade_area .user_info>span{color:#555}
+.mypage_page .grade_area .wine_profile{flex-basis:100%;height:32px;margin:10px 0;line-height:30px;border:1px solid #46675c;background-color:#cee0da;font-weight:500;color:#46675c}
+.mypage_page .grade_area .wine_profile em{padding:4px 0 0 20px; background:url(/resources/asset/images/shop/mypage/decanter.png) no-repeat left/15px}
+.mypage_page .mypage_info{margin:0 -20px;border-top:10px solid #EEE;border-bottom:10px solid #EEE}
+.mypage_page .mypage_info ul{display:table;width:100%;text-align:center}
+.mypage_page .mypage_info ul li{display:table-cell;width:calc(100%/3);height:70px;vertical-align:middle}
+.mypage_page .mypage_info ul li a{display:flex;flex-direction:column;justify-content:center;align-items:center;height:100%}
+.mypage_page .mypage_info ul li p{font-size:12px;color:#555}
+.mypage_page .mypage_info ul li span{position:relative;line-height:22px;margin-top:5px;font-size:16px;font-weight:500;color:#111}
+.mypage_page .mypage_info ul:not(:first-of-type){border-top:1px solid #ddd}
+.mypage_page .mypage_info ul li:not(:first-of-type){border-left:1px solid #ddd}
+.mypage_page .mypage_info ul li span.on::after{content:'';position:absolute;top:4px;right:-6px;display:block;width:6px;height:6px;border-radius:50%;background-color:#B5302F}
+.mypage_page .slide_area{margin:0 -20px}
+.mypage_page .slide_area .slide{position:relative}
+.mypage_page .slide_area .slide .txt_wrap{position:absolute;top:0;left:0;display:flex;width:100%;height:100%;flex-direction:column;justify-content:center;align-items:center}
+.mypage_page .slide_area .slide .txt_wrap .txt{font-weight:500;color:#D79984}
+.mypage_page .slide_area .slide .txt_wrap .tit{font-weight:500;color:#fff}
+.mypage_page .slide_area .slick-dots{position:absolute;left:50%;bottom:-18px;display:flex;height:8px;transform:translateX(-50%)}
+.mypage_page .slide_area .slick-dots li:not(:first-of-type){margin-left:8px}
+.mypage_page .slide_area .slick-dots button{width:8px;height:8px;border-radius:100px;background-color:#BBB;text-indent:-9999px}
+.mypage_page .slide_area .slick-dots .slick-active button{width:24px;background-color:#AC8B68}
+.mypage_page .newest_order{margin:18px -20px 0;padding:30px 20px;border-bottom:10px solid #EEE}
+.mypage_page .newest_order p.tit{margin-bottom:18px;font-size:18px;font-weight:700;color:#111}
+.mypage_page .newest_order li{display:flex;flex-wrap:wrap}
+.mypage_page .newest_order .img{width:100px;}
+.mypage_page .newest_order .wine_info{width:calc(100% - 100px);padding-left:15px}
+.mypage_page .newest_order .wine_info .store{padding-left:18.5px;background:url(/resources/asset/images/shop/mypage/placeholder_pink.png) no-repeat left/13.5px;color:#46675c; margin-bottom:0.3em;}
+.mypage_page .newest_order .wine_info .state{margin:5px 0;font-size:13px}
+.mypage_page .newest_order .wine_info .state.pickup{color:#B5302F; margin-left:22px;}
+.mypage_page .newest_order .wine_info strong{font-size:16px;color:#111}
+.mypage_page .newest_order .btn_area{margin-top:10px;width:100%}
+.mypage_page .bottom_lnb .lnb_wrap>li{padding-top:30px}
+.mypage_page .bottom_lnb .lnb_wrap p.lnb_tit{margin-bottom:15px;font-size:16px;font-weight:500;color:#111}
+.mypage_page .bottom_lnb .lnb_wrap ul{border-top:1px solid #AC8B68}
+.mypage_page .bottom_lnb .lnb_wrap ul li{position:relative;height:54px;border-bottom:1px solid #DDD;color:#999}
+.mypage_page .bottom_lnb .lnb_wrap ul li::after{content:'';position:absolute;top:50%;right:10px;display:block;width:6px;height:10px;margin-top:-3px;background:url(/resources/asset/images/shop/default/mb_gnb_menu_list.png) no-repeat center}
+.mypage_page .bottom_lnb .lnb_wrap ul li a{display:block;line-height:54px}
+
+/* order barcode_view */
+.content.barcode_view_page{padding:0}
+.barcode_view_page .confirm_top{height:60px;padding:11px 0;border-bottom:1px solid #DDD;text-align:center}
+.barcode_view_page .confirm_top h2{display:inline-block;width:70px}
+.barcode_view_page .inner{padding:30px 20px 120px}
+.barcode_view_page .barcode_con_area{border:1px solid #A90E2C;border-radius:10px;overflow:hidden}
+.barcode_view_page .barcode_con_area h3{height:30px;line-height:30px;background-color:#A90E2C;text-align:center;font-weight:700;color:#fff}
+.barcode_view_page .barcode_con_area h3 em{margin:0 2px;font-size:16px;color:#AC8B68}
+.barcode_view_page .barcode_con_area .o_lists{padding:0 20px}
+.barcode_view_page .barcode_con_area .o_lists ul{border-top:0}
+.barcode_view_page .barcode_con_area .o_lists li{padding:0 20px 20px;border:0}
+.barcode_view_page .barcode_con_area .o_lists li:last-of-type{border-bottom:0}
+.barcode_view_page .barcode_con_area .o_lists li .o_wrap{border-color:#ddd}
+.barcode_view_page .barcode_con_area .o_lists li:first-of-type .o_wrap{border-top:0}
+.barcode_view_page .barcode_con_area .o_lists li::after{content:'';display:block;clear:both}
+.barcode_view_page .barcode_con_area .o_lists li .o_wrap .box.con .more_info{min-height:60px}
+.barcode_view_page .barcode_con_area .o_lists li .box.ip_img{width:60px}
+.barcode_view_page .barcode_con_area .o_lists li .box.ip_img .checkbox{display:block;width:24px;margin-bottom:10px}
+.barcode_view_page .barcode_con_area .o_lists li .box.ip_img .checkbox input[type='checkbox'] + label{padding-top:24px}
+.barcode_view_page .barcode_con_area .o_lists li .box.ip_img a{display:block}
+.barcode_view_page .barcode_con_area .o_lists li .box.ip_img picture{height:60px;padding:5px}
+.barcode_view_page .barcode_con_area .o_lists li .box.ip_img picture img{position:static;transform:translate(0, 0);max-width:60px}
+.barcode_view_page .barcode_con_area .o_lists li .box.con .more_info .prd_name{margin:10px 0}
+.barcode_view_page .barcode_con_area .o_lists li .box.price del{line-height:20px;margin-right:4px;color:#999}
+.barcode_view_page .barcode_con_area .o_lists li .box.price ins{line-height:22px;text-decoration:none;font-size:16px;font-weight:700;color:#111}
+.barcode_view_page .barcode_con_area .o_lists li.search_empty .barcode_num{display:block;margin-bottom:10px;font-size:18px;color:#A90E2C}
+.barcode_view_page .barcode_con_area .o_lists li.search_empty{padding:20px;text-align:center}
+.barcode_view_page .barcode_con_area .o_lists li.search_empty .tit{line-height:22px;font-size:16px;font-weight:500;color:#333}
+.barcode_view_page .barcode_con_area .o_lists li.search_empty .search_box{margin:20px 0}
+.barcode_view_page .barcode_con_area .o_lists li.search_empty .info{font-size:13px;color:#A90E2C}
+.barcode_view_page .inner .box_area{margin-top:20px}
+.barcode_view_page .inner .box_area .tit{display:block;margin-bottom:15px;font-size:20px;font-weight:500;color:#111}
+.barcode_view_page .inner .box_area.qty{display:flex;justify-content:space-between}
+.barcode_view_page .inner .box_area.qty input{width:80px;height:34px;line-height:34px;font-size:12px;text-align:center}
+.barcode_view_page .inner .store_lists ul::after{content:'';display:block;clear:both}
+.barcode_view_page .inner .store_lists li{float:left;margin:0 5px 5px 0}
+.barcode_view_page .inner .store_lists li input{position:absolute;top:0;left:0;width:0;height:0;visibility:hidden}
+.barcode_view_page .inner .store_lists li label{display:inline-block;line-height:18px;padding:8px 15px;border:1px solid #ddd;border-radius:50px;color:#999}
+.barcode_view_page .inner .store_lists li input:checked + label{border-color:#111;color:#111}
+.barcode_view_page .inner .btn_area{margin-top:40px}
+
+/* mypage account taste_profile_page */
+.content.taste_profile_page{padding-top:0}
+.taste_profile_page .layer_tit{height:50px;line-height:50px;border-bottom:1px solid #dcdcdc;font-size:16px;font-weight:500;color:#111;text-align:center}
+.taste_profile_page .layer_tit em{color:#AC8B68}
+.taste_profile_page .layer_con{padding-top:30px;text-align:center}

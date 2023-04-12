@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.hwine.mapper.product.ProductMapper">
+	<!-- SQL File Name : ProductMapper.xml Description : 상품 관련 mapper ==개정이력======================================== 
+		수정일 수정자 Version Query Id ========== ======= ========= =================== 
+		2023.03.06 노희진 1.0 상품 세부, 상품 재고 정보 2023.03.13 노희진 1.1 정렬, 무한 스크롤 추가된 상품 목록 
+		2023.03.16 노희진 1.2 필터링된 상품 목록 2023.03.19 노희진 1.3 유사 와인 추천 목록 로직 수정 -->
+	<!-- depth1 -->
+	<resultMap type="org.hwine.domain.product.ProductVO"
+		id="productMap">
+		<result property="w_id" column="w_id" />
+		<result property="w_name" column="w_name" />
+		<result property="w_img" column="w_img" />
+		<result property="w_price" column="w_price" />
+		<result property="w_name_kor" column="w_name_kor" />
+		<result property="w_alcohol" column="w_alcohol" />
+		<result property="w_sweetness" column="w_sweetness" />
+		<result property="w_acidity" column="w_acidity" />
+		<result property="w_body" column="w_body" />
+		<result property="w_tannin" column="w_tannin" />
+		<result property="w_ferment" column="w_ferment" />
+		<result property="w_temperature" column="w_temperature" />
+		<result property="w_volume" column="w_volume" />
+		<result property="w_type" column="w_type" />
+		<result property="w_volume" column="w_volume" />
+		<result property="w_register_date" column="w_register_date" />
+		<result property="w_update_date" column="w_update_date" />
+		<result property="wv_variety" column="wv_variety" />
+		<result property="wv_variety_kor" column="wv_variety_kor" />
+		<result property="wr_nation" column="wr_nation" />
+		<result property="wr_nation_kor" column="wr_nation_kor" />
+		<result property="wr_area" column="wr_area" />
+		<result property="wr_area_kor" column="wr_area_kor" />
+		<result property="wm_maker" column="wm_maker" />
+		<result property="wm_maker_kor" column="wm_maker_kor" />
+		<collection property="aromaNameList"
+			resultMap="aromaNameMap"></collection>
+	</resultMap>
+
+	<!-- depth2 -->
+	<resultMap type="org.hwine.domain.product.WineAromaNameVO"
+		id="aromaNameMap">
+		<result property="wa_name" column="wa_name" />
+		<result property="was_name" column="was_name" />
+		<result property="wa_img_url" column="wa_img_url" />
+		<collection property="foodNameList" resultMap="foodNameMap"></collection>
+	</resultMap>
+
+	<!-- depth3 -->
+	<resultMap type="org.hwine.domain.product.WineFoodNameVO"
+		id="foodNameMap">
+		<result property="wf_name" column="wf_name" />
+		<result property="wfs_name" column="wfs_name" />
+		<result property="wf_img_url" column="wf_img_url" />
+	</resultMap>
+
+	<!-- 상품 상세 -->
+	<select id="selectProductItem" resultMap="productMap">
+		SELECT *
+		FROM
+		product_view
+		WHERE w_id=#{w_id}
+	</select>
+
+	<!-- 상품 재고정보 -->
+	<select id="productStockInfo"
+		resultType="org.hwine.domain.product.ProductVO">
+		SELECT a.w_id, a.sws_stock, a.s_code, b.s_name
+		FROM
+		store_wine_stocks a
+		INNER JOIN stores b
+		ON a.s_code=b.s_code
+		WHERE
+		w_id=#{w_id}
+	</select>
+
+	<!-- 상품 디캔팅 북 -->
+	<select id="productDecantingBook"
+		resultType="org.hwine.domain.product.DecantingBookVO">
+		<![CDATA[
+
+ 		SELECT *
+		FROM (
+		    SELECT rownum as row_num, a.*
+            from (
+            select db.*, f.m_nickname, f.m_profile_img, f_cnt 
+		    FROM decanting_books db, (select ms.m_email, ms.m_nickname, m_grade, ms.m_profile_img, (select count(*) from follows where f_followee = ms.m_email and f_status = 1) f_cnt 
+                                      from members ms 
+                                     ) f
+		    WHERE db.w_id= #{w_id} and f.m_email = db.m_email and  m_grade = 1
+		    ORDER BY f_cnt DESC
+            ) a
+		) 
+		WHERE row_num between #{start} and #{end}
+		]]>
+
+	</select>
+
+	<!-- 상품 디캔팅 북 총 개수 -->
+	<select id="decantingBookCnt" resultType="int">
+		SELECT COUNT(*)
+		FROM
+		decanting_books db, members m
+		WHERE w_id = #{w_id}
+		and db.m_email = m.m_email
+		and m.m_grade = 1
+		and db_hide = 0
+		<if test='name != ""'>
+			and db.m_email != #{name}
+		</if>
+	</select>
+
+	<!-- 와인 리스트 (정렬o) -->
+	<select id="productList"
+		resultType="org.hwine.domain.product.ProductVO">
+		SELECT *
+		FROM (
+		SELECT rownum rnum, e.*
+		FROM (
+		SELECT c.*, d.avg_db_rating
+		FROM (
+		SELECT DISTINCT b.w_id, w_name, w_name_kor, w_type, w_img,
+		wr_nation_kor,
+		wr_area_kor, wv_variety, wv_variety_kor, w_price,
+		w_update_date, NVL(total_wine_sales, 0) total_wine_sales
+		FROM (
+		SELECT
+		w_id, SUM(poi_quantity) total_wine_sales
+		FROM pickup_order_items
+		GROUP
+		BY w_id
+		) a
+		RIGHT JOIN product_view b
+		ON a.w_id=b.w_id
+		) c
+		LEFT JOIN (
+		SELECT w_id, ROUND(AVG(db_rating), 0) avg_db_rating
+		FROM
+		decanting_books
+		GROUP BY w_id
+		) d
+		ON c.w_id=d.w_id
+		<if test='sort != null and sort neq ""'>
+			<choose>
+				<when test='sort.equals("lowprice")'> <!-- 낮은 가격순 -->
+					order by w_price ASC
+				</when>
+				<when test='sort.equals("highprice")'> <!-- 높은 가격순 -->
+					order by w_price DESC
+				</when>
+				<when test='sort.equals("recent")'> <!-- 신상품순 -->
+					order by w_update_date DESC
+				</when>
+				<when test='sort.equals("totalsales")'> <!-- 판매량 많은순 -->
+					order by total_wine_sales DESC
+				</when>
+				<when test='sort.equals("rating")'> <!-- 평점 좋은순 -->
+					order by avg_db_rating DESC
+				</when>
+			</choose>
+		</if>
+		) e
+		)
+		WHERE rnum BETWEEN #{startIdx} AND #{endIdx}
+	</select>
+
+	<!-- 유사 와인 리스트 (wm_maker가 같은 와인 추천) -->
+	<select id="relatedProductList"
+		resultType="org.hwine.domain.product.ProductVO">
+		<![CDATA[
+			
+		    SELECT 
+		        DISTINCT b.w_id, w_name, w_name_kor, w_type, w_img, wr_nation_kor, wr_area_kor, wv_variety, wv_variety_kor, w_price, w_update_date, NVL(total_wine_sales, 0) total_wine_sales, wm_maker
+		    FROM (
+		        SELECT w_id, sum(poi_quantity) total_wine_sales
+		        FROM pickup_order_items
+		        GROUP BY w_id
+		    ) a
+		    RIGHT OUTER JOIN product_view b
+		    ON a.w_id=b.w_id
+		    WHERE wm_maker = (
+		        SELECT DISTINCT wm_maker
+		        FROM product_view
+		        WHERE w_id=#{w_id}
+		    )
+		    AND b.w_id != #{w_id}
+		]]>
+	</select>
+
+	<select id="productDecantingBookLogin"
+		resultType="org.hwine.domain.product.DecantingBookVO">
+		<![CDATA[
+ 		SELECT *
+		FROM (
+		    SELECT rownum as row_num, a.*
+            from (
+            select db.*, f.m_nickname, f.m_profile_img, f_cnt , f_id, f_status
+		    FROM decanting_books db, (   select ms.m_email, ms.m_nickname, m_grade, ms.m_profile_img, f_id, f_status, f_followee, (select count(*) 
+                                                                                                    from follows 
+                                                                                                    where f_followee = ms.m_email and f_status = 1) f_cnt
+                                  
+                                      from members ms left outer join follows on f_followee = ms.m_email and f_follower = #{name}
+                                       ) f
+		    WHERE db.w_id= #{w_id} and f.m_email = db.m_email and  m_grade = 1  and f_followee != '1111'
+		    ORDER BY f_cnt DESC
+            ) a
+		) 
+		WHERE row_num between #{start} and #{end}
+		]]>
+	</select>
+
+	<!-- 필터링된 와인 리스트 (정렬o) -->
+	<select id="combinedProductList"
+		resultType="org.hwine.domain.product.ProductVO"
+		parameterType="org.hwine.domain.product.filteredProductVO">
+		SELECT *
+		FROM (
+		SELECT rownum rnum, f.*
+		FROM (
+		SELECT e.*
+		FROM (
+		SELECT c.*,
+		d.avg_db_rating
+		FROM (
+		SELECT DISTINCT b.w_id, w_name, w_name_kor,
+		w_type, w_img, wr_nation_kor,
+		wr_area_kor, wv_variety, wv_variety_kor,
+		w_price, w_update_date,
+		NVL(total_wine_sales, 0) total_wine_sales,
+		w_sweetness, w_acidity,
+		w_tannin, w_body
+		FROM (
+		SELECT w_id,
+		SUM(poi_quantity) total_wine_sales
+		FROM pickup_order_items
+		GROUP BY w_id
+		) a
+		RIGHT JOIN product_view b
+		ON a.w_id=b.w_id
+		) c
+		LEFT JOIN (
+		SELECT w_id,
+		ROUND(AVG(db_rating), 0) avg_db_rating
+		FROM decanting_books
+		GROUP BY
+		w_id
+		) d
+		ON c.w_id=d.w_id
+		) e
+		<where>
+			<if test='w_price1 != null and w_price2 != null '>
+				w_price BETWEEN #{w_price1} AND #{w_price2}
+			</if>
+
+			<if test='w_type != null '>
+				<foreach collection="w_type" item="w_type" open="AND ("
+					separator="OR" close=")">
+					w_type=#{w_type}
+				</foreach>
+			</if>
+
+			<if test='wv_variety_kor != null '>
+				<foreach collection="wv_variety_kor" item="wv_variety_kor"
+					open="AND (" separator="OR" close=")">
+					wv_variety_kor=#{wv_variety_kor}
+				</foreach>
+			</if>
+
+			<if test='wr_nation_kor != null '>
+				<foreach collection="wr_nation_kor" item="wr_nation_kor"
+					open="AND (" separator="OR" close=")">
+					wr_nation_kor=#{wr_nation_kor}
+				</foreach>
+			</if>
+
+			<if test='w_sweetness != -1'>
+				AND w_sweetness=#{w_sweetness}
+			</if>
+			<if test='w_acidity != -1'>
+				AND w_acidity=#{w_acidity}
+			</if>
+			<if test='w_body != -1'>
+				AND w_body=#{w_body}
+			</if>
+			<if test='w_tannin != -1'>
+				AND w_tannin=#{w_tannin}
+			</if>
+
+			<if test='sort != null and sort neq ""'>
+				<choose>
+					<when test='sort.equals("lowprice")'> <!-- 낮은 가격순 -->
+						order by w_price ASC
+					</when>
+					<when test='sort.equals("highprice")'> <!-- 높은 가격순 -->
+						order by w_price DESC
+					</when>
+					<when test='sort.equals("recent")'> <!-- 신상품순 -->
+						order by w_update_date DESC
+					</when>
+					<when test='sort.equals("totalsales")'> <!-- 판매량 많은순 -->
+						order by total_wine_sales DESC
+					</when>
+					<when test='sort.equals("rating")'> <!-- 평점 좋은순 -->
+						order by avg_db_rating DESC
+					</when>
+				</choose>
+			</if>
+		</where>
+		) f
+		)
+		WHERE rnum BETWEEN #{startIdx} AND #{endIdx}
+	</select>
+
+	<!-- 와인 필터링 결과 개수 -->
+	<select id="filteredCnt" resultType="int"
+		parameterType="org.hwine.domain.product.filteredProductVO">
+		SELECT count(*)
+		FROM (
+		SELECT rownum rnum, f.*
+		FROM (
+		SELECT e.*
+		FROM (
+		SELECT c.*, d.avg_db_rating
+		FROM (
+		SELECT DISTINCT b.w_id, w_name,
+		w_name_kor, w_type, w_img, wr_nation_kor,
+		wr_area_kor, wv_variety,
+		wv_variety_kor, w_price, w_update_date,
+		NVL(total_wine_sales, 0)
+		total_wine_sales, w_sweetness, w_acidity,
+		w_tannin, w_body
+		FROM (
+		SELECT
+		w_id, SUM(poi_quantity) total_wine_sales
+		FROM pickup_order_items
+		GROUP
+		BY w_id
+		) a
+		RIGHT JOIN product_view b
+		ON a.w_id=b.w_id
+		) c
+		LEFT JOIN (
+		SELECT w_id, ROUND(AVG(db_rating), 0) avg_db_rating
+		FROM
+		decanting_books
+		GROUP BY w_id
+		) d
+		ON c.w_id=d.w_id
+		) e
+		<where>
+			<if test='w_price1 != null and w_price2 != null '>
+				w_price BETWEEN #{w_price1} AND #{w_price2}
+			</if>
+
+			<if test='w_type != null '>
+				<foreach collection="w_type" item="w_type" open="AND ("
+					separator="OR" close=")">
+					w_type=#{w_type}
+				</foreach>
+			</if>
+
+			<if test='wv_variety_kor != null '>
+				<foreach collection="wv_variety_kor" item="wv_variety_kor"
+					open="AND (" separator="OR" close=")">
+					wv_variety_kor=#{wv_variety_kor}
+				</foreach>
+			</if>
+
+			<if test='wr_nation_kor != null '>
+				<foreach collection="wr_nation_kor" item="wr_nation_kor"
+					open="AND (" separator="OR" close=")">
+					wr_nation_kor=#{wr_nation_kor}
+				</foreach>
+			</if>
+
+			<if test='w_sweetness != -1'>
+				AND w_sweetness=#{w_sweetness}
+			</if>
+			<if test='w_acidity != -1'>
+				AND w_acidity=#{w_acidity}
+			</if>
+			<if test='w_body != -1'>
+				AND w_body=#{w_body}
+			</if>
+			<if test='w_tannin != -1'>
+				AND w_tannin=#{w_tannin}
+			</if>
+		</where>
+		) f
+		)
+	</select>
+
+</mapper>

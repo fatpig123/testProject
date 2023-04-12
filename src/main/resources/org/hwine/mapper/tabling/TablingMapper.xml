@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- SQL File Name : TablingMapper.xml Description : 테이블링 관련 mapper ==개정이력======================================== 
+	수정일 수정자 Version Query Id ========== ======= ========= =================== 
+	2023.03.15 김주현 1.0 예약가능한 테이블 조회 -->
+<mapper namespace="org.hwine.mapper.tabling.TablingMapper">
+
+	<select id="findCurrentBookingStatus"
+		resultType="org.hwine.domain.tabling.TablesAvailableVO">
+		SELECT T1.ST_ID as tableId, case when r_status = 1 then
+		'false' else 'true' end as available
+		FROM store_tables t1 LEFT join (
+		SELECT T.ST_ID, R.R_STATUS
+		FROM STORE_TABLES T JOIN RESERVATION R ON
+		T.ST_ID = R.ST_ID
+		WHERE s_code = #{storeId} and (
+		to_char(r_date,
+		'yyyy-mm-dd') =
+		#{selectedDate} and #{selectedTime} =
+		r_time and
+		r_status = 1)) t2
+		on t1.st_id = t2.st_id
+		WHERE T1.s_code =
+		#{storeId}
+		ORDER BY T1.st_order
+	</select>
+
+	<select id="findAvailableSeat" resultType="int">
+		SELECT count(r_id)
+		FROM RESERVATION R JOIN STORE_TABLES T ON R.ST_ID = T.ST_ID
+		WHERE
+		S_CODE = #{storeId} and
+		to_char(r_date, 'yyyy-mm-dd') = #{selectedDate}
+		and #{selectedTime} = r_time
+		and r_status = 1 and r.st_id = #{tableId}
+	</select>
+
+	<insert id="insertReservation"
+		parameterType="org.hwine.domain.tabling.ReservationVO">
+		INSERT INTO reservation VALUES
+		(
+		'RESV_' ||
+		to_char(#{r_register_date}, 'YYYY-MM-DD_HH24:MI:SS'),
+		#{r_register_date},
+		#{r_date}, #{r_time}, #{r_head_count}, 1, #{st_id},
+		#{m_email}, #{r_msg}, null, null
+		)
+	</insert>
+
+	<!-- 테이블링 7일간 예약건수 확인 -->
+	<select id="selectReservationFor7Days"
+		resultType="org.hwine.domain.tabling.ReservationVO">
+		SELECT r_date, r_time, m_email, r.st_id
+		FROM reservation r
+		JOIN store_tables ST ON r.st_id = st.st_id
+		WHERE r_date BETWEEN
+		TO_DATE(current_date + 1) AND TO_DATE(current_date + 7) and s_code =
+		#{scode}
+		and r_status = 1
+		ORDER BY r_date, r_time, st_order
+	</select>
+
+	<!-- 지점 정보 -->
+	<resultMap id="storeEveryInfoDTO"
+		type="org.hwine.domain.tabling.StoreEveryInfoDTO">
+		<id column="s_code" property="scode" />
+		<result column="s_name" property="sname" />
+		<result column="s_description" property="sdescription" />
+		<result column="s_simple_desc" property="ssimpledesc" />
+		<result column="s_img_urls" property="imgUrls" />
+		<result column="s_tel_no" property="stel" />
+		<result column="s_address" property="saddress" />
+		<collection resultMap="menuCategory"
+			property="menuCategory" />
+	</resultMap>
+
+	<resultMap id="menuCategory"
+		type="org.hwine.domain.tabling.MenuCategory">
+		<result column="sm_category" property="category" />
+		<result column="min_price" property="minPrice" />
+		<result column="max_price" property="maxPrice" />
+	</resultMap>
+
+	<select id="selectStoreInfo" resultMap="storeEveryInfoDTO">
+		SELECT st.s_code,
+		s_name,
+		s_description, s_simple_desc, s_img_urls, s_tel_no, s_address,
+		sm_category, min_price, max_price
+		FROM stores st join (
+		SELECT s_code,
+		sm_category, min(sm_price) as min_price, max(sm_price) as
+		max_price
+		FROM store_menus
+		WHERE s_code = #{scode}
+		group by s_code, sm_category
+		)
+		sm on st.s_code = sm.s_code
+		WHERE st.s_code =
+		#{scode}
+	</select>
+
+	<select id="selectDetailMenus"
+		resultType="org.hwine.domain.tabling.MenuVO">
+		SELECT s_code as scode, sm_name as menuName, sm_name_eng as
+		menuNameEng,
+		sm_price as menuPrice, sm_category as menuCategory,
+		sm_desc as description
+		FROM store_menus
+		WHERE s_code = #{scode}
+		order by
+		sm_reg_date
+	</select>
+
+	<!-- 마이페이지 테이블링 내역 -->
+	<select id="selectMyTablingList_cancel"
+		resultType="org.hwine.domain.tabling.MyTablingResvVO">
+		SELECT r_id, r_date, r_time, r_head_count, r_status, r.st_id, r.r_msg,
+		s.s_code,
+		s.s_name,
+		s_img_urls
+		FROM reservation r JOIN store_tables st
+		ON r.st_id =
+		st.st_id
+		JOIN stores s ON s.s_code = st.s_code
+		WHERE
+		m_email = #{memail}
+		AND
+		r_status = 0
+		<choose>
+			<when test="sort == 'desc'">
+				ORDER BY r_register_date DESC
+			</when>
+			<otherwise>
+				ORDER BY r_register_date
+			</otherwise>
+		</choose>
+	</select>
+
+	<select id="selectMyTablingList_planned"
+		resultType="org.hwine.domain.tabling.MyTablingResvVO">
+		 <![CDATA[
+		SELECT r_id, r_date, r_time, r_head_count, r.st_id, r.r_msg,
+		s.s_code, s.s_name, s_img_urls
+		FROM
+		(SELECT *
+		FROM reservation
+		WHERE m_email = #{memail} and r_date > current_date and r_status
+		= 1
+		UNION
+		SELECT *
+		FROM reservation
+		WHERE m_email = #{memail} and to_date(r_date, 'yyyy/mm/dd') =
+		to_date(current_date, 'yyyy/mm/dd') and r_time >
+		to_char(CURRENT_TIMESTAMP, 'HH24') and r_status = 1
+		) r JOIN store_tables st ON r.st_id = st.st_id
+		JOIN stores s ON s.s_code = st.s_code
+		]]>
+		<choose>
+			<when test="sort == 'desc'">
+				ORDER BY r_register_date DESC
+			</when>
+			<otherwise>
+				ORDER BY r_register_date
+			</otherwise>
+		</choose>
+
+	</select>
+
+	<select id="selectMyTablingList_done"
+		resultType="org.hwine.domain.tabling.MyTablingResvVO">
+		 <![CDATA[
+		SELECT r_id, r_date, r_time, r_head_count, r.st_id, r.r_msg,
+		s.s_code, s.s_name, s_img_urls
+		FROM
+		(SELECT *
+		FROM reservation
+		WHERE m_email = #{memail} and to_date(r_date, 'yyyy/mm/dd') <
+		to_date(current_date, 'yyyy/mm/dd') and r_status = 1
+		UNION
+		SELECT *
+		FROM reservation
+		WHERE m_email = #{memail} and to_date(r_date, 'yyyy/mm/dd') =
+		to_date(current_date, 'yyyy/mm/dd') and r_time <
+		to_char(CURRENT_TIMESTAMP, 'HH24') and r_status = 1
+		) r JOIN store_tables st ON r.st_id = st.st_id
+		JOIN stores s ON s.s_code = st.s_code
+		]]>
+		<choose>
+			<when test="sort == 'desc'">
+				ORDER BY r_register_date DESC
+			</when>
+			<otherwise>
+				ORDER BY r_register_date
+			</otherwise>
+		</choose>
+	</select>
+
+	<update id="updateReservationStatus">
+		UPDATE reservation SET r_status = 0 WHERE r_id =
+		#{rid} AND m_email = #{memail}
+	</update>
+	
+	<!-- 스케줄러를 통한 예약날짜가 지났을 때 예약상태 변경 -->
+	<update id="updateReservationStatusByScheduler">
+		<![CDATA[
+		UPDATE reservation
+		SET r_status = -1
+		WHERE r_status = 1 AND to_char(R_DATE, 'yy/MM/dd') = to_char(current_timestamp, 'yy/MM/dd') AND R_TIME <= to_char(current_timestamp ,'HH24')
+		]]>
+	</update>
+
+
+	<!-- [관리자] 테이블링 예약 내역 조회 -->
+	<select id="selectReservationsByStoreId"
+		resultType="org.hwine.domain.tabling.AdminReservationVO">
+		SELECT r_id, r_register_date, r_date, r_time,
+		r_head_count, r_msg, r_admin_note,
+		r_status, r.st_id, r.m_email, s_code, m_name
+		FROM reservation r join
+		store_tables
+		st on r.st_id = st.st_id
+		join members m on m.m_email =
+		r.m_email
+		WHERE s_code = #{storeId}
+	</select>
+
+	<!-- [관리자] 지점별 오늘 예약 건수 조회 -->
+	<select id="countTodayReservations" resultType="int">
+	<![CDATA[
+		select count(*)
+		as cnt
+		from reservation r join store_tables st on r.st_id = st.st_id
+		where to_char(r_date, 'yy/mm/dd') = to_char(current_timestamp, 'yy/mm/dd') and
+		r_status <> 0 and s_code = #{storeId}
+		]]>
+	</select>
+
+	<!-- [관리자] 한 시간 뒤 예약 건수 조회 -->
+	<select id="countAfterOneHourReservation" resultType="int">
+		select
+		count(*)
+		from reservation r join store_tables st on r.st_id = st.st_id
+		where to_char(r_date, 'yy/mm/dd') = to_char(CURRENT_TIMESTAMP,
+		'yy/mm/dd') and r_time
+		= to_char(CURRENT_TIMESTAMP, 'HH24')+1 and
+		r_status = 1 and
+		s_code = #{storeId}
+	</select>
+
+	<!-- [관리자] 오늘 노쇼 예약 건수 조회 -->
+	<select id="countTodayNoshow" resultType="int">
+		<![CDATA[
+		select count(*)
+		from reservation r join store_tables st on r.st_id = st.st_id
+		where TRUNC(current_timestamp) = TRUNC(r_date) and s_code = #{storeId} and r_time <
+		to_char(CURRENT_TIMESTAMP, 'HH24') and r_status = -1
+		]]>
+	</select>
+
+	<!-- [관리자] 신규 예약 건수 조회 -->
+	<select id="countTodayNewReservation" resultType="int">
+		select count(*)
+		from reservation r join store_tables st on r.st_id = st.st_id
+		where
+		TRUNC(current_timestamp) = TRUNC(r_register_date) and r_status = 1 and s_code =
+		#{storeId}
+	</select>
+
+	<!-- [관리자] 오늘 예약 건들 조회 -->
+	<select id="selectTodayReservations"
+		resultType="org.hwine.domain.tabling.AdminReservationVO">
+		<![CDATA[
+		SELECT r_id, r_register_date, r_date, r_time,
+		r_head_count, r_msg, r_admin_note,
+		r_status, r.st_id, r.m_email, s_code, m_name
+		FROM reservation r join
+		store_tables
+		st on r.st_id = st.st_id
+		join members m on m.m_email =
+		r.m_email
+		WHERE to_char(r_date, 'yy/dd/mm') =
+		to_char(current_timestamp,
+		'yy/dd/mm') and r_status <> 0 and s_code =
+		#{storeId}
+		ORDER BY
+		r_status, r_time
+		]]>
+	</select>
+
+	<!--[관리자] 예약 상세 조회 -->
+	<select id="selectResvDetail"
+		resultType="org.hwine.domain.tabling.AdminReservationVO">
+		SELECT r_id, r_register_date, r_date, r_time,
+		r_head_count,
+		r_status, r.st_id, r.m_email, r_msg, r_admin_note, s_code, m_name
+		FROM
+		reservation r join
+		store_tables
+		st on r.st_id = st.st_id
+		join members m
+		on m.m_email = r.m_email
+		where r_id = #{rid}
+	</select>
+
+	<!-- [관리자] 예약 정보 변경: 예약상태, 예약관리자메모 -->
+	<update id="updateReservation">
+		update reservation set r_status = #{rstatus},
+		r_admin_note = #{radminNote} where r_id = #{rid}
+	</update>
+
+	<!-- [관리자] 예약 정보 가져오기(by.qrcode) -->
+	<select id="selectResvByQR"
+		resultType="org.hwine.domain.tabling.AdminResvQRCheckVO">
+		SELECT r.r_id, r_status, r_date, r_time, r_head_count, r.st_id,
+		r_msg, r_admin_note, st.s_code, s_name, m_name
+		FROM reservation r join
+		store_tables st on r.st_id = st.st_id
+		join stores s on s.s_code =
+		st.s_code
+		join members m on r.m_email = m.m_email
+		WHERE r.r_id = #{rid}
+	</select>
+
+	<!-- [관리자] 같은 직장에서 일하는지 확인 -->
+	<select id="findWorkAtTheSamePlace" resultType="org.hwine.domain.tabling.WorkAtSamePlaceVO">
+		select m.m_email, a_role
+		from auths a join members m on a.m_email = m.m_email
+		where m.m_email
+		=#{confirm} and a.a_role = (
+		select a_role
+		from auths
+		where m_email = #{loginUserId} and a_role like 'ROLE_ADMIN_%'
+		)
+	</select>
+
+	<!-- [관리자] 예약 상태 업데이트 -->
+	<update id="confirmReservation">
+		UPDATE reservation
+		SET r_status = 2,
+		r_confirm_admin = #{confirm},
+		r_admin_note = COALESCE(r_admin_note || ' ', '') || #{adminNote}
+		WHERE r_id = #{rid}
+	</update>
+</mapper>
